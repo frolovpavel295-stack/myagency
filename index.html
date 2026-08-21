@@ -11,9 +11,12 @@
         .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
         header { background-color: var(--white); padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.03); position: sticky; top: 0; z-index: 100; }
         .nav-flex { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 22px; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 8px; }
-        .phone-btn { font-weight: 700; color: var(--text); text-decoration: none; border: 2px solid var(--border); padding: 8px 18px; border-radius: 50px; transition: 0.3s; }
-        .phone-btn:hover { border-color: var(--primary); color: var(--primary); }
+        
+        /* Стили нового логотипа "Умный Сканер" */
+        .logo-box { display: flex; align-items: center; border: 2px solid var(--primary); padding: 6px 14px; border-radius: 6px; background-color: var(--bg-light); text-decoration: none; }
+        .logo-text { font-size: 18px; font-weight: 800; color: var(--text); letter-spacing: 1px; margin-left: 6px; }
+        .logo-badge { background-color: var(--secondary); color: var(--white); font-size: 12px; font-weight: 700; padding: 2px 6px; border-radius: 4px; margin-left: 8px; }
+        
         .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%), url('https://unsplash.com'); background-blend-mode: overlay; background-size: cover; background-position: center; color: var(--white); padding: 100px 0; text-align: center; }
         .hero h1 { font-size: 46px; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
         .hero p { font-size: 20px; color: #93c5fd; max-width: 700px; margin: 0 auto 35px auto; }
@@ -52,8 +55,13 @@
 <body>
     <header>
         <div class="container nav-flex">
-            <div class="logo">📊 ТАЙМКОД</div>
-            <a href="tel:89930205812" class="phone-btn">8-993-020-58-12</a>
+            <!-- Интегрированный логотип "Умный Сканер" -->
+            <div class="logo-box">
+                <span>🔍</span>
+                <span class="logo-text">ТАЙМКОД</span>
+                <span class="logo-badge">[%] 📈</span>
+            </div>
+            <!-- Номер телефона удален по вашему запросу -->
         </div>
     </header>
     <section class="hero">
@@ -109,8 +117,3 @@
             <h2>Перелейте слив заявок в чистую прибыль</h2>
             <p>Отправьте мне запись всего одного звонка вашего менеджера прямо сейчас и получите готовый Excel-разбор с оценками бесплатно.</p>
             <a href="https://max.ru" class="cta-btn">🚀 Начать бесплатный тест-драйв</a>
-            <div class="footer-rights">&copy; 2026 Все права защищены. ТАЙМКОД — Консалтинг и аудит отделов продаж.</div>
-        </div>
-    </footer>
-</body>
-</html>
