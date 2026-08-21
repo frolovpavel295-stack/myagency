@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аудит отдела продаж и разработка скриптов под ключ</title>
+    <style>
+        :root {
+            --primary-color: #0052cc;
+            --secondary-color: #ff9900;
+            --text-color: #333333;
+            --bg-light: #f4f6fa;
+        }
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background: #ffffff;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-weight: bold;
+            font-size: 20px;
+            color: var(--primary-color);
+        }
+        .phone {
+            font-weight: bold;
+        }
+        .hero {
+            background: linear-gradient(135deg, #0052cc 0%, #002e73 100%);
+            color: #ffffff;
+            padding: 80px 0;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        .btn {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: #ffffff;
+            padding: 15px 35px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: background 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.4);
+        }
+        .btn:hover {
+            background: #e68a00;
+        }
+        .services {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+        .services h2, .about h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 50px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 8px;
+            border-top: 4px solid var(--primary-color);
+        }
+        .card h3 {
+            margin-top: 0;
+            font-size: 22px;
+        }
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 20px 0 0 0;
+        }
+        .about {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+        .about-text {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+            text-align: center;
+        }
+        .cta-section {
+            padding: 80px 0;
+            background: #ffffff;
+            text-align: center;
+        }
+        .cta-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: #666;
+        }
+        footer {
+            background: #222;
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 14px;
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 30px; }
+            .hero p { font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-flex">
+            <div class="logo">РОП-Консалтинг</div>
+            <div class="phone">[8-993-020-58-12 / https://www.avito.ru/profile]</div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Менеджеры работают как автоответчики и сливают бюджет?</h1>
+            <p>Оцифрую ошибки ваших продавцов по жесткому чек-листу и внедрю убойные скрипты продаж</p>
+            <a href="#cta" class="btn">Получить разбор 1 звонка БЕСПЛАТНО</a>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="container">
+            <h2>Услуги и стоимость</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Экспресс-аудит</h3>
+                    <p>Анализ 3-5 диалогов одного менеджера. Поиск скрытых причин слива клиентов, составление чек-листа и зон роста.</p>
+                    <p class="price">от 2 500 ₽</p>
+                </div>
+                <div class="card">
+                    <h3>Разработка скриптов</h3>
+                    <p>Индивидуальные сценарии разговора под вашу нишу. Пошаговые речевые модули: от перехвата инициативы до отработки жестких возражений («Дорого», «Я подумаю»).</p>
+                    <p class="price">15 000 ₽</p>
+                </div>
+                <div class="card">
+                    <h3>Контроль качества</h3>
+                    <p>Ежемесячное абонентское сопровождение. Еженедельная прослушка звонков, выставление оценок, разбор ошибок с менеджерами. Конверсия растет без вашего участия.</p>
+                    <p class="price">15 000 ₽ / мес.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container">
+            <h2>Обо мне</h2>
+            <div class="about-text">
+                <p>Я — практик с 6-летним опытом в «живых» продажах в сложнейших b2c-нишах с высоким чеком (финансово-юридический консалтинг, БФЛ). Я совершил тысячи звонков и лично отработал все возможные возражения. Мои скрипты написаны нормальным человеческим языком и бьют точно в психологию покупателя.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta" class="cta-section">
+        <div class="container">
+            <h2>Начните с бесплатного тест-драйва</h2>
+            <p>Отправьте мне запись 1 реального телефонного разговора вашего сотрудника. Я найду ошибки, из-за которых вы потеряли эту сделку, и пришлю готовые рекомендации.</p>
+            <a href="https://t.me/[ВАШ_НИК]" class="btn" target="_blank">Написать в Telegram и скинуть звонок</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 РОП-Консалтинг. Все права защищены. Работа по договору.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
