@@ -17,37 +17,32 @@
         .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%), url('https://unsplash.com'); background-blend-mode: overlay; background-size: cover; background-position: center; color: var(--white); padding: 100px 0; text-align: center; }
         .hero h1 { font-size: 46px; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
         .hero p { font-size: 20px; color: #93c5fd; max-width: 700px; margin: 0 auto 35px auto; }
-        .cta-btn { display: inline-block; background-color: var(--secondary); color: var(--white); font-size: 18px; font-weight: 700; text-decoration: none; padding: 16px 36px; border-radius: 50px; box-shadow: 0 4px 15px rgba(255, 153, 0, 0.4); transition: 0.3s transform, 0.3s background-color; }
-        .cta-btn:hover { transform: translateY(-3px); background-color: #e68a00; }
-        .pain-section { padding: 80px 0; background-color: var(--white); }
-        .section-title { text-align: center; font-size: 32px; font-weight: 800; margin-bottom: 50px; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { background-color: var(--bg-light); padding: 40px 30px; border-radius: 12px; border: 1px solid var(--border); transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .card .icon { font-size: 40px; margin-bottom: 20px; display: inline-block; }
-        .card h3 { font-size: 22px; margin-bottom: 15px; color: var(--primary); }
-        .about-section { padding: 80px 0; background-color: var(--bg-light); }
-        .about-flex { display: flex; align-items: center; gap: 50px; flex-wrap: wrap; }
-        .about-img { flex: 1; min-width: 300px; border-radius: 16px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); max-height: 400px; object-fit: cover; }
-        .about-text { flex: 1.2; min-width: 300px; }
-        .about-text h2 { font-size: 32px; font-weight: 800; margin-bottom: 20px; }
-        .about-text p { margin-bottom: 15px; font-size: 17px; color: #475569; }
-        .price-section { padding: 80px 0; background-color: var(--white); }
-        .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; margin-top: 40px; }
-        .price-card { border: 2px solid var(--border); border-radius: 16px; padding: 40px 25px; text-align: center; background-color: var(--white); position: relative; transition: 0.3s; }
-        .price-card.featured { border-color: var(--primary); box-shadow: 0 10px 25px rgba(0, 82, 204, 0.1); }
-        .badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background-color: var(--primary); color: var(--white); padding: 4px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; }
-        .price-card h4 { font-size: 20px; margin-bottom: 15px; }
-        .price-value { font-size: 32px; font-weight: 800; color: var(--text); margin-bottom: 20px; }
-        .price-value span { font-size: 16px; font-weight: 400; color: #64748b; }
-        .form-section { padding: 80px 0; background-color: var(--bg-light); border-top: 1px solid var(--border); text-align: center; }
-        .split-container { display: flex; max-width: 1000px; margin: 0 auto; gap: 30px; flex-wrap: wrap; }
-        .split-box { flex: 1; min-width: 300px; background: var(--white); padding: 35px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: center; }
-        footer { background-color: #0f172a; color: var(--white); padding: 60px 0; text-align: center; }
-        footer h2 { font-size: 32px; margin-bottom: 15px; }
-        footer p { color: #94a3b8; margin-bottom: 30px; }
-        .footer-rights { margin-top: 40px; font-size: 14px; color: #475569; border-top: 1px solid #1e293b; padding-top: 20px; }
-        @media (max-width: 768px) { .hero h1 { font-size: 32px; } .about-flex { flex-direction: column-reverse; gap: 30px; } .split-container { flex-direction: column; } }
+        .cta-btn { display: inline-block; background-color: var(--secondary); color: var(--white); font-size: 18px; font-weight: 700; text-decoration: none; padding: 14px 30px; border-radius: 50px; box-shadow: 0 4px 15px rgba(255, 153, 0, 0.4); transition: 0.3s; text-align: center; }
+        .cta-btn:hover { transform: translateY(-2px); background-color: #e68a00; }
+        .pain-section, .about-section, .price-section, .form-section { padding: 60px 0; text-align: center; }
+        .pain-section, .price-section { background-color: var(--white); }
+        .section-title { font-size: 32px; font-weight: 800; margin-bottom: 40px; }
+        .grid-3, .split-container, .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1000px; margin: 0 auto; }
+        .card, .split-box, .price-card { background-color: var(--bg-light); padding: 30px; border-radius: 12px; border: 1px solid var(--border); transition: 0.3s; text-align: center; }
+        .card:hover, .split-box:hover, .price-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.04); }
+        .card .icon { font-size: 40px; margin-bottom: 15px; display: inline-block; }
+        .card h3, .price-card h4 { font-size: 22px; margin-bottom: 10px; color: var(--primary); }
+        .about-flex { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; text-align: left; max-width: 1000px; margin: 0 auto; }
+        .about-img { flex: 1; min-width: 280px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); max-height: 380px; object-fit: cover; }
+        .about-text { flex: 1.2; min-width: 280px; }
+        .about-text h2 { font-size: 32px; font-weight: 800; margin-bottom: 15px; }
+        .about-text p { margin-bottom: 12px; font-size: 16px; color: #475569; }
+        .price-card { background: var(--white); position: relative; }
+        .price-card.featured { border-color: var(--primary); box-shadow: 0 10px 20px rgba(0, 82, 204, 0.06); }
+        .badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background-color: var(--primary); color: var(--white); padding: 3px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+        .price-value { font-size: 30px; font-weight: 800; margin-bottom: 15px; }
+        .price-value span { font-size: 15px; font-weight: 400; color: #64748b; }
+        .split-box { background: var(--white); padding: 30px; display: flex; flex-direction: column; justify-content: space-between; min-height: 240px; }
+        footer { background-color: #0f172a; color: var(--white); padding: 50px 0; text-align: center; }
+        footer h2 { font-size: 30px; margin-bottom: 10px; }
+        footer p { color: #94a3b8; margin-bottom: 25px; }
+        .footer-rights { margin-top: 30px; font-size: 13px; color: #475569; border-top: 1px solid #1e293b; padding-top: 15px; }
+        @media (max-width: 768px) { .hero h1 { font-size: 30px; } .about-flex { flex-direction: column-reverse; } }
     </style>
 </head>
 <body>
@@ -100,9 +95,19 @@
             <h2 class="section-title">Выберите удобный способ подачи заявки</h2>
             <div class="split-container">
                 <div class="split-box">
-                    <h3 style="margin-bottom: 15px; color: var(--primary);">Написать в МАХ</h3>
-                    <p style="color: #475569; margin-bottom: 25px; font-size: 15px;">Перейдите в бизнес-чат МАХ. Вы сможете сразу прикрепить аудиозапись звонка менеджера или задать вопрос по вашему отделу продаж.</p>
-                    <a href="https://max.ru" class="cta-btn" style="background-color: var(--primary); border-radius: 6px; padding: 13px; text-align: center; font-size: 17px;">Открыть чат МАХ ➔</a>
+                    <h3 style="margin-bottom: 10px; color: var(--primary);">Написать в МАХ</h3>
+                    <p style="color: #475569; margin-bottom: 20px; font-size: 15px;">Перейдите в бизнес-чат МАХ. Вы сможете сразу прикрепить аудиозапись звонка менеджера или задать вопрос по вашему отделу продаж.</p>
+                    <a href="https://max.ru" class="cta-btn" style="background-color: var(--primary); border-radius: 6px; width: 100%;">Открыть чат МАХ ➔</a>
                 </div>
                 <div class="split-box" style="background-color: #f1f5f9;">
-                    <h3 style="margin-bottom: 15px; color: var(--text);">Написать в Telegram</h3>
+                    <h3 style="margin-bottom: 10px; color: var(--text);">Написать в Telegram</h3>
+                    <p style="color: #475569; margin-bottom: 20px; font-size: 15px;">Перейдите в наш рабочий Telegram. Удобный формат для отправки ссылок на записи звонков из CRM-систем и быстрого обсуждения задач.</p>
+                    <a href="https://t.me" class="cta-btn" style="background-color: var(--secondary); border-radius: 6px; width: 100%;">Открыть Telegram ➔</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <h2>Перелейте слив заявок в чистую прибыль</h2>
+            <p>Отправьте мне запись всего одного звонка вашего менеджера прямо сейчас и получите готовый Excel-разбор с оценками бесплатно.</p>
