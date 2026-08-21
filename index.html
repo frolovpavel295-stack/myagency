@@ -1,206 +1,345 @@
-<!DOCTYPE html>
+html<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Аудит отдела продаж и разработка скриптов под ключ</title>
+    <title>Аудит отделов продаж & Разработка скриптов | Экспертный консалтинг</title>
     <style>
         :root {
-            --primary-color: #0052cc;
-            --secondary-color: #ff9900;
-            --text-color: #333333;
-            --bg-light: #f4f6fa;
+            --primary: #0052cc;
+            --primary-dark: #003d99;
+            --secondary: #ff9900;
+            --text: #1e293b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
         }
-        body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+        
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            color: var(--text-color);
-            line-height: 1.6;
         }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--bg-light);
+        }
+
         .container {
-            max-width: 1100px;
+            max-width: 1140px;
             margin: 0 auto;
             padding: 0 20px;
         }
+
+        /* Навигация */
         header {
-            background: #ffffff;
-            padding: 20px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            background-color: var(--white);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        .header-flex {
+
+        .nav-flex {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+
         .logo {
-            font-weight: bold;
-            font-size: 20px;
-            color: var(--primary-color);
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .phone {
-            font-weight: bold;
+
+        .phone-btn {
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+            border: 2px solid var(--border);
+            padding: 8px 18px;
+            border-radius: 50px;
+            transition: 0.3s;
         }
+
+        .phone-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Главный экран */
         .hero {
-            background: linear-gradient(135deg, #0052cc 0%, #002e73 100%);
-            color: #ffffff;
-            padding: 80px 0;
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%), url('https://unsplash.com');
+            background-blend-mode: overlay;
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 100px 0;
             text-align: center;
         }
+
         .hero h1 {
-            font-size: 42px;
-            margin-bottom: 20px;
+            font-size: 46px;
             font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
         }
+
         .hero p {
             font-size: 20px;
-            margin-bottom: 40px;
-            opacity: 0.9;
+            color: #93c5fd;
+            max-width: 700px;
+            margin: 0 auto 35px auto;
         }
-        .btn {
+
+        .cta-btn {
             display: inline-block;
-            background: var(--secondary-color);
-            color: #ffffff;
-            padding: 15px 35px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
+            background-color: var(--secondary);
+            color: var(--white);
             font-size: 18px;
-            transition: background 0.3s;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 16px 36px;
+            border-radius: 50px;
             box-shadow: 0 4px 15px rgba(255, 153, 0, 0.4);
+            transition: 0.3s transform, 0.3s background-color;
         }
-        .btn:hover {
-            background: #e68a00;
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            background-color: #e68a00;
         }
-        .services {
+
+        /* Преимущества / Боли */
+        .pain-section {
             padding: 80px 0;
-            background: #ffffff;
+            background-color: var(--white);
         }
-        .services h2, .about h2 {
+
+        .section-title {
             text-align: center;
             font-size: 32px;
+            font-weight: 800;
             margin-bottom: 50px;
         }
-        .grid {
+
+        .grid-3 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
+
         .card {
-            background: var(--bg-light);
-            padding: 30px;
-            border-radius: 8px;
-            border-top: 4px solid var(--primary-color);
+            background-color: var(--bg-light);
+            padding: 40px 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: 0.3s;
         }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .card .icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
         .card h3 {
-            margin-top: 0;
             font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary);
         }
-        .price {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin: 20px 0 0 0;
-        }
-        .about {
+
+        /* Блок с картинкой и текстом "Обо мне" */
+        .about-section {
             padding: 80px 0;
-            background: var(--bg-light);
+            background-color: var(--bg-light);
         }
+
+        .about-flex {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 16px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            max-height: 400px;
+            object-fit: cover;
+        }
+
         .about-text {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 18px;
-            text-align: center;
+            flex: 1.2;
+            min-width: 300px;
         }
-        .cta-section {
-            padding: 80px 0;
-            background: #ffffff;
-            text-align: center;
-        }
-        .cta-section h2 {
+
+        .about-text h2 {
             font-size: 32px;
+            font-weight: 800;
             margin-bottom: 20px;
         }
-        .cta-section p {
-            font-size: 18px;
-            margin-bottom: 40px;
-            color: #666;
+
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 17px;
+            color: #475569;
         }
-        footer {
-            background: #222;
-            color: #fff;
+
+        /* Прайс-лист */
+        .price-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .price-card {
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 40px 25px;
             text-align: center;
-            padding: 30px 0;
-            font-size: 14px;
+            background-color: var(--white);
+            position: relative;
+            transition: 0.3s;
         }
+
+        .price-card.featured {
+            border-color: var(--primary);
+            box-shadow: 0 10px 25px rgba(0, 82, 204, 0.1);
+        }
+
+        .badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .price-card h4 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .price-value {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .price-value span {
+            font-size: 16px;
+            font-weight: 400;
+            color: #64748b;
+        }
+
+        /* Подвал / Форма */
+        footer {
+            background-color: #0f172a;
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        footer h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        footer p {
+            color: #94a3b8;
+            margin-bottom: 30px;
+        }
+
+        .footer-rights {
+            margin-top: 40px;
+            font-size: 14px;
+            color: #475569;
+            border-top: 1px solid #1e293b;
+            padding-top: 20px;
+        }
+
         @media (max-width: 768px) {
-            .hero h1 { font-size: 30px; }
-            .hero p { font-size: 16px; }
+            .hero h1 { font-size: 32px; }
+            .about-flex { flex-direction: column-reverse; gap: 30px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Шапка сайта -->
     <header>
-        <div class="container header-flex">
-            <div class="logo">РОП-Консалтинг</div>
-            <div class="phone">[8-993-020-58-12 / https://www.avito.ru/profile]</div>
+        <div class="container nav-flex">
+            <div class="logo">📊 НазваниеАгентства</div>
+            <a href="tel:[8-993-020-58-12]" class="phone-btn">[8-993-020-58-12]</a>
         </div>
     </header>
 
+    <!-- Главный экран -->
     <section class="hero">
         <div class="container">
-            <h1>Менеджеры работают как автоответчики и сливают бюджет?</h1>
-            <p>Оцифрую ошибки ваших продавцов по жесткому чек-листу и внедрю убойные скрипты продаж</p>
-            <a href="#cta" class="btn">Получить разбор 1 звонка БЕСПЛАТНО</a>
+            <h1>Менеджеры работают как автоответчики?</h1>
+            <p>Хватит сливать рекламный бюджет! Оцифрую ошибки ваших продавцов по жесткому чек-листу и подниму конверсию в оплату.</p>
+            <a href="[https://t.me/legal_help_desk]" class="cta-btn">🔥 Получить экспресс-аудит звонка бесплатно</a>
         </div>
     </section>
 
-    <section class="services">
+    <!-- Боли бизнеса / Что делаем -->
+    <section class="pain-section">
         <div class="container">
-            <h2>Услуги и стоимость</h2>
-            <div class="grid">
+            <h2 class="section-title">Каждая упущенная заявка — это подарок конкурентам</h2>
+            <div class="grid-3">
                 <div class="card">
-                    <h3>Экспресс-аудит</h3>
-                    <p>Анализ 3-5 диалогов одного менеджера. Поиск скрытых причин слива клиентов, составление чек-листа и зон роста.</p>
-                    <p class="price">от 2 500 ₽</p>
+                    <span class="icon">🔍</span>
+                    <h3>Аудит диалогов</h3>
+                    <p>Слушаю записи разговоров и переписки. Нахожу скрытые причины, почему клиенты уходят со словами "Я подумаю".</p>
                 </div>
                 <div class="card">
-                    <h3>Разработка скриптов</h3>
-                    <p>Индивидуальные сценарии разговора под вашу нишу. Пошаговые речевые модули: от перехвата инициативы до отработки жестких возражений («Дорого», «Я подумаю»).</p>
-                    <p class="price">15 000 ₽</p>
+                    <span class="icon">📜</span>
+                    <h3>Живые скрипты</h3>
+                    <p>Разрабатываю индивидуальные сценарии разговора. Без заумных фраз. Только жесткая практика и отработка возражения "Дорого".</p>
                 </div>
                 <div class="card">
+                    <span class="icon">🛡️</span>
                     <h3>Контроль качества</h3>
-                    <p>Ежемесячное абонентское сопровождение. Еженедельная прослушка звонков, выставление оценок, разбор ошибок с менеджерами. Конверсия растет без вашего участия.</p>
-                    <p class="price">15 000 ₽ / мес.</p>
+                    <p>Беру отдел продаж под регулярное удаленное сопровождение. Держу менеджеров в тонусе, еженедельно разбирая их ошибки.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="about">
+    <!-- Блок обо мне с премиальной b2b-картинкой -->
+    <section class="about-section">
         <div class="container">
-            <h2>Обо мне</h2>
-            <div class="about-text">
-                <p>Я — практик с 6-летним опытом в «живых» продажах в сложнейших b2c-нишах с высоким чеком (финансово-юридический консалтинг, БФЛ). Я совершил тысячи звонков и лично отработал все возможные возражения. Мои скрипты написаны нормальным человеческим языком и бьют точно в психологию покупателя.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="cta" class="cta-section">
-        <div class="container">
-            <h2>Начните с бесплатного тест-драйва</h2>
-            <p>Отправьте мне запись 1 реального телефонного разговора вашего сотрудника. Я найду ошибки, из-за которых вы потеряли эту сделку, и пришлю готовые рекомендации.</p>
-            <a href="https://t.me/[ВАШ_НИК]" class="btn" target="_blank">Написать в Telegram и скинуть звонок</a>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 РОП-Консалтинг. Все права защищены. Работа по договору.</p>
-        </div>
-    </footer>
-
-</body>
-</html>
+            <div class="about-flex">
+                <img src="https://unsplash.com" alt="Анализ продаж экспертом" class="about-img">
+                <div class="about-text">
+                    <h2>Практик с 6-летним опытом</h2>
+                    <p>Я не продаю скучную книжную теорию. За моими плечами 6 лет ежедневной непрерывной работы в сложнейших b2c и b2b нишах с высоким чеком и длинным циклом сделки.</p>
