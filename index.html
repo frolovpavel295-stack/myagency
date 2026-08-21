@@ -5,57 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Таймкод | Аудит отделов продаж</title>
     <style>
-        :root { --primary: #0052cc; --primary-dark: #003d99; --secondary: #ff9900; --text: #1e293b; --bg-light: #f8fafc; --white: #ffffff; --border: #e2e8f0; }
+        :root { --primary: #0052cc; --primary-dark: #003d99; --secondary: #ff9900; --text: #1e293b; --bg-light: #f8fafc; --white: #ffffff; --border: #e2e8f0; --dark-bg: #0b1329; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Segoe UI', Roboto, Arial, sans-serif; color: var(--text); line-height: 1.6; background-color: var(--bg-light); }
         .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
-        header { background-color: var(--white); padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.03); position: sticky; top: 0; z-index: 100; }
+        
+        header { background-color: rgba(255, 255, 255, 0.95); padding: 18px 0; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
         .nav-flex { display: flex; justify-content: space-between; align-items: center; }
-        .logo-box { display: flex; align-items: center; border: 2px solid var(--primary); padding: 6px 14px; border-radius: 6px; background-color: var(--bg-light); text-decoration: none; }
-        .logo-text { font-size: 18px; font-weight: 800; color: var(--text); letter-spacing: 1px; margin-left: 6px; }
-        .logo-badge { background-color: var(--secondary); color: var(--white); font-size: 12px; font-weight: 700; padding: 2px 6px; border-radius: 4px; margin-left: 8px; }
-        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%), url('https://unsplash.com'); background-blend-mode: overlay; background-size: cover; background-position: center; color: var(--white); padding: 100px 0; text-align: center; }
-        .hero h1 { font-size: 46px; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
-        .hero p { font-size: 20px; color: #93c5fd; max-width: 700px; margin: 0 auto 35px auto; }
-        .cta-btn { display: inline-block; background-color: var(--secondary); color: var(--white); font-size: 18px; font-weight: 700; text-decoration: none; padding: 14px 30px; border-radius: 50px; box-shadow: 0 4px 15px rgba(255, 153, 0, 0.4); transition: 0.3s; text-align: center; }
-        .cta-btn:hover { transform: translateY(-2px); background-color: #e68a00; }
-        .pain-section, .about-section, .price-section, .form-section { padding: 60px 0; text-align: center; }
+        
+        .logo-box { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 20px; font-weight: 800; color: #0f172a; letter-spacing: 1.5px; }
+        .logo-box span { color: var(--primary); }
+        
+        .hero { background: radial-gradient(circle at top right, rgba(0, 82, 204, 0.15), transparent), linear-gradient(185deg, #090d1a 0%, #020408 100%); position: relative; overflow: hidden; color: var(--white); padding: 120px 0; text-align: center; }
+        .hero::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 20px 20px; pointer-events: none; }
+        
+        .hero h1 { font-size: 52px; font-weight: 900; margin-bottom: 24px; line-height: 1.15; letter-spacing: -1px; color: #ffffff; }
+        .hero h1 span { background: linear-gradient(90deg, #3b82f6, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 21px; color: #94a3b8; max-width: 760px; margin: 0 auto 40px auto; font-weight: 400; line-height: 1.5; }
+        
+        .cta-btn { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #ff9900 0%, #ff6600 100%); color: var(--white); font-size: 18px; font-weight: 700; text-decoration: none; padding: 18px 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(255, 102, 0, 0.3); transition: 0.3s; }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(255, 102, 0, 0.4); opacity: 0.95; }
+        
+        .pain-section, .about-section, .price-section, .form-section { padding: 80px 0; text-align: center; }
         .pain-section, .price-section { background-color: var(--white); }
-        .section-title { font-size: 32px; font-weight: 800; margin-bottom: 40px; }
-        .grid-3, .split-container, .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1000px; margin: 0 auto; }
-        .card, .split-box, .price-card { background-color: var(--bg-light); padding: 30px; border-radius: 12px; border: 1px solid var(--border); transition: 0.3s; text-align: center; }
-        .card:hover, .split-box:hover, .price-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.04); }
-        .card .icon { font-size: 40px; margin-bottom: 15px; display: inline-block; }
-        .card h3, .price-card h4 { font-size: 22px; margin-bottom: 10px; color: var(--primary); }
-        .about-flex { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; text-align: left; max-width: 1000px; margin: 0 auto; }
-        .about-img { flex: 1; min-width: 280px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); max-height: 380px; object-fit: cover; }
+        .section-title { font-size: 36px; font-weight: 800; margin-bottom: 50px; color: #0f172a; letter-spacing: -0.5px; }
+        .grid-3, .split-container, .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
+        .card, .split-box, .price-card { background-color: var(--bg-light); padding: 40px 30px; border-radius: 16px; border: 1px solid var(--border); transition: 0.3s; text-align: center; }
+        .card:hover, .split-box:hover, .price-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); border-color: #cbd5e1; }
+        .card .icon { font-size: 44px; margin-bottom: 20px; display: inline-block; }
+        .card h3, .price-card h4 { font-size: 24px; margin-bottom: 12px; color: #0f172a; font-weight: 700; }
+        .about-flex { display: flex; align-items: center; gap: 50px; flex-wrap: wrap; text-align: left; max-width: 1000px; margin: 0 auto; }
+        .about-img { flex: 1; min-width: 280px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.06); max-height: 400px; object-fit: cover; }
         .about-text { flex: 1.2; min-width: 280px; }
-        .about-text h2 { font-size: 32px; font-weight: 800; margin-bottom: 15px; }
-        .about-text p { margin-bottom: 12px; font-size: 16px; color: #475569; }
+        .about-text h2 { font-size: 36px; font-weight: 800; margin-bottom: 20px; color: #0f172a; }
+        .about-text p { margin-bottom: 16px; font-size: 17px; color: #475569; }
         .price-card { background: var(--white); position: relative; }
-        .price-card.featured { border-color: var(--primary); box-shadow: 0 10px 20px rgba(0, 82, 204, 0.06); }
-        .badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background-color: var(--primary); color: var(--white); padding: 3px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
-        .price-value { font-size: 30px; font-weight: 800; margin-bottom: 15px; }
-        .price-value span { font-size: 15px; font-weight: 400; color: #64748b; }
-        .split-box { background: var(--white); padding: 30px; display: flex; flex-direction: column; justify-content: space-between; min-height: 240px; }
-        footer { background-color: #0f172a; color: var(--white); padding: 50px 0; text-align: center; }
-        footer h2 { font-size: 30px; margin-bottom: 10px; }
-        footer p { color: #94a3b8; margin-bottom: 25px; }
-        .footer-rights { margin-top: 30px; font-size: 13px; color: #475569; border-top: 1px solid #1e293b; padding-top: 15px; }
-        @media (max-width: 768px) { .hero h1 { font-size: 30px; } .about-flex { flex-direction: column-reverse; } }
+        .price-card.featured { border: 2px solid var(--primary); box-shadow: 0 15px 35px rgba(0, 82, 204, 0.08); }
+        .badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background-color: var(--primary); color: var(--white); padding: 4px 16px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .price-value { font-size: 34px; font-weight: 800; margin-bottom: 15px; color: #0f172a; }
+        .price-value span { font-size: 16px; font-weight: 400; color: #64748b; }
+        .split-box { background: var(--white); padding: 40px 30px; display: flex; flex-direction: column; justify-content: space-between; min-height: 260px; }
+        footer { background-color: #090d1a; color: var(--white); padding: 60px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
+        footer h2 { font-size: 32px; margin-bottom: 12px; }
+        footer p { color: #64748b; margin-bottom: 30px; }
+        .footer-rights { margin-top: 40px; font-size: 14px; color: #475569; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; }
+        @media (max-width: 768px) { .hero h1 { font-size: 36px; } .hero p { font-size: 18px; } .about-flex { flex-direction: column-reverse; } }
     </style>
 </head>
 <body>
     <header>
         <div class="container nav-flex">
-            <div class="logo-box"><span>🔍</span><span class="logo-text">ТАЙМКОД</span><span class="logo-badge">[%] 📈</span></div>
+            <a href="#" class="logo-box">🔍 ТАЙМКОД<span>.</span></a>
         </div>
     </header>
     <section class="hero">
         <div class="container">
-            <h1>Менеджеры работают как автоответчики?</h1>
-            <p>Хватит сливать рекламный бюджет! Оцифрую ошибки ваших продавцов по жесткому чек-листу и подниму конверсию в оплату.</p>
-            <a href="https://max.ru" class="cta-btn">🔥 Получить экспресс-аудит звонка бесплатно</a>
+            <h1>Менеджеры работают как <span>автоответчики?</span></h1>
+            <p>Хватит сливать рекламный бюджет. Оцифрую ошибки ваших продавцов по жесткому чек-листу и подниму общую конверсию в оплату.</p>
+            <a href="https://max.ru" class="cta-btn">🔥 Получить экспресс-аудит бесплатно</a>
         </div>
     </section>
     <section class="pain-section">
@@ -95,19 +102,10 @@
             <h2 class="section-title">Выберите удобный способ подачи заявки</h2>
             <div class="split-container">
                 <div class="split-box">
-                    <h3 style="margin-bottom: 10px; color: var(--primary);">Написать в МАХ</h3>
-                    <p style="color: #475569; margin-bottom: 20px; font-size: 15px;">Перейдите в бизнес-чат МАХ. Вы сможете сразу прикрепить аудиозапись звонка менеджера или задать вопрос по вашему отделу продаж.</p>
-                    <a href="https://max.ru" class="cta-btn" style="background-color: var(--primary); border-radius: 6px; width: 100%;">Открыть чат МАХ ➔</a>
+                    <h3 style="margin-bottom: 12px; color: var(--primary);">Написать в МАХ</h3>
+                    <p style="color: #475569; margin-bottom: 25px; font-size: 15px;">Перейдите в бизнес-чат МАХ. Вы сможете сразу прикрепить аудиозапись звонка менеджера или задать вопрос по вашему отделу продаж.</p>
+                    <a href="https://max.ru" class="cta-btn" style="background: var(--primary); border-radius: 8px; width: 100%; box-shadow: none;">Открыть чат МАХ ➔</a>
                 </div>
                 <div class="split-box" style="background-color: #f1f5f9;">
-                    <h3 style="margin-bottom: 10px; color: var(--text);">Написать в Telegram</h3>
-                    <p style="color: #475569; margin-bottom: 20px; font-size: 15px;">Перейдите в наш рабочий Telegram. Удобный формат для отправки ссылок на записи звонков из CRM-систем и быстрого обсуждения задач.</p>
-                    <a href="https://t.me" class="cta-btn" style="background-color: var(--secondary); border-radius: 6px; width: 100%;">Открыть Telegram ➔</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <div class="container">
-            <h2>Перелейте слив заявок в чистую прибыль</h2>
-            <p>Отправьте мне запись всего одного звонка вашего менеджера прямо сейчас и получите готовый Excel-разбор с оценками бесплатно.</p>
+                    <h3 style="margin-bottom: 12px; color: var(--text);">Написать в Telegram</h3>
+                    <p style="color: #475569; margin-bottom: 25px; font-size: 15px;">Перейдите в наш рабочий Telegram. Удобный формат для отправки ссылок на записи звонков из CRM-систем и быстрого обсуждения задач.</p>
