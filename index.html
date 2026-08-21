@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Таймкод | Аудит отделов продаж</title>
-    <link rel="stylesheet" href="https://jsdelivr.net">
     <style>
         :root { --primary: #0052cc; --primary-dark: #003d99; --secondary: #ff9900; --text: #1e293b; --bg-light: #f8fafc; --white: #ffffff; --border: #e2e8f0; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -41,14 +40,8 @@
         .price-card h4 { font-size: 20px; margin-bottom: 15px; }
         .price-value { font-size: 32px; font-weight: 800; color: var(--text); margin-bottom: 20px; }
         .price-value span { font-size: 16px; font-weight: 400; color: #64748b; }
-        .form-section { padding: 80px 0; background-color: var(--bg-light); border-top: 1px solid var(--border); }
+        .form-section { padding: 80px 0; background-color: var(--bg-light); border-top: 1px solid var(--border); text-align: center; }
         .form-container { max-width: 600px; margin: 0 auto; background: var(--white); padding: 40px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
-        .form-group { margin-bottom: 20px; text-align: left; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--text); }
-        .form-input { width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 6px; font-size: 16px; transition: 0.3s; }
-        .form-input:focus { border-color: var(--primary); outline: none; }
-        .submit-btn { width: 100%; background-color: var(--primary); color: var(--white); border: none; padding: 14px; font-size: 18px; font-weight: 700; border-radius: 6px; cursor: pointer; transition: 0.3s; }
-        .submit-btn:hover { background-color: var(--primary-dark); }
         footer { background-color: #0f172a; color: var(--white); padding: 60px 0; text-align: center; }
         footer h2 { font-size: 32px; margin-bottom: 15px; }
         footer p { color: #94a3b8; margin-bottom: 30px; }
@@ -106,9 +99,18 @@
         <div class="container">
             <h2 class="section-title">Оставить заявку на аудит звонка</h2>
             <div class="form-container">
-                <form action="https://web3forms.com" method="POST">
-                    <input type="hidden" name="access_key" value="82e0b5f9-d30d-4425-8d4d-9f8709b8dac9">
-                    <input type="hidden" name="subject" value="Новая заявка с сайта ТАЙМКОД">
-                    <input type="checkbox" name="botcheck" style="display: none;">
-                    <div class="form-group">
-                        <label for="name">Ваше имя / Имя руководителя</label>
+                <p style="font-size: 18px; margin-bottom: 25px; color: #475569;">Заполните быструю форму в мессенджере МАХ. Я свяжусь с вами в течение 10 минут, отвечу на вопросы и заберу первый звонок на бесплатный разбор.</p>
+                <a href="https://max.ru" class="cta-btn" style="background-color: var(--primary); width: 100%;">Открыть чат и подать заявку ➔</a>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <h2>Перелейте слив заявок в чистую прибыль</h2>
+            <p>Отправьте мне запись всего одного звонка вашего менеджера прямо сейчас и получите готовый Excel-разбор с оценками бесплатно.</p>
+            <a href="https://max.ru" class="cta-btn">🚀 Начать бесплатный тест-драйв</a>
+            <div class="footer-rights">&copy; 2026 Все права защищены. ТАЙМКОД — Консалтинг и аудит отделов продаж.</div>
+        </div>
+    </footer>
+</body>
+</html>
