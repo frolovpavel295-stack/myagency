@@ -5,56 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Таймкод | Аудит отделов продаж</title>
     <style>
-        :root { --primary: #0052cc; --primary-dark: #003d99; --secondary: #ff9900; --text: #1e293b; --bg-light: #f8fafc; --white: #ffffff; --border: #e2e8f0; --dark-bg: #0b1329; }
+        :root { --primary: #0052cc; --primary-dark: #003d99; --secondary: #ff9900; --text: #1e293b; --bg-light: #f8fafc; --white: #ffffff; --border: #e2e8f0; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Segoe UI', Roboto, Arial, sans-serif; color: var(--text); line-height: 1.6; background-color: var(--bg-light); }
         .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
-        
         header { background-color: rgba(255, 255, 255, 0.95); padding: 18px 0; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
-        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
-        
+        /* Выравнивание логотипа по правому краю */
+        .nav-flex { display: flex; justify-content: flex-end; align-items: center; }
         .logo-box { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 20px; font-weight: 800; color: #0f172a; letter-spacing: 1.5px; }
         .logo-box span { color: var(--primary); }
-        
-        .hero { background: radial-gradient(circle at top right, rgba(0, 82, 204, 0.15), transparent), linear-gradient(185deg, #090d1a 0%, #020408 100%); position: relative; overflow: hidden; color: var(--white); padding: 120px 0; text-align: center; }
+        .hero { background: radial-gradient(circle at top right, rgba(0, 82, 204, 0.15), transparent), linear-gradient(185deg, #090d1a 0%, #020408 100%); position: relative; overflow: hidden; color: var(--white); padding: 100px 0; text-align: center; }
         .hero::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 20px 20px; pointer-events: none; }
-        
-        .hero h1 { font-size: 52px; font-weight: 900; margin-bottom: 24px; line-height: 1.15; letter-spacing: -1px; color: #ffffff; }
+        .hero h1 { font-size: 48px; font-weight: 900; margin-bottom: 24px; line-height: 1.15; color: #ffffff; }
         .hero h1 span { background: linear-gradient(90deg, #3b82f6, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: 21px; color: #94a3b8; max-width: 760px; margin: 0 auto 40px auto; font-weight: 400; line-height: 1.5; }
-        
-        .cta-btn { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #ff9900 0%, #ff6600 100%); color: var(--white); font-size: 18px; font-weight: 700; text-decoration: none; padding: 18px 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(255, 102, 0, 0.3); transition: 0.3s; }
-        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(255, 102, 0, 0.4); opacity: 0.95; }
-        
-        .pain-section, .about-section, .price-section, .form-section { padding: 80px 0; text-align: center; }
+        .hero p { font-size: 20px; color: #94a3b8; max-width: 760px; margin: 0 auto 40px auto; }
+        .cta-btn { display: inline-flex; align-items: center; background: linear-gradient(135deg, #ff9900 0%, #ff6600 100%); color: var(--white); font-size: 18px; font-weight: 700; text-decoration: none; padding: 16px 36px; border-radius: 12px; box-shadow: 0 4px 20px rgba(255, 102, 0, 0.3); transition: 0.3s; }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(255, 102, 0, 0.4); }
+        .pain-section, .about-section, .price-section, .form-section { padding: 60px 0; text-align: center; }
         .pain-section, .price-section { background-color: var(--white); }
-        .section-title { font-size: 36px; font-weight: 800; margin-bottom: 50px; color: #0f172a; letter-spacing: -0.5px; }
-        .grid-3, .split-container, .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
-        .card, .split-box, .price-card { background-color: var(--bg-light); padding: 40px 30px; border-radius: 16px; border: 1px solid var(--border); transition: 0.3s; text-align: center; }
-        .card:hover, .split-box:hover, .price-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); border-color: #cbd5e1; }
-        .card .icon { font-size: 44px; margin-bottom: 20px; display: inline-block; }
-        .card h3, .price-card h4 { font-size: 24px; margin-bottom: 12px; color: #0f172a; font-weight: 700; }
-        .about-flex { display: flex; align-items: center; gap: 50px; flex-wrap: wrap; text-align: left; max-width: 1000px; margin: 0 auto; }
-        .about-img { flex: 1; min-width: 280px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.06); max-height: 400px; object-fit: cover; }
+        .section-title { font-size: 32px; font-weight: 800; margin-bottom: 40px; color: #0f172a; }
+        .grid-3, .split-container, .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1000px; margin: 0 auto; }
+        .card, .split-box, .price-card { background-color: var(--bg-light); padding: 30px; border-radius: 12px; border: 1px solid var(--border); transition: 0.3s; text-align: center; }
+        .card:hover, .split-box:hover, .price-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.04); }
+        .card .icon { font-size: 40px; margin-bottom: 15px; display: inline-block; }
+        .card h3, .price-card h4 { font-size: 22px; margin-bottom: 10px; color: #0f172a; font-weight: 700; }
+        .about-flex { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; text-align: left; max-width: 1000px; margin: 0 auto; }
+        .about-img { flex: 1; min-width: 280px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.06); max-height: 380px; object-fit: cover; }
         .about-text { flex: 1.2; min-width: 280px; }
-        .about-text h2 { font-size: 36px; font-weight: 800; margin-bottom: 20px; color: #0f172a; }
-        .about-text p { margin-bottom: 16px; font-size: 17px; color: #475569; }
+        .about-text h2 { font-size: 32px; font-weight: 800; margin-bottom: 15px; color: #0f172a; }
+        .about-text p { margin-bottom: 12px; font-size: 16px; color: #475569; }
         .price-card { background: var(--white); position: relative; }
-        .price-card.featured { border: 2px solid var(--primary); box-shadow: 0 15px 35px rgba(0, 82, 204, 0.08); }
-        .badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background-color: var(--primary); color: var(--white); padding: 4px 16px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-        .price-value { font-size: 34px; font-weight: 800; margin-bottom: 15px; color: #0f172a; }
-        .price-value span { font-size: 16px; font-weight: 400; color: #64748b; }
-        .split-box { background: var(--white); padding: 40px 30px; display: flex; flex-direction: column; justify-content: space-between; min-height: 260px; }
-        footer { background-color: #090d1a; color: var(--white); padding: 60px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
-        footer h2 { font-size: 32px; margin-bottom: 12px; }
-        footer p { color: #64748b; margin-bottom: 30px; }
-        .footer-rights { margin-top: 40px; font-size: 14px; color: #475569; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; }
-        @media (max-width: 768px) { .hero h1 { font-size: 36px; } .hero p { font-size: 18px; } .about-flex { flex-direction: column-reverse; } }
+        .price-card.featured { border: 2px solid var(--primary); box-shadow: 0 10px 20px rgba(0, 82, 204, 0.06); }
+        .badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background-color: var(--primary); color: var(--white); padding: 3px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+        .price-value { font-size: 30px; font-weight: 800; margin-bottom: 15px; color: #0f172a; }
+        .price-value span { font-size: 15px; font-weight: 400; color: #64748b; }
+        .split-box { background: var(--white); padding: 30px; display: flex; flex-direction: column; justify-content: space-between; min-height: 220px; }
+        footer { background-color: #090d1a; color: var(--white); padding: 50px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
+        footer h2 { font-size: 28px; margin-bottom: 10px; }
+        footer p { color: #64748b; margin-bottom: 25px; }
+        .footer-rights { margin-top: 30px; font-size: 13px; color: #475569; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 15px; }
+        @media (max-width: 768px) { .hero h1 { font-size: 32px; } .about-flex { flex-direction: column-reverse; } }
     </style>
 </head>
 <body>
     <header>
         <div class="container nav-flex">
+            <!-- Логотип теперь справа вверху -->
             <a href="#" class="logo-box">🔍 ТАЙМКОД<span>.</span></a>
         </div>
     </header>
@@ -69,20 +65,20 @@
         <div class="container">
             <h2 class="section-title">Каждая упущенная заявка — это подарок конкурентам</h2>
             <div class="grid-3">
-                <div class="card"><span class="icon">🔍</span><h3>Аудит диалогов</h3><p>Слушаю записи разговоров и переписки. Нахожу скрытые причины, почему клиенты уходят со словами "Я подумаю".</p></div>
-                <div class="card"><span class="icon">📜</span><h3>Живые скрипты</h3><p>Разрабатываю индивидуальные сценарии разговора. Без заумных фраз. Только жесткая практика и отработка возражения "Дорого".</p></div>
-                <div class="card"><span class="icon">🛡️</span><h3>Контроль качества</h3><p>Беру отдел продаж под регулярное удаленное сопровождение. Держу менеджеров в тонусе, еженедельно разбирая их ошибки.</p></div>
+                <div class="card"><span class="icon">🔍</span><h3>Аудит диалогов</h3><p>Слушаю записи разговоров. Нахожу скрытые причины, почему клиенты уходят со словами "Я подумаю".</p></div>
+                <div class="card"><span class="icon">📜</span><h3>Живые скрипты</h3><p>Разрабатываю сценарии разговора. Только жесткая практика и отработка возражения "Дорого".</p></div>
+                <div class="card"><span class="icon">🛡️</span><h3>Контроль качества</h3><p>Беру отдел продаж под сопровождение. Держу менеджеров в тонусе, еженедельно разбирая ошибки.</p></div>
             </div>
         </div>
     </section>
     <section class="about-section">
         <div class="container">
             <div class="about-flex">
-                <img src="photo.png.jfif" alt="Павел Фролов — Эксперт по продажам" class="about-img">
+                <img src="photo.png.jfif" alt="Павел Фролов" class="about-img">
                 <div class="about-text">
                     <h2>Практик с 6-летним опытом</h2>
-                    <p>Я не продаю скучную книжную теорию. За моими плечами 6 лет ежедневной непрерывной работы в сложнейших b2c и b2b нишах с высоким чеком и длинным циклом сделки.</p>
-                    <p>Я сам совершил тысячи звонков и лично отработал каждое существующее возражение на рынке. Моя цель — внедрить в ваш бизнес готовую, измеримую в деньгах систему контроля результатов.</p>
+                    <p>За моими плечами 6 лет ежедневной работы в сложнейших b2c и b2b нишах с высоким чеком и длинным циклом сделки.</p>
+                    <p>Я сам совершил тысячи звонков и отработал каждое возражение. Моя цель — внедрить в ваш бизнес измеримую систему контроля.</p>
                 </div>
             </div>
         </div>
@@ -91,9 +87,9 @@
         <div class="container">
             <h2 class="section-title">Стоимость услуг и тарифы</h2>
             <div class="price-grid">
-                <div class="price-card"><div class="badge" style="background-color: #64748b;">Тест-драйв</div><h4>Экспресс-аудит</h4><div class="price-value">от 2 500 ₽</div><p>Быстрый срез качества работы одного сотрудника по ключевым метрикам.</p></div>
+                <div class="price-card"><div class="badge" style="background-color: #64748b;">Тест-драйв</div><h4>Экспресс-аудит</h4><div class="price-value">от 2 500 ₽</div><p>Срез качества работы одного сотрудника по ключевым метрикам.</p></div>
                 <div class="price-card featured"><div class="badge">Популярно</div><h4>Скрипты продаж</h4><div class="price-value">15 000 ₽</div><p>Пошаговый сценарий от приветствия до закрытия сделки под вашу нишу.</p></div>
-                <div class="price-card"><div class="badge" style="background-color: #10b981;">Абонемент</div><h4>Контроль качества</h4><div class="price-value">15 000 ₽<span> / мес</span></div><p>Еженедельная прослушка звонков, ведение Google-таблиц и работа над ошибками.</p></div>
+                <div class="price-card"><div class="badge" style="background-color: #10b981;">Абонемент</div><h4>Контроль качества</h4><div class="price-value">15 000 ₽<span>/мес</span></div><p>Еженедельная прослушка, ведение чек-листов и работа над ошибками.</p></div>
             </div>
         </div>
     </section>
@@ -102,10 +98,19 @@
             <h2 class="section-title">Выберите удобный способ подачи заявки</h2>
             <div class="split-container">
                 <div class="split-box">
-                    <h3 style="margin-bottom: 12px; color: var(--primary);">Написать в МАХ</h3>
-                    <p style="color: #475569; margin-bottom: 25px; font-size: 15px;">Перейдите в бизнес-чат МАХ. Вы сможете сразу прикрепить аудиозапись звонка менеджера или задать вопрос по вашему отделу продаж.</p>
-                    <a href="https://max.ru" class="cta-btn" style="background: var(--primary); border-radius: 8px; width: 100%; box-shadow: none;">Открыть чат МАХ ➔</a>
+                    <h3 style="margin-bottom: 10px; color: var(--primary);">Написать в МАХ</h3>
+                    <p style="color: #475569; margin-bottom: 20px; font-size: 15px;">Перейдите в бизнес-чат МАХ для отправки аудиозаписей.</p>
+                    <a href="https://max.ru" class="cta-btn" style="background: var(--primary); border-radius: 8px; width: 100%; box-shadow: none; padding: 12px;">Открыть чат МАХ ➔</a>
                 </div>
                 <div class="split-box" style="background-color: #f1f5f9;">
-                    <h3 style="margin-bottom: 12px; color: var(--text);">Написать в Telegram</h3>
-                    <p style="color: #475569; margin-bottom: 25px; font-size: 15px;">Перейдите в наш рабочий Telegram. Удобный формат для отправки ссылок на записи звонков из CRM-систем и быстрого обсуждения задач.</p>
+                    <h3 style="margin-bottom: 10px; color: var(--text);">Написать в Telegram</h3>
+                    <p style="color: #475569; margin-bottom: 20px; font-size: 15px;">Перейдите в наш Telegram для быстрого обсуждения b2b-задач.</p>
+                    <a href="https://t.me" class="cta-btn" style="background: #1e293b; border-radius: 8px; width: 100%; box-shadow: none; padding: 12px;">Открыть Telegram ➔</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <h2>Перелейте слив заявок в чистую прибыль</h2>
+            <p>Отправьте запись одного звонка менеджера прямо сейчас и получите готовый Excel-разбор бесплатно.</p>
