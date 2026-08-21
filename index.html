@@ -14,328 +14,71 @@
             --white: #ffffff;
             --border: #e2e8f0;
         }
-        
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            color: var(--text);
-            line-height: 1.6;
-            background-color: var(--bg-light);
-        }
-
-        .container {
-            max-width: 1140px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Навигация */
-        header {
-            background-color: var(--white);
-            padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 22px;
-            font-weight: 800;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .phone-btn {
-            font-weight: 700;
-            color: var(--text);
-            text-decoration: none;
-            border: 2px solid var(--border);
-            padding: 8px 18px;
-            border-radius: 50px;
-            transition: 0.3s;
-        }
-
-        .phone-btn:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        /* Главный экран */
-        .hero {
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%), url('https://unsplash.com');
-            background-blend-mode: overlay;
-            background-size: cover;
-            background-position: center;
-            color: var(--white);
-            padding: 100px 0;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 46px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 20px;
-            color: #93c5fd;
-            max-width: 700px;
-            margin: 0 auto 35px auto;
-        }
-
-        .cta-btn {
-            display: inline-block;
-            background-color: var(--secondary);
-            color: var(--white);
-            font-size: 18px;
-            font-weight: 700;
-            text-decoration: none;
-            padding: 16px 36px;
-            border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.4);
-            transition: 0.3s transform, 0.3s background-color;
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-3px);
-            background-color: #e68a00;
-        }
-
-        /* Преимущества / Боли */
-        .pain-section {
-            padding: 80px 0;
-            background-color: var(--white);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 50px;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background-color: var(--bg-light);
-            padding: 40px 30px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-
-        .card .icon {
-            font-size: 40px;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-
-        .card h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-
-        /* Блок с картинкой и текстом "Обо мне" */
-        .about-section {
-            padding: 80px 0;
-            background-color: var(--bg-light);
-        }
-
-        .about-flex {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            flex-wrap: wrap;
-        }
-
-        .about-img {
-            flex: 1;
-            min-width: 300px;
-            border-radius: 16px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            max-height: 400px;
-            object-fit: cover;
-        }
-
-        .about-text {
-            flex: 1.2;
-            min-width: 300px;
-        }
-
-        .about-text h2 {
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 20px;
-        }
-
-        .about-text p {
-            margin-bottom: 15px;
-            font-size: 17px;
-            color: #475569;
-        }
-
-        /* Прайс-лист */
-        .price-section {
-            padding: 80px 0;
-            background-color: var(--white);
-        }
-
-        .price-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .price-card {
-            border: 2px solid var(--border);
-            border-radius: 16px;
-            padding: 40px 25px;
-            text-align: center;
-            background-color: var(--white);
-            position: relative;
-            transition: 0.3s;
-        }
-
-        .price-card.featured {
-            border-color: var(--primary);
-            box-shadow: 0 10px 25px rgba(0, 82, 204, 0.1);
-        }
-
-        .badge {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 4px 16px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .price-card h4 {
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-
-        .price-value {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--text);
-            margin-bottom: 20px;
-        }
-
-        .price-value span {
-            font-size: 16px;
-            font-weight: 400;
-            color: #64748b;
-        }
-
-        /* Подвал / Форма */
-        footer {
-            background-color: #0f172a;
-            color: var(--white);
-            padding: 60px 0;
-            text-align: center;
-        }
-
-        footer h2 {
-            font-size: 32px;
-            margin-bottom: 15px;
-        }
-
-        footer p {
-            color: #94a3b8;
-            margin-bottom: 30px;
-        }
-
-        .footer-rights {
-            margin-top: 40px;
-            font-size: 14px;
-            color: #475569;
-            border-top: 1px solid #1e293b;
-            padding-top: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 32px; }
-            .about-flex { flex-direction: column-reverse; gap: 30px; }
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, Arial, sans-serif; color: var(--text); line-height: 1.6; background-color: var(--bg-light); }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+        header { background-color: var(--white); padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.03); position: sticky; top: 0; z-index: 100; }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 22px; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+        .phone-btn { font-weight: 700; color: var(--text); text-decoration: none; border: 2px solid var(--border); padding: 8px 18px; border-radius: 50px; transition: 0.3s; }
+        .phone-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%), url('https://unsplash.com'); background-blend-mode: overlay; background-size: cover; background-position: center; color: var(--white); padding: 100px 0; text-align: center; }
+        .hero h1 { font-size: 46px; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
+        .hero p { font-size: 20px; color: #93c5fd; max-width: 700px; margin: 0 auto 35px auto; }
+        .cta-btn { display: inline-block; background-color: var(--secondary); color: var(--white); font-size: 18px; font-weight: 700; text-decoration: none; padding: 16px 36px; border-radius: 50px; box-shadow: 0 4px 15px rgba(255, 153, 0, 0.4); transition: 0.3s transform, 0.3s background-color; }
+        .cta-btn:hover { transform: translateY(-3px); background-color: #e68a00; }
+        .pain-section { padding: 80px 0; background-color: var(--white); }
+        .section-title { text-align: center; font-size: 32px; font-weight: 800; margin-bottom: 50px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background-color: var(--bg-light); padding: 40px 30px; border-radius: 12px; border: 1px solid var(--border); transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .card .icon { font-size: 40px; margin-bottom: 20px; display: inline-block; }
+        .card h3 { font-size: 22px; margin-bottom: 15px; color: var(--primary); }
+        .about-section { padding: 80px 0; background-color: var(--bg-light); }
+        .about-flex { display: flex; align-items: center; gap: 50px; flex-wrap: wrap; }
+        .about-img { flex: 1; min-width: 300px; border-radius: 16px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); max-height: 400px; object-fit: cover; }
+        .about-text { flex: 1.2; min-width: 300px; }
+        .about-text h2 { font-size: 32px; font-weight: 800; margin-bottom: 20px; }
+        .about-text p { margin-bottom: 15px; font-size: 17px; color: #475569; }
+        .price-section { padding: 80px 0; background-color: var(--white); }
+        .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; margin-top: 40px; }
+        .price-card { border: 2px solid var(--border); border-radius: 16px; padding: 40px 25px; text-align: center; background-color: var(--white); position: relative; transition: 0.3s; }
+        .price-card.featured { border-color: var(--primary); box-shadow: 0 10px 25px rgba(0, 82, 204, 0.1); }
+        .badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background-color: var(--primary); color: var(--white); padding: 4px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+        .price-card h4 { font-size: 20px; margin-bottom: 15px; }
+        .price-value { font-size: 32px; font-weight: 800; color: var(--text); margin-bottom: 20px; }
+        .price-value span { font-size: 16px; font-weight: 400; color: #64748b; }
+        footer { background-color: #0f172a; color: var(--white); padding: 60px 0; text-align: center; }
+        footer h2 { font-size: 32px; margin-bottom: 15px; }
+        footer p { color: #94a3b8; margin-bottom: 30px; }
+        .footer-rights { margin-top: 40px; font-size: 14px; color: #475569; border-top: 1px solid #1e293b; padding-top: 20px; }
+        @media (max-width: 768px) { .hero h1 { font-size: 32px; } .about-flex { flex-direction: column-reverse; gap: 30px; } }
     </style>
 </head>
 <body>
-
-    <!-- Шапка сайта -->
     <header>
         <div class="container nav-flex">
             <div class="logo">📊 Таймкод</div>
-            <a href="tel:8-993-020-58-12" class="phone-btn">8-993-020-58-12</a>
+            <a href="tel:89930205812" class="phone-btn">8-993-020-58-12</a>
         </div>
     </header>
-
-    <!-- Главный экран -->
     <section class="hero">
         <div class="container">
             <h1>Менеджеры работают как автоответчики?</h1>
             <p>Хватит сливать рекламный бюджет! Оцифрую ошибки ваших продавцов по жесткому чек-листу и подниму конверсию в оплату.</p>
-            <a href="https://avito.ru" class="cta-btn">🔥 Получить экспресс-аудит звонка бесплатно</a>
+            <a href="https://t.me" class="cta-btn">🔥 Получить экспресс-аудит звонка бесплатно</a>
         </div>
     </section>
-
-    <!-- Боли бизнеса / Что делаем -->
     <section class="pain-section">
         <div class="container">
             <h2 class="section-title">Каждая упущенная заявка — это подарок конкурентам</h2>
             <div class="grid-3">
-                <div class="card">
-                    <span class="icon">🔍</span>
-                    <h3>Аудит диалогов</h3>
-                    <p>Слушаю записи разговоров и переписки. Нахожу скрытые причины, почему клиенты уходят со словами "Я подумаю".</p>
-                </div>
-                <div class="card">
-                    <span class="icon">📜</span>
-                    <h3>Живые скрипты</h3>
-                    <p>Разрабатываю индивидуальные сценарии разговора. Без заумных фраз. Только жесткая практика и отработка возражения "Дорого".</p>
-                </div>
-                <div class="card">
-                    <span class="icon">🛡️</span>
-                    <h3>Контроль качества</h3>
-                    <p>Беру отдел продаж под регулярное удаленное сопровождение. Держу менеджеров в тонусе, еженедельно разбирая их ошибки.</p>
-                </div>
+                <div class="card"><span class="icon">🔍</span><h3>Аудит диалогов</h3><p>Слушаю записи разговоров и переписки. Нахожу скрытые причины, почему клиенты уходят со словами "Я подумаю".</p></div>
+                <div class="card"><span class="icon">📜</span><h3>Живые скрипты</h3><p>Разрабатываю индивидуальные сценарии разговора. Без заумных фраз. Только жесткая практика и отработка возражения "Дорого".</p></div>
+                <div class="card"><span class="icon">🛡️</span><h3>Контроль качества</h3><p>Беру отдел продаж под регулярное удаленное сопровождение. Держу менеджеров в тонусе, еженедельно разбирая их ошибки.</p></div>
             </div>
         </div>
     </section>
-
-    <!-- Блок обо мне -->
     <section class="about-section">
         <div class="container">
             <div class="about-flex">
@@ -343,3 +86,28 @@
                 <div class="about-text">
                     <h2>Практик с 6-летним опытом</h2>
                     <p>Я не продаю скучную книжную теорию. За моими плечами 6 лет ежедневной непрерывной работы в сложнейших b2c и b2b нишах с высоким чеком и длинным циклом сделки.</p>
+                    <p>Я сам совершил тысячи звонков и лично отработал каждое существующее возражение на рынке. Моя цель — внедрить в ваш бизнес готовую, измеримую в деньгах систему контроля результатов.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="price-section">
+        <div class="container">
+            <h2 class="section-title">Стоимость услуг и тарифы</h2>
+            <div class="price-grid">
+                <div class="price-card"><div class="badge" style="background-color: #64748b;">Тест-драйв</div><h4>Экспресс-аудит</h4><div class="price-value">от 2 500 ₽</div><p>Быстрый срез качества работы одного сотрудника по ключевым метрикам.</p></div>
+                <div class="price-card featured"><div class="badge">Популярно</div><h4>Скрипты продаж</h4><div class="price-value">15 000 ₽</div><p>Пошаговый сценарий от приветствия до закрытия сделки под вашу нишу.</p></div>
+                <div class="price-card"><div class="badge" style="background-color: #10b981;">Абонемент</div><h4>Контроль качества</h4><div class="price-value">15 000 ₽<span> / мес</span></div><p>Еженедельная прослушка звонков, ведение Google-таблиц и работа над ошибками.</p></div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <h2>Перелейте слив заявок в чистую прибыль</h2>
+            <p>Отправьте мне запись всего одного звонка вашего менеджера прямо сейчас и получите готовый Excel-разбор с оценками бесплатно.</p>
+            <a href="https://t.me" class="cta-btn">🚀 Начать бесплатный тест-драйв</a>
+            <div class="footer-rights">&copy; 2026 Все права защищены. ТАЙМКОД — Консалтинг и аудит отделов продаж.</div>
+        </div>
+    </footer>
+</body>
+</html>
