@@ -250,99 +250,113 @@ document.addEventListener("DOMContentLoaded", function() {
 </section>
 
 <!-- ЛОГИКА КВИЗА С ДИНАМИЧЕСКИМ ОБНОВЛЕНИЕМ ССЫЛКИ -->
+<!-- АВТОНОМНЫЙ СКРИПТ КВИЗА (ЗАЩИЩЕН ОТ КОНФЛИКТОВ) -->
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  let currentStep = 1;
-  const totalSteps = 4;
-  
-  const btnNext = document.getElementById("quiz-next");
-  const btnPrev = document.getElementById("quiz-prev");
-  const progress = document.getElementById("quiz-progress");
-  const navBlock = document.getElementById("quiz-nav");
-  const finishBtn = document.getElementById("quiz-finish-btn");
-
-  // ВСТАВЬТЕ СЮДА ССЫЛКУ НА ВАШУ ЯНДЕКС ФОРМУ ИЗ ЛИЧНОГО КАБИНЕТА
-  const yandexFormUrl = "https://yandex.ru";
-
-  function updateQuiz() {
-    for (let i = 1; i <= totalSteps; i++) {
-      document.getElementById("step-" + i).style.display = "none";
-    }
-    document.getElementById("step-" + currentStep).style.display = "block";
-
-    if (currentStep === totalSteps) {
-      progress.style.width = "100%";
-    } else {
-      progress.style.width = (currentStep / (totalSteps - 1)) * 100 + "%";
-    }
-
-    if (currentStep === 1) {
-      btnPrev.style.display = "none";
-    } else {
-      btnPrev.style.display = "block";
-    }
-
-    if (currentStep === totalSteps) {
-      navBlock.style.display = "none";
-      prepareYandexFormLink(); // Генерируем ссылку при выходе на 4 шаг
-    } else {
-      navBlock.style.display = "flex";
-    }
-  }
-
-    btnNext.addEventListener("click", function() {
-    if (currentStep < totalSteps) {
-      const currentRadio = document.querySelector('input[name="quiz_q' + currentStep + '"]:checked');
-      if (!currentRadio) {
-        alert("Пожалуйста, выберите один из вариантов ответа!");
-        return;
-      }
-    }
+(function() {
+  document.addEventListener("DOMContentLoaded", function() {
+    let currentStep = 1;
+    const totalSteps = 4;
     
-    if (currentStep < totalSteps) {
-      currentStep++;
-      updateQuiz();
-    }
-  });
+    const btnNext = document.getElementById("quiz-next");
+    const btnPrev = document.getElementById("quiz-prev");
+    const progress = document.getElementById("quiz-progress");
+    const navBlock = document.getElementById("quiz-nav");
+    const finishBtn = document.getElementById("quiz-finish-btn");
 
-
-  btnPrev.addEventListener("click", function() {
-    if (currentStep > 1) {
-      currentStep--;
-      updateQuiz();
-    }
-  });
-
-  // Функция, которая берет iframe Яндекс Формы ниже на странице и подменяет ему адрес на адрес с ответами
-  function prepareYandexFormLink() {
-    const q1 = encodeURIComponent(document.querySelector('input[name="quiz_q1"]:checked')?.value || '');
-    const q2 = encodeURIComponent(document.querySelector('input[name="quiz_q2"]:checked')?.value || '');
-    const q3 = encodeURIComponent(document.querySelector('input[name="quiz_q3"]:checked')?.value || '');
-
-    // Собираем ссылку Яндекс Формы со скрытыми параметрами ответов
-    const finalUrl = "https://forms.yandex.ru/u/6a88578b9029024683c9d950/?q1="+ q1 + "&q2=" + q2 + "&q3=" + q3; 
-
-
-   // Передаем ссылку с ответами прямо в кнопку перехода
-const yandexLink = document.getElementById('yandex-form-link');
-if (yandexLink) {
-  yandexLink.href = finalUrl;
-}
-}
-
-  // При клике на финальную кнопку просто плавно скроллим к форме, которая уже перезаписана
-  if (finishBtn) {
-    finishBtn.addEventListener("click", function(e) {
-      e.preventDefault();
-      const targetElement = document.getElementById("leads");
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: "smooth" });
+    function updateQuiz() {
+      // Прячем все шаги
+      for (let i = 1; i <= totalSteps; i++) {
+        const step = document.getElementById("step-" + i);
+        if (step) step.style.display = "none";
       }
-    });
-  }
       
-</script>
+      // Показываем текущий
+      const activeStep = document.getElementById("step-" + currentStep);
+      if (activeStep) activeStep.style.display = "block";
 
+      // Двигаем прогресс-бар
+      if (progress) {
+        if (currentStep === totalSteps) {
+          progress.style.width = "100%";
+        } else {
+          progress.style.width = (currentStep / (totalSteps - 1)) * 100 + "%";
+        }
+      }
+
+      // Управляем навигацией
+      if (btnPrev) {
+        btnPrev.style.display = (currentStep === 1) ? "none" : "block";
+      }
+
+      if (navBlock) {
+        navBlock.style.display = (currentStep === totalSteps) ? "none" : "flex";
+      }
+
+      // Если вышли на 4 шаг — генерируем ссылку для кнопки
+      if (currentStep === totalSteps) {
+        prepareYandexFormLink();
+      }
+    }
+
+    // Логика кнопки ДАЛЕЕ
+    if (btnNext) {
+      btnNext.addEventListener("click", function() {
+        if (currentStep < totalSteps) {
+          const currentRadio = document.querySelector('input[name="quiz_q' + currentStep + '"]:checked');
+          if (!currentRadio) {
+            alert("Пожалуйста, выберите один из вариантов ответа!");
+            return;
+          }
+        }
+        
+        if (currentStep < totalSteps) {
+          currentStep++;
+          updateQuiz();
+        }
+      });
+    }
+
+    // Логика кнопки НАЗАД
+    if (btnPrev) {
+      btnPrev.addEventListener("click", function() {
+        if (currentStep > 1) {
+          currentStep--;
+          updateQuiz();
+        }
+      });
+    }
+
+    // Сборка ссылки с ответами
+    function prepareYandexFormLink() {
+      const q1 = encodeURIComponent(document.querySelector('input[name="quiz_q1"]:checked')?.value || '');
+      const q2 = encodeURIComponent(document.querySelector('input[name="quiz_q2"]:checked')?.value || '');
+      const q3 = encodeURIComponent(document.querySelector('input[name="quiz_q3"]:checked')?.value || '');
+
+      const currentLink = document.getElementById('yandex-form-link').getAttribute('href');
+const finalUrl = currentLink + "/?q1=" + q1 + "&q2=" + q2 + "&q3=" + q3;
+
+      const yandexLink = document.getElementById('yandex-form-link');
+      if (yandexLink) {
+        yandexLink.href = finalUrl;
+      }
+    }
+
+    // Плавный скролл к кнопке Яндекса
+    if (finishBtn) {
+      finishBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+        const targetElement = document.getElementById("leads");
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    }
+
+    // Инициализация при старте
+    updateQuiz();
+  });
+})();
+</script>
 
     <section class="price-section">
         <div class="container">
