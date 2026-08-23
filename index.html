@@ -121,6 +121,45 @@
         </div>
       </div>
     </section>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+  const leadsInput = document.getElementById("leads-range") || document.getElementById("leads_range");
+  const conversionInput = document.getElementById("conversion-range") || document.getElementById("conversion_range");
+  const priceInput = document.getElementById("price-range") || document.getElementById("price_range");
+
+  const leadsVal = document.getElementById("leads-val") || document.getElementById("leads_val");
+  const conversionVal = document.getElementById("conversion-val") || document.getElementById("conversion_val");
+  const priceVal = document.getElementById("price-val") || document.getElementById("price_val");
+  const lossResult = document.getElementById("loss-result") || document.getElementById("loss_result");
+
+  function calculateLoss() {
+    if (!leadsInput || !conversionInput || !priceInput) return;
+    
+    const leads = parseInt(leadsInput.value) || 0;
+    const conversion = parseInt(conversionInput.value) || 0;
+    const price = parseInt(priceInput.value) || 0;
+
+    if (leadsVal) leadsVal.textContent = leads.toLocaleString('ru-RU');
+    if (conversionVal) conversionVal.textContent = conversion + "%";
+    if (priceVal) priceVal.textContent = price.toLocaleString('ru-RU') + " ₽";
+
+    const nonConvertedLeads = leads * (1 - conversion / 100); 
+    const lostDeals = nonConvertedLeads * 0.25; 
+    let lostMoney = Math.round(lostDeals * price);
+
+    if (lostMoney < price) { lostMoney = price; }
+    if (lossResult) lossResult.textContent = lostMoney.toLocaleString('ru-RU') + " ₽";
+  }
+
+  if (leadsInput && conversionInput && priceInput) {
+    leadsInput.addEventListener("input", calculateLoss);
+    conversionInput.addEventListener("input", calculateLoss);
+    priceInput.addEventListener("input", calculateLoss);
+    calculateLoss();
+  }
+});
+</script>
+
 
     <!-- БЛОК ИНТЕРАКТИВНОГО КВИЗА -->
     <section class="quiz-section" style="padding: 60px 20px; background: #1a1a1a; color: #fff; font-family: sans-serif;">
