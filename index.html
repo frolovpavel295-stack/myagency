@@ -320,13 +320,12 @@ document.addEventListener("DOMContentLoaded", function() {
     const finalUrl = "https://forms.yandex.ru/u/6a88578b9029024683c9d950?iframe=1&q1=" + q1 + "&q2=" + q2 + "&q3=" + q3; 
 
 
-    // Ищем iframe вашей формы на странице ниже (в секции #leads)
-    const yandexIframe = document.getElementById('yandex-form-iframe');
+   // Передаем ссылку с ответами прямо в кнопку перехода
+const yandexLink = document.getElementById('yandex-form-link');
+if (yandexLink) {
+  yandexLink.href = finalUrl;
+}
 
-    if (yandexIframe) {
-      yandexIframe.src = finalUrl; // Обновляем форму ответами из квиза
-    }
-  }
 
   // При клике на финальную кнопку просто плавно скроллим к форме, которая уже перезаписана
   if (finishBtn) {
@@ -355,14 +354,16 @@ document.addEventListener("DOMContentLoaded", function() {
     
     <!-- Интегрированная Яндекс Форма -->
     <!-- БЛОК С ФОРМОЙ ЯНДЕКСА (АКТУАЛЬНАЯ ВЕРСИЯ БЕЗ СБОЕВ ДЗЕНА) -->
+<!-- БЛОК С КНОПКОЙ НА ЯНДЕКС ФОРМУ -->
 <section id="leads" style="padding: 60px 20px; background: #1a1a1a; text-align: center;">
-  <div style="max-width: 650px; margin: 0 auto; background: #222; padding: 30px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.4); border: 1px solid #2d2d2d;">
-    <h2 style="color: #fff; margin-bottom: 25px; font-family: sans-serif; font-size: 24px;">Оставить заявку на экспресс-аудит</h2>
+  <div style="max-width: 650px; margin: 0 auto; background: #222; padding: 40px 30px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.4); border: 1px solid #2d2d2d;">
+    <h2 style="color: #fff; margin-bottom: 15px; font-family: sans-serif; font-size: 26px; font-weight: bold;">Оставить заявку на экспресс-аудит</h2>
+    <p style="color: #aaa; margin-bottom: 30px; font-family: sans-serif; font-size: 15px; line-height: 1.5;">Нажмите на кнопку ниже, чтобы заполнить анкету на официальной платформе Яндекс Форм и получить разбор ошибок вашего отдела продаж.</p>
     
-    <!-- Используем изолированный iframe, который не зависит от старых скриптов Яндекса -->
-    <iframe id="yandex-form-iframe" src="https://yandex.ru" frameborder="0" name="ya-form-6a88578b9029024683c9d950" width="100%" style="min-height: 650px; border: none; background: #222; border-radius: 8px;"></iframe>
+    <a id="yandex-form-link" href="https://yandex.ru" target="_blank" style="display: inline-block; background: #ff5722; color: #fff; text-decoration: none; padding: 18px 40px; border-radius: 6px; font-weight: bold; text-transform: uppercase; font-size: 15px; letter-spacing: 0.5px; transition: background 0.2s; font-family: sans-serif;">Заполнить анкету в Яндексе</a>
   </div>
 </section>
+
 
 
     
