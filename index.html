@@ -190,6 +190,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     <!-- БЛОК ИНТЕРАКТИВНОГО КВИЗА -->
 <!-- БЛОК ИНТЕРАКТИВНОГО КВИЗА (СВЯЗАН С ЯНДЕКС ФОРМОЙ) -->
+<!-- БЛОК ИНТЕРАКТИВНОГО КВИЗА (ИНТЕГРАЦИЯ С ЯНДЕКС ФОРМОЙ) -->
 <section class="quiz-section" style="padding: 60px 20px; background: #1a1a1a; color: #fff; font-family: sans-serif;">
   <div class="quiz-container" style="max-width: 750px; margin: 0 auto; background: #222; padding: 35px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.4); border: 1px solid #2d2d2d;">
     
@@ -205,9 +206,9 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="quiz-step" id="step-1" style="display: block;">
       <h3 style="font-size: 18px; margin-bottom: 20px; color: #eee;">1. Есть ли у ваших менеджеров прописанные скрипты продаж?</h3>
       <div style="display: flex; flex-direction: column; gap: 12px;">
-        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="q1" value="Нет скриптов" style="accent-color: #ff5722;"> Нет, общаются своими словами</label>
-        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="q1" value="Есть, но не соблюдают" style="accent-color: #ff5722;"> Есть регламенты, но менеджеры их игнорируют</label>
-        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="q1" value="Есть и работают" style="accent-color: #ff5722;"> Да, детально прописаны под каждую ситуацию</label>
+        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="quiz_q1" value="Нет скриптов" style="accent-color: #ff5722;"> Нет, общаются своими словами</label>
+        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="quiz_q1" value="Есть, но не соблюдают" style="accent-color: #ff5722;"> Есть регламенты, но менеджеры их игнорируют</label>
+        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="quiz_q1" value="Есть и работают" style="accent-color: #ff5722;"> Да, детально прописаны под каждую ситуацию</label>
       </div>
     </div>
 
@@ -215,9 +216,9 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="quiz-step" id="step-2" style="display: none;">
       <h3 style="font-size: 18px; margin-bottom: 20px; color: #eee;">2. Как часто вы слушаете записи звонков своих сотрудников?</h3>
       <div style="display: flex; flex-direction: column; gap: 12px;">
-        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="q2" value="Никогда" style="accent-color: #ff5722;"> Никогда, нет на это времени</label>
-        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="q2" value="Редко" style="accent-color: #ff5722;"> Изредка, когда возникает спорная ситуация</label>
-        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="q2" value="Постоянно" style="accent-color: #ff5722;"> Регулярно, у нас внедрен контроль качества</label>
+        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="quiz_q2" value="Никогда" style="accent-color: #ff5722;"> Никогда, нет на это времени</label>
+        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="quiz_q2" value="Редко" style="accent-color: #ff5722;"> Изредка, когда возникает спорная ситуация</label>
+        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="quiz_q2" value="Постоянно" style="accent-color: #ff5722;"> Регулярно, у нас внедрен контроль качества</label>
       </div>
     </div>
 
@@ -225,18 +226,18 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="quiz-step" id="step-3" style="display: none;">
       <h3 style="font-size: 18px; margin-bottom: 20px; color: #eee;">3. Какая главная проблема в продажах на ваш взгляд?</h3>
       <div style="display: flex; flex-direction: column; gap: 12px;">
-        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="q3" value="Слив заявок" style="accent-color: #ff5722;"> Менеджеры не дожимают лиды и забывают перезванивать</label>
-        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="q3" value="Дорого" style="accent-color: #ff5722;"> Клиенты уходят после озвучивания цены с ответом «Дорого»</label>
-        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="q3" value="Мало заявок" style="accent-color: #ff5722;"> Менеджеры работают нормально, просто не хватает трафика</label>
+        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="quiz_q3" value="Слив заявок" style="accent-color: #ff5722;"> Менеджеры не дожимают лиды и забывают перезванивать</label>
+        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="quiz_q3" value="Дорого" style="accent-color: #ff5722;"> Клиенты уходят после озвучивания цены с ответом «Дорого»</label>
+        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="quiz_q3" value="Мало заявок" style="accent-color: #ff5722;"> Менеджеры работают нормально, просто не хватает трафика</label>
       </div>
     </div>
 
     <!-- ШАГ 4: ПЕРЕНАПРАВЛЕНИЕ -->
     <div class="quiz-step" id="step-4" style="display: none; text-align: center; padding: 20px 0;">
       <h3 style="font-size: 22px; margin-bottom: 15px; color: #fff;">Тест успешно пройден!</h3>
-      <p style="color: #aaa; font-size: 15px; margin-bottom: 30px; line-height: 1.6;">Мы зафиксировали ваши ответы. Чтобы получить индивидуальный разбор ошибок и забрать чек-лист, заполните короткую форму ниже.</p>
+      <p style="color: #aaa; font-size: 15px; margin-bottom: 30px; line-height: 1.6;">Мы зафиксировали ваши ответы. Чтобы получить индивидуальный разбор ошибок и забрать чек-лист, заполните финальную форму ниже.</p>
       
-      <a href="#leads" id="quiz-finish-btn" style="display: inline-block; background: #ff5722; color: #fff; text-decoration: none; padding: 16px 35px; border-radius: 6px; font-weight: bold; text-transform: uppercase; font-size: 14px; letter-spacing: 0.5px; transition: background 0.2s;">Получить результаты разбора</a>
+      <button id="quiz-finish-btn" style="display: inline-block; background: #ff5722; color: #fff; border: none; padding: 16px 35px; border-radius: 6px; font-weight: bold; text-transform: uppercase; font-size: 14px; letter-spacing: 0.5px; cursor: pointer; transition: background 0.2s;">Перейти к заполнению</button>
     </div>
 
     <!-- Кнопки управления -->
@@ -248,7 +249,7 @@ document.addEventListener("DOMContentLoaded", function() {
   </div>
 </section>
 
-<!-- ЛОГИКА КВИЗА -->
+<!-- ЛОГИКА КВИЗА С ДИНАМИЧЕСКИМ ОБНОВЛЕНИЕМ ССЫЛКИ -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   let currentStep = 1;
@@ -260,13 +261,15 @@ document.addEventListener("DOMContentLoaded", function() {
   const navBlock = document.getElementById("quiz-nav");
   const finishBtn = document.getElementById("quiz-finish-btn");
 
+  // ВСТАВЬТЕ СЮДА ССЫЛКУ НА ВАШУ ЯНДЕКС ФОРМУ ИЗ ЛИЧНОГО КАБИНЕТА
+  const yandexFormUrl = "https://yandex.ru";
+
   function updateQuiz() {
     for (let i = 1; i <= totalSteps; i++) {
       document.getElementById("step-" + i).style.display = "none";
     }
     document.getElementById("step-" + currentStep).style.display = "block";
 
-    // Корректный расчет прогресс-бара для 3-х вопросов
     if (currentStep === totalSteps) {
       progress.style.width = "100%";
     } else {
@@ -281,13 +284,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (currentStep === totalSteps) {
       navBlock.style.display = "none";
+      prepareYandexFormLink(); // Генерируем ссылку при выходе на 4 шаг
     } else {
       navBlock.style.display = "flex";
     }
   }
 
   btnNext.addEventListener("click", function() {
-    const currentRadio = document.querySelector('input[name="q' + currentStep + '"]:checked');
+    const currentRadio = document.querySelector('input[name="quiz_q' + currentStep + '"]:checked');
     if (!currentRadio && currentStep < totalSteps - 1) {
       alert("Пожалуйста, выберите один из вариантов ответа!");
       return;
@@ -306,7 +310,23 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-  // Плавный скролл при клике на финальную кнопку
+  // Функция, которая берет iframe Яндекс Формы ниже на странице и подменяет ему адрес на адрес с ответами
+  function prepareYandexFormLink() {
+    const q1 = encodeURIComponent(document.querySelector('input[name="quiz_q1"]:checked')?.value || '');
+    const q2 = encodeURIComponent(document.querySelector('input[name="quiz_q2"]:checked')?.value || '');
+    const q3 = encodeURIComponent(document.querySelector('input[name="quiz_q3"]:checked')?.value || '');
+
+    // Собираем ссылку Яндекс Формы со скрытыми параметрами ответов
+    const finalUrl = `${yandexFormUrl}?q1=${q1}&q2=${q2}&q3=${q3}`;
+
+    // Ищем iframe вашей формы на странице ниже (в секции #leads)
+    const yandexIframe = document.querySelector('#leads iframe');
+    if (yandexIframe) {
+      yandexIframe.src = finalUrl; // Обновляем форму ответами из квиза
+    }
+  }
+
+  // При клике на финальную кнопку просто плавно скроллим к форме, которая уже перезаписана
   if (finishBtn) {
     finishBtn.addEventListener("click", function(e) {
       e.preventDefault();
