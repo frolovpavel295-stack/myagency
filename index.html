@@ -188,6 +188,151 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </script>
 
+    <!-- БЛОК ИНТЕРАКТИВНОГО КВИЗА -->
+<section class="quiz-section" style="padding: 60px 20px; background: #1a1a1a; color: #fff; font-family: sans-serif;">
+  <div class="quiz-container" style="max-width: 750px; margin: 0 auto; background: #222; padding: 35px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.4); border: 1px solid #2d2d2d;">
+    
+    <h2 style="text-align: center; margin-bottom: 5px; color: #fff; font-size: 28px; font-weight: bold;">Проверьте ваш отдел продаж за 60 секунд</h2>
+    <p style="text-align: center; color: #888; margin-bottom: 30px; font-size: 15px;">Ответьте на 3 вопроса и получите персональный план внедрения скриптов</p>
+    
+    <!-- Индикатор прогресса -->
+    <div style="background: #333; height: 6px; border-radius: 3px; margin-bottom: 30px; overflow: hidden;">
+      <div id="quiz-progress" style="background: #ff5722; height: 100%; width: 25%; transition: 0.3s;"></div>
+    </div>
+
+    <!-- ШАГ 1 -->
+    <div class="quiz-step" id="step-1" style="display: block;">
+      <h3 style="font-size: 18px; margin-bottom: 20px; color: #eee;">1. Есть ли у ваших менеджеров прописанные скрипты продаж?</h3>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="q1" value="Нет скриптов" style="accent-color: #ff5722;"> Нет, общаются своими словами</label>
+        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="q1" value="Есть, но не соблюдают" style="accent-color: #ff5722;"> Есть регламенты, но менеджеры их игнорируют</label>
+        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="q1" value="Есть и работают" style="accent-color: #ff5722;"> Да, детально прописаны под каждую ситуацию</label>
+      </div>
+    </div>
+
+    <!-- ШАГ 2 -->
+    <div class="quiz-step" id="step-2" style="display: none;">
+      <h3 style="font-size: 18px; margin-bottom: 20px; color: #eee;">2. Как часто вы слушаете записи звонков своих сотрудников?</h3>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="q2" value="Никогда" style="accent-color: #ff5722;"> Никогда, нет на это времени</label>
+        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="q2" value="Редко" style="accent-color: #ff5722;"> Изредка, когда возникает спорная ситуация</label>
+        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="q2" value="Постоянно" style="accent-color: #ff5722;"> Регулярно, у нас внедрен контроль качества</label>
+      </div>
+    </div>
+
+    <!-- ШАГ 3 -->
+    <div class="quiz-step" id="step-3" style="display: none;">
+      <h3 style="font-size: 18px; margin-bottom: 20px; color: #eee;">3. Какая главная проблема в продажах на ваш взгляд?</h3>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="q3" value="Слив заявок" style="accent-color: #ff5722;"> Менеджеры не дожимают лиды и забывают перезванивать</label>
+        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="q3" value="Дорого" style="accent-color: #ff5722;"> Клиенты уходят после озвучивания цены с ответом «Дорого»</label>
+        <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="q3" value="Мало заявок" style="accent-color: #ff5722;"> Менеджеры работают нормально, просто не хватает трафика</label>
+      </div>
+    </div>
+
+    <!-- ШАГ 4: ФОРМА КОНТАКТОВ -->
+    <div class="quiz-step" id="step-4" style="display: none; text-align: center;">
+      <h3 style="font-size: 20px; margin-bottom: 10px; color: #fff;">Тест пройден! Анализ готов.</h3>
+      <p style="color: #aaa; font-size: 14px; margin-bottom: 25px;">Введите ваш номер телефона (на нем должен быть WhatsApp/Telegram). Я пришлю результаты разбора и **Чек-лист по исправлению ошибок менеджеров**.</p>
+      
+      <!-- Форма перенаправляет на твою основную форму или обрабатывается скриптом -->
+      <div style="max-width: 320px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
+        <input type="text" id="quiz-name" placeholder="Ваше имя" style="padding: 14px; border-radius: 6px; border: 1px solid #444; background: #1a1a1a; color: #fff; font-size: 15px;">
+        <input type="tel" id="quiz-phone" placeholder="Номер телефона" required style="padding: 14px; border-radius: 6px; border: 1px solid #444; background: #1a1a1a; color: #fff; font-size: 15px;">
+        <button id="quiz-submit" style="background: #ff5722; color: #fff; border: none; padding: 16px; border-radius: 6px; font-weight: bold; text-transform: uppercase; font-size: 14px; cursor: pointer; letter-spacing: 0.5px;">Получить результаты разбора</button>
+      </div>
+    </div>
+
+    <!-- Кнопки управления -->
+    <div id="quiz-nav" style="display: flex; justify-content: space-between; margin-top: 30px;">
+      <button id="quiz-prev" style="background: transparent; color: #888; border: 1px solid #444; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 14px; display: none;">Назад</button>
+      <button id="quiz-next" style="background: #ff5722; color: #fff; border: none; padding: 12px 25px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 14px; margin-left: auto;">Далее →</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ЛОГИКА КВИЗА -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  let currentStep = 1;
+  const totalSteps = 4;
+  
+  const btnNext = document.getElementById("quiz-next");
+  const btnPrev = document.getElementById("quiz-prev");
+  const progress = document.getElementById("quiz-progress");
+  const navBlock = document.getElementById("quiz-nav");
+  const btnSubmit = document.getElementById("quiz-submit");
+
+  function updateQuiz() {
+    // Скрываем все шаги
+    for (let i = 1; i <= totalSteps; i++) {
+      document.getElementById("step-" + i).style.display = "none";
+    }
+    // Показываем текущий
+    document.getElementById("step-" + currentStep).style.display = "block";
+
+    // Обновляем прогресс-бар
+    progress.style.width = (currentStep / totalSteps) * 100 + "%";
+
+    // Управляем кнопками навигации
+    if (currentStep === 1) {
+      btnPrev.style.display = "none";
+      btnNext.style.marginlet = "auto";
+    } else {
+      btnPrev.style.display = "block";
+    }
+
+    if (currentStep === totalSteps) {
+      navBlock.style.display = "none"; // На последнем шаге убираем "Далее/Назад"
+    } else {
+      navBlock.style.display = "flex";
+    }
+  }
+
+  btnNext.addEventListener("click", function() {
+    // Проверка: выбран ли вариант ответа перед переходом
+    const currentRadio = document.querySelector('input[name="q' + currentStep + '"]:checked');
+    if (!currentRadio && currentStep < totalSteps) {
+      alert("Пожалуйста, выберите один из вариантов ответа!");
+      return;
+    }
+    
+    if (currentStep < totalSteps) {
+      currentStep++;
+      updateQuiz();
+    }
+  });
+
+  btnPrev.addEventListener("click", function() {
+    if (currentStep > 1) {
+      currentStep--;
+      updateQuiz();
+    }
+  });
+
+  // Логика нажатия на финальную кнопку отправки
+  btnSubmit.addEventListener("click", function() {
+    const name = document.getElementById("quiz-name").value;
+    const phone = document.getElementById("quiz-phone").value;
+    
+    if (!phone) {
+      alert("Пожалуйста, введите номер телефона!");
+      return;
+    }
+
+    // Собираем все ответы для аналитики (можно передать в CRM или Метрику)
+    const q1 = document.querySelector('input[name="q1"]:checked')?.value;
+    const q2 = document.querySelector('input[name="q2"]:checked')?.value;
+    const q3 = document.querySelector('input[name="q3"]:checked')?.value;
+
+    alert(`Спасибо, ${name || 'клиент'}! Заявка принята. Телефон: ${phone}. Ответы: ${q1}, ${q2}, ${q3}`);
+    
+    // Тут в будущем можно настроить реальную отправку на твой email/Telegram
+  });
+});
+</script>
+
 
     <section class="price-section">
         <div class="container">
