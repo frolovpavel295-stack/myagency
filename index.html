@@ -82,6 +82,119 @@
             </div>
         </div>
     </section>
+    <!-- БЛОК КАЛЬКУЛЯТОРА УПУЩЕННОЙ ВЫГОДЫ (ВСТАВИТЬ ПЕРЕД БЛОКОМ ЦЕН) -->
+<section class="calc-section" style="padding: 60px 20px; background: #1e1e1e; color: #fff; font-family: sans-serif;">
+  <div class="calc-container" style="max-width: 900px; margin: 0 auto; background: #262626; padding: 40px 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #333;">
+    
+    <h2 style="text-align: center; margin-bottom: 10px; color: #fff; font-size: 32px; font-weight: bold;">Посчитайте свои скрытые потери</h2>
+    <p style="text-align: center; color: #aaa; margin-bottom: 40px; font-size: 16px;">Какую сумму ваш отдел продаж ежемесячно «дарит» конкурентам?</p>
+    
+    <div class="calc-grid" style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
+      
+      <!-- Настройки ползунков -->
+      <div class="calc-inputs" style="flex: 1 1 450px;">
+        
+        <!-- Ползунок 1 -->
+        <div class="input-group" style="margin-bottom: 30px;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 16px; color: #ddd;">
+            <label for="leads">Заявок (лидов) в месяц:</label>
+            <span id="leads-val" style="color: #ff5722; font-weight: bold; font-size: 18px;">300</span>
+          </div>
+          <input type="range" id="leads" min="10" max="3000" step="10" value="300" style="width: 100%; accent-color: #ff5722; cursor: pointer;">
+        </div>
+
+        <!-- Ползунок 2 -->
+        <div class="input-group" style="margin-bottom: 30px;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 16px; color: #ddd;">
+            <label for="conversion">Текущая конверсия в оплату:</label>
+            <span id="conversion-val" style="color: #ff5722; font-weight: bold; font-size: 18px;">5%</span>
+          </div>
+          <input type="range" id="conversion" min="1" max="50" step="1" value="5" style="width: 100%; accent-color: #ff5722; cursor: pointer;">
+        </div>
+
+        <!-- Ползунок 3 -->
+               <!-- Ползунок 1: Заявки -->
+        <div class="input-group" style="margin-bottom: 30px;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 16px; color: #ddd;">
+            <label for="leads-range">Заявок (лидов) в месяц:</label>
+            <span id="leads-val" style="color: #ff5722; font-weight: bold; font-size: 18px;">300</span>
+          </div>
+          <input type="range" id="leads-range" min="10" max="3000" step="10" value="300" style="width: 100%; accent-color: #ff5722; cursor: pointer;">
+        </div>
+
+        <!-- Ползунок 2: Конверсия -->
+        <div class="input-group" style="margin-bottom: 30px;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 16px; color: #ddd;">
+            <label for="conversion">Текущая конверсия в оплату:</label>
+            <span id="conversion-val" style="color: #ff5722; font-weight: bold; font-size: 18px;">5%</span>
+          </div>
+          <input type="range" id="conversion" min="1" max="50" step="1" value="5" style="width: 100%; accent-color: #ff5722; cursor: pointer;">
+        </div>
+
+        <!-- Ползунок 3: Средний чек -->
+        <div class="input-group" style="margin-bottom: 15px;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 16px; color: #ddd;">
+            <label for="price">Средний чек сделки:</label>
+            <span id="price-val" style="color: #ff5722; font-weight: bold; font-size: 18px;">20 000 ₽</span>
+          </div>
+          <input type="range" id="price" min="2000" max="300000" step="2000" value="20000" style="width: 100%; accent-color: #ff5722; cursor: pointer;">
+        </div>
+
+      
+      <!-- Финальное окно с результатом слива -->
+      <div class="calc-result" style="flex: 1 1 300px; background: #1a1a1a; padding: 35px 25px; border-radius: 8px; border: 2px dashed #ff5722; text-align: center;">
+        <h3 style="margin: 0; font-size: 15px; color: #888; text-transform: uppercase; letter-spacing: 1.5px;">Вы теряете минимум:</h3>
+        <div id="loss-result" style="font-size: 38px; font-weight: bold; color: #ff5722; margin: 20px 0; text-shadow: 0 0 10px rgba(255,87,34,0.2);">300 000 ₽</div>
+        <p style="font-size: 13px; color: #777; line-height: 1.5; margin-bottom: 25px;">*Столько денег уходит сквозь пальцы при потере всего 5% конверсии из-за типичных ошибок менеджеров.</p>
+        
+        <a href="#leads" style="display: block; background: #ff5722; color: #fff; text-decoration: none; padding: 16px; border-radius: 6px; font-weight: bold; text-transform: uppercase; font-size: 13px; letter-spacing: 0.5px; transition: background 0.2s;">Остановить слив бюджета</a>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- СКРИПТ РАСЧЕТА ДЛЯ КАЛЬКУЛЯТОРА -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const leadsInput = document.getElementById("leads-range");
+  const conversionInput = document.getElementById("conversion");
+  const priceInput = document.getElementById("price");
+
+  const leadsVal = document.getElementById("leads-val");
+  const conversionVal = document.getElementById("conversion-val");
+  const priceVal = document.getElementById("price-val");
+  const lossResult = document.getElementById("loss-result");
+
+  function calculateLoss() {
+    const leads = parseInt(leadsInput.value);
+    const conversion = parseInt(conversionInput.value);
+    const price = parseInt(priceInput.value);
+
+    // Красивое форматирование чисел с пробелами
+    leadsVal.textContent = leads.toLocaleString('ru-RU');
+    conversionVal.textContent = conversion + "%";
+    priceVal.textContent = price.toLocaleString('ru-RU') + " ₽";
+
+    // Маркетинговый расчет: берем 5% недополученной конверсии как стандартную зону роста
+    const lostPercent = 5; 
+    const lostDeals = leads * (lostPercent / 100);
+    const lostMoney = Math.round(lostDeals * price);
+
+    lossResult.textContent = lostMoney.toLocaleString('ru-RU') + " ₽";
+  }
+
+  // Следим за изменениями ползунков
+  leadsInput.addEventListener("input", calculateLoss);
+  conversionInput.addEventListener("input", calculateLoss);
+  priceInput.addEventListener("input", calculateLoss);
+
+  // Считаем стартовые значения
+  calculateLoss();
+});
+</script>
+
     <section class="price-section">
         <div class="container">
             <h2 class="section-title">Стоимость услуг и тарифы</h2>
