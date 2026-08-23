@@ -332,13 +332,13 @@ document.addEventListener("DOMContentLoaded", function() {
       const q2 = encodeURIComponent(document.querySelector('input[name="quiz_q2"]:checked')?.value || '');
       const q3 = encodeURIComponent(document.querySelector('input[name="quiz_q3"]:checked')?.value || '');
 
-      const currentLink = document.getElementById('yandex-form-link').getAttribute('href');
-const finalUrl = currentLink + "/?q1=" + q1 + "&q2=" + q2 + "&q3=" + q3;
+    const baseFormUrl = document.getElementById('yandex-form-iframe').getAttribute('src');
+const finalUrl = baseFormUrl + "&q1=" + q1 + "&q2=" + q2 + "&q3=" + q3;
+const yandexIframe = document.getElementById('yandex-form-iframe');
+if (yandexIframe) {
+  yandexIframe.src = finalUrl;
+}
 
-      const yandexLink = document.getElementById('yandex-form-link');
-      if (yandexLink) {
-        yandexLink.href = finalUrl;
-      }
     }
 
     // Плавный скролл к кнопке Яндекса
@@ -358,40 +358,35 @@ const finalUrl = currentLink + "/?q1=" + q1 + "&q2=" + q2 + "&q3=" + q3;
 })();
 </script>
 
-    <section class="price-section">
-        <div class="container">
-            <h2 class="section-title">Стоимость услуг и тарифы</h2>
-            <div class="price-grid">
-                <div class="price-card"><div class="badge" style="background-color: #64748b;">Тест-драйв</div><h4>Экспресс-аудит</h4><div class="price-value">от 2 500 ₽</div><p>Срез качества работы одного сотрудника по ключевым метрикам.</p></div>
-                <div class="price-card featured"><div class="badge">Популярно</div><h4>Скрипты продаж</h4><div class="price-value">15 000 ₽</div><p>Пошаговый сценарий от приветствия до закрытия сделки под вашу нишу.</p></div>
-                <div class="price-card"><div class="badge" style="background-color: #10b981;">Абонемент</div><h4>Контроль качества</h4><div class="price-value">15 000 ₽<span>/мес</span></div><p>Еженедельная прослушка, ведение чек-листов и работа над ошибками.</p></div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Интегрированная Яндекс Форма -->
-    <!-- БЛОК С ФОРМОЙ ЯНДЕКСА (АКТУАЛЬНАЯ ВЕРСИЯ БЕЗ СБОЕВ ДЗЕНА) -->
-<!-- БЛОК С КНОПКОЙ НА ЯНДЕКС ФОРМУ -->
+   <!-- БЛОК ВСТРОЕННОЙ ЯНДЕКС ФОРМЫ (БЕЗ ПЕРЕХОДОВ НА ДРУГОЙ САЙТ) -->
 <section id="leads" style="padding: 60px 20px; background: #1a1a1a; text-align: center;">
-  <div style="max-width: 650px; margin: 0 auto; background: #222; padding: 40px 30px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.4); border: 1px solid #2d2d2d;">
-    <h2 style="color: #fff; margin-bottom: 15px; font-family: sans-serif; font-size: 26px; font-weight: bold;">Оставить заявку на экспресс-аудит</h2>
-    <p style="color: #aaa; margin-bottom: 30px; font-family: sans-serif; font-size: 15px; line-height: 1.5;">Нажмите на кнопку ниже, чтобы заполнить анкету на официальной платформе Яндекс Форм и получить разбор ошибок вашего отдела продаж.</p>
+  <div style="max-width: 650px; margin: 0 auto; background: #222; padding: 25px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.4); border: 1px solid #2d2d2d;">
+    <h2 style="color: #fff; margin-bottom: 25px; font-family: sans-serif; font-size: 24px; font-weight: bold;">Оставить заявку на экспресс-аудит</h2>
     
-    <a id="yandex-form-link" href="https://forms.yandex.ru/u/6a88578b9029024683c9d950" target="_blank" style="display: inline-block; background: #ff5722; color: #fff; text-decoration: none; padding: 18px 40px; border-radius: 6px; font-weight: bold; text-transform: uppercase; font-size: 15px; letter-spacing: 0.5px; transition: background 0.2s; font-family: sans-serif;">Заполнить анкету в Яндексе</a>
-
+    <iframe id="yandex-form-iframe" src="https://yandex.ru" frameborder="0" name="ya-form-6a88578b9029024683c9d950" width="100%" style="min-height: 550px; border: none; background: #222; border-radius: 8px;"></iframe>
   </div>
 </section>
 
-
-
     
-    <footer>
-        <div class="container">
-            <h2>Перелейте слив заявок в чистую прибыль</h2>
-            <p>Отправьте запись одного звонка менеджера прямо сейчас и получите готовый Excel-разбор бесплатно.</p>
-            <a href="#leads" class="cta-btn">🚀 Начать бесплатный тест-драйв</a>
-            <div class="footer-rights">&copy; 2026 ТАЙМКОД — Консалтинг и аудит отделов продаж.</div>
-        </div>
-    </footer>
+    <!-- Интегрированная Яндекс Форма -->
+    <!-- БЛОК С ФОРМОЙ ЯНДЕКСА (АКТУАЛЬНАЯ ВЕРСИЯ БЕЗ СБОЕВ ДЗЕНА) -->
+<!-- БЛОК ВСТРОЕННОЙ ЯНДЕКС ФОРМЫ (БЕЗ ПЕРЕХОДОВ НА ДРУГОЙ САЙТ) -->
+<section id="leads" style="padding: 60px 20px; background: #1a1a1a; text-align: center;">
+  <div style="max-width: 650px; margin: 0 auto; background: #222; padding: 25px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.4); border: 1px solid #2d2d2d;">
+    <h2 style="color: #fff; margin-bottom: 25px; font-family: sans-serif; font-size: 24px; font-weight: bold;">Оставить заявку на экспресс-аудит</h2>
+    
+    <iframe id="yandex-form-iframe" src="https://yandex.ru" frameborder="0" name="ya-form-6a88578b9029024683c9d950" width="100%" style="min-height: 550px; border: none; background: #222; border-radius: 8px;"></iframe>
+  </div>
+</section>
+
+<footer>
+    <div class="container">
+        <h2>Перелейте слив заявок в чистую прибыль</h2>
+        <p>Отправьте запись одного звонка менеджера прямо сейчас и получите готовый Excel-разбор бесплатно.</p>
+        <a href="#leads" class="cta-btn">🚀 Начать бесплатный тест-драйв</a>
+        <div class="footer-rights">&copy; 2026 ТАЙМКОД — Консалтинг и аудит отделов продаж.</div>
+    </div>
+</footer>
+
 </body>
 </html>
