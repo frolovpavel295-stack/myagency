@@ -156,15 +156,24 @@ document.addEventListener("DOMContentLoaded", function() {
     const conversion = parseInt(conversionInput.value);
     const price = parseInt(priceInput.value);
 
-    // Обновление интерфейса текста под ползунками
+    // Обновление текста возле ползунков
     leadsVal.textContent = leads.toLocaleString('ru-RU');
     conversionVal.textContent = conversion + "%";
     priceVal.textContent = price.toLocaleString('ru-RU') + " ₽";
 
-    // Маркетинговый расчет: упущенные 5% конверсии
-    const lostPercent = 5; 
-    const lostDeals = leads * (lostPercent / 100);
-    const lostMoney = Math.round(lostDeals * price);
+    // НОВАЯ ДИНАМИЧЕСКАЯ ЛОГИКА:
+    // Чем ниже текущая конверсия, тем больше скрытый потенциал и выше потери.
+    // Если конверсия высокая (например, 30%), зона роста меньше, но при высоком чеке потери все равно весомые.
+    // Считаем, что аудит находит и исправляет утечку минимум в 25% от текущего объема недополученных сделок.
+    const nonConvertedLeads = leads * (1 - conversion / 100); 
+    const lostDeals = nonConvertedLeads * 0.25; // Вытаскиваем четверть из слитых заявок
+    
+    let lostMoney = Math.round(lostDeals * price);
+
+    // Страховка, чтобы сумма не падала до нуля при слишком высоких конверсиях
+    if (lostMoney < price) {
+      lostMoney = price;
+    }
 
     lossResult.textContent = lostMoney.toLocaleString('ru-RU') + " ₽";
   }
@@ -176,6 +185,7 @@ document.addEventListener("DOMContentLoaded", function() {
     calculateLoss();
   }
 });
+
 </script>
 
 
