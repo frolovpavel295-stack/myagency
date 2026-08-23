@@ -189,6 +189,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
     <!-- БЛОК ИНТЕРАКТИВНОГО КВИЗА -->
+<!-- БЛОК ИНТЕРАКТИВНОГО КВИЗА (СВЯЗАН С ЯНДЕКС ФОРМОЙ) -->
 <section class="quiz-section" style="padding: 60px 20px; background: #1a1a1a; color: #fff; font-family: sans-serif;">
   <div class="quiz-container" style="max-width: 750px; margin: 0 auto; background: #222; padding: 35px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.4); border: 1px solid #2d2d2d;">
     
@@ -197,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     <!-- Индикатор прогресса -->
     <div style="background: #333; height: 6px; border-radius: 3px; margin-bottom: 30px; overflow: hidden;">
-      <div id="quiz-progress" style="background: #ff5722; height: 100%; width: 25%; transition: 0.3s;"></div>
+      <div id="quiz-progress" style="background: #ff5722; height: 100%; width: 33%; transition: 0.3s;"></div>
     </div>
 
     <!-- ШАГ 1 -->
@@ -230,17 +231,12 @@ document.addEventListener("DOMContentLoaded", function() {
       </div>
     </div>
 
-    <!-- ШАГ 4: ФОРМА КОНТАКТОВ -->
-    <div class="quiz-step" id="step-4" style="display: none; text-align: center;">
-      <h3 style="font-size: 20px; margin-bottom: 10px; color: #fff;">Тест пройден! Анализ готов.</h3>
-      <p style="color: #aaa; font-size: 14px; margin-bottom: 25px;">Введите ваш номер телефона (на нем должен быть WhatsApp/Telegram). Я пришлю результаты разбора и **Чек-лист по исправлению ошибок менеджеров**.</p>
+    <!-- ШАГ 4: ПЕРЕНАПРАВЛЕНИЕ -->
+    <div class="quiz-step" id="step-4" style="display: none; text-align: center; padding: 20px 0;">
+      <h3 style="font-size: 22px; margin-bottom: 15px; color: #fff;">Тест успешно пройден!</h3>
+      <p style="color: #aaa; font-size: 15px; margin-bottom: 30px; line-height: 1.6;">Мы зафиксировали ваши ответы. Чтобы получить индивидуальный разбор ошибок и забрать чек-лист, заполните короткую форму ниже.</p>
       
-      <!-- Форма перенаправляет на твою основную форму или обрабатывается скриптом -->
-      <div style="max-width: 320px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
-        <input type="text" id="quiz-name" placeholder="Ваше имя" style="padding: 14px; border-radius: 6px; border: 1px solid #444; background: #1a1a1a; color: #fff; font-size: 15px;">
-        <input type="tel" id="quiz-phone" placeholder="Номер телефона" required style="padding: 14px; border-radius: 6px; border: 1px solid #444; background: #1a1a1a; color: #fff; font-size: 15px;">
-        <button id="quiz-submit" style="background: #ff5722; color: #fff; border: none; padding: 16px; border-radius: 6px; font-weight: bold; text-transform: uppercase; font-size: 14px; cursor: pointer; letter-spacing: 0.5px;">Получить результаты разбора</button>
-      </div>
+      <a href="#leads" id="quiz-finish-btn" style="display: inline-block; background: #ff5722; color: #fff; text-decoration: none; padding: 16px 35px; border-radius: 6px; font-weight: bold; text-transform: uppercase; font-size: 14px; letter-spacing: 0.5px; transition: background 0.2s;">Получить результаты разбора</a>
     </div>
 
     <!-- Кнопки управления -->
@@ -262,38 +258,37 @@ document.addEventListener("DOMContentLoaded", function() {
   const btnPrev = document.getElementById("quiz-prev");
   const progress = document.getElementById("quiz-progress");
   const navBlock = document.getElementById("quiz-nav");
-  const btnSubmit = document.getElementById("quiz-submit");
+  const finishBtn = document.getElementById("quiz-finish-btn");
 
   function updateQuiz() {
-    // Скрываем все шаги
     for (let i = 1; i <= totalSteps; i++) {
       document.getElementById("step-" + i).style.display = "none";
     }
-    // Показываем текущий
     document.getElementById("step-" + currentStep).style.display = "block";
 
-    // Обновляем прогресс-бар
-    progress.style.width = (currentStep / totalSteps) * 100 + "%";
+    // Корректный расчет прогресс-бара для 3-х вопросов
+    if (currentStep === totalSteps) {
+      progress.style.width = "100%";
+    } else {
+      progress.style.width = (currentStep / (totalSteps - 1)) * 100 + "%";
+    }
 
-    // Управляем кнопками навигации
     if (currentStep === 1) {
       btnPrev.style.display = "none";
-      btnNext.style.marginlet = "auto";
     } else {
       btnPrev.style.display = "block";
     }
 
     if (currentStep === totalSteps) {
-      navBlock.style.display = "none"; // На последнем шаге убираем "Далее/Назад"
+      navBlock.style.display = "none";
     } else {
       navBlock.style.display = "flex";
     }
   }
 
   btnNext.addEventListener("click", function() {
-    // Проверка: выбран ли вариант ответа перед переходом
     const currentRadio = document.querySelector('input[name="q' + currentStep + '"]:checked');
-    if (!currentRadio && currentStep < totalSteps) {
+    if (!currentRadio && currentStep < totalSteps - 1) {
       alert("Пожалуйста, выберите один из вариантов ответа!");
       return;
     }
@@ -311,25 +306,16 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-  // Логика нажатия на финальную кнопку отправки
-  btnSubmit.addEventListener("click", function() {
-    const name = document.getElementById("quiz-name").value;
-    const phone = document.getElementById("quiz-phone").value;
-    
-    if (!phone) {
-      alert("Пожалуйста, введите номер телефона!");
-      return;
-    }
-
-    // Собираем все ответы для аналитики (можно передать в CRM или Метрику)
-    const q1 = document.querySelector('input[name="q1"]:checked')?.value;
-    const q2 = document.querySelector('input[name="q2"]:checked')?.value;
-    const q3 = document.querySelector('input[name="q3"]:checked')?.value;
-
-    alert(`Спасибо, ${name || 'клиент'}! Заявка принята. Телефон: ${phone}. Ответы: ${q1}, ${q2}, ${q3}`);
-    
-    // Тут в будущем можно настроить реальную отправку на твой email/Telegram
-  });
+  // Плавный скролл при клике на финальную кнопку
+  if (finishBtn) {
+    finishBtn.addEventListener("click", function(e) {
+      e.preventDefault();
+      const targetElement = document.getElementById("leads");
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  }
 });
 </script>
 
