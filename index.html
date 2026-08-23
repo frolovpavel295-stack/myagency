@@ -317,7 +317,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const q3 = encodeURIComponent(document.querySelector('input[name="quiz_q3"]:checked')?.value || '');
 
     // Собираем ссылку Яндекс Формы со скрытыми параметрами ответов
-    const finalUrl = `${yandexFormUrl}?q1=${q1}&q2=${q2}&q3=${q3}`;
+    const finalUrl = `https://yandex.ru{q1}&q2=${q2}&q3=${q3}`;
 
     // Ищем iframe вашей формы на странице ниже (в секции #leads)
     const yandexIframe = document.querySelector('#leads iframe');
