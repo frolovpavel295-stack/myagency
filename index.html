@@ -1,298 +1,91 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Агентство MAX — Аудит и рост конверсии</title>
-  <!-- Подключаем современный шрифт Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --primary: #2563EB;
-      --primary-hover: #1D4ED8;
-      --bg: #F8FAFC;
-      --text: #1E293B;
-      --text-secondary: #64748B;
-      --white: #FFFFFF;
-      --radius: 12px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a { text-decoration: none; color: inherit; }
-    ul { list-style: none; padding: 0; }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    header {
-      padding: 20px 0;
-      border-bottom: 1px solid #E2E8F0;
-    }
-
-    .header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-weight: 700;
-      font-size: 1.25rem;
-      color: var(--primary);
-    }
-
-    main { padding: 40px 0; }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 16px;
-      line-height: 1.2;
-    }
-
-    .subtitle {
-      color: var(--text-secondary);
-      font-size: 1.125rem;
-      max-width: 600px;
-      margin-bottom: 40px;
-    }
-
-    .calculator-card {
-      background: var(--white);
-      padding: 32px;
-      border-radius: var(--radius);
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-      max-width: 500px;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 500;
-      color: var(--text);
-    }
-
-    .form-group input {
-      width: 100%;
-      padding: 12px 16px;
-      border: 1px solid #CBD5E1;
-      border-radius: var(--radius);
-      font-family: inherit;
-      font-size: 1rem;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .form-group input:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-    }
-
-    button.btn {
-      background-color: var(--primary);
-      color: var(--white);
-      padding: 14px 24px;
-      border-radius: var(--radius);
-      border: none;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color 0.2s;
-    }
-
-    button.btn:hover { background-color: var(--primary-hover); }
-
-    .result-box {
-      margin-top: 24px;
-      padding: 20px;
-      background-color: #EEF2FF;
-      border-radius: var(--radius);
-      border-left: 5px solid var(--primary);
-    }
-
-    .result-value {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin: 8px 0;
-    }
-
-    .result-desc {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-    }
-
-    .features {
-      margin-top: 60px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
-
-    .feature-item {
-      background: var(--white);
-      padding: 30px;
-      border-radius: var(--radius);
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    }
-
-    .feature-item h3 {
-      margin-bottom: 16px;
-      font-size: 1.25rem;
-    }
-
-    .feature-item ul li {
-      margin-bottom: 10px;
-      color: var(--text-secondary);
-      position: relative;
-      padding-left: 24px;
-    }
-
-    .feature-item ul li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      color: var(--primary);
-      font-weight: bold;
-    }
-
-    footer {
-      margin-top: 80px;
-      padding: 40px 0;
-      border-top: 1px solid #E2E8F0;
-      text-align: center;
-      color: var(--text-secondary);
-    }
-
-    @media (max-width: 768px) {
-      h1 { font-size: 2rem; }
-      .header-content { flex-direction: column; gap: 16px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAA0klEQVR4nO2WsQ0CMRDEn0shI6SgAFpE6SIdUFAwA6SgA9pE6SIdpKAESvAL6YgIidgSInuSgC2O7vPnTzqZ6ekfEAnY4uSctyS9S7r0mS9Jr5KevYwUvA7gO0mPZpYkXat/70NfT16n6gAegNfNLCXpWv1bZz+fKngAnidgCbyFmSdgCbyFmSdgCbyFmSdgCbyFmSdgCbyFmSdgCbxv7uC7pBfV30p6kfTs9UDB6wA6N6t8pUvS0+fI6wQswb8BvEX6Anr6A68D6NyM8pUPgA0i6RdfBwAAAABJRU5ErkJggg==">
+    <title>Таймкод | Аудит отделов продаж</title>
+    <style>
+        :root { --primary: #0052cc; --primary-dark: #003d99; --secondary: #ff9900; --text: #1e293b; --bg-light: #f8fafc; --white: #ffffff; --border: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, Arial, sans-serif; color: var(--text); line-height: 1.6; background-color: var(--bg-light); }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+        header { background-color: rgba(255, 255, 255, 0.95); padding: 18px 0; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
+        .nav-flex { display: flex; justify-content: flex-end; align-items: center; }
+        .logo-box { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 20px; font-weight: 800; color: #0f172a; letter-spacing: 1.5px; }
+        .logo-box span { color: var(--primary); }
+        .hero { background: radial-gradient(circle at top right, rgba(0, 82, 204, 0.15), transparent), linear-gradient(185deg, #090d1a 0%, #020408 100%); position: relative; overflow: hidden; color: var(--white); padding: 100px 0; text-align: center; }
+        .hero::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 20px 20px; pointer-events: none; }
+        .hero h1 { font-size: 48px; font-weight: 900; margin-bottom: 24px; line-height: 1.15; color: #ffffff; }
+        .hero h1 span { background: linear-gradient(90deg, #3b82f6, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 20px; color: #94a3b8; max-width: 700px; margin: 0 auto 40px auto; }
+        .cta-btn { display: inline-flex; align-items: center; background: linear-gradient(135deg, #ff9900 0%, #ff6600 100%); color: var(--white); font-size: 18px; font-weight: 700; text-decoration: none; padding: 16px 36px; border-radius: 12px; box-shadow: 0 4px 20px rgba(255, 102, 0, 0.3); transition: 0.3s; }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(255, 102, 0, 0.4); }
+        .pain-section, .about-section, .price-section { padding: 60px 0; text-align: center; }
+        .pain-section, .price-section { background-color: var(--white); }
+        .section-title { font-size: 32px; font-weight: 800; margin-bottom: 40px; color: #0f172a; }
+        .grid-3, .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1000px; margin: 0 auto; }
+        .card, .price-card { background-color: var(--bg-light); padding: 30px; border-radius: 12px; border: 1px solid var(--border); transition: 0.3s; text-align: center; }
+        .card:hover, .price-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.04); }
+        .card .icon { font-size: 40px; margin-bottom: 15px; display: inline-block; }
+        .card h3, .price-card h4 { font-size: 22px; margin-bottom: 10px; color: #0f172a; font-weight: 700; }
+        .about-flex { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; text-align: left; max-width: 1000px; margin: 0 auto; }
+        .about-img { flex: 1; min-width: 280px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.06); max-height: 380px; object-fit: cover; }
+        .about-text { flex: 1.2; min-width: 280px; }
+        .about-text h2 { font-size: 32px; font-weight: 800; margin-bottom: 15px; color: #0f172a; }
+        .about-text p { margin-bottom: 12px; font-size: 16px; color: #475569; }
+        .price-card { background: var(--white); position: relative; }
+        .price-card.featured { border: 2px solid var(--primary); box-shadow: 0 10px 20px rgba(0, 82, 204, 0.06); }
+        .badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background-color: var(--primary); color: var(--white); padding: 3px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+        .price-value { font-size: 30px; font-weight: 800; margin-bottom: 15px; color: #0f172a; }
+        .price-value span { font-size: 15px; font-weight: 400; color: #64748b; }
+        footer { background-color: #090d1a; color: var(--white); padding: 50px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
+        footer h2 { font-size: 28px; margin-bottom: 10px; }
+        footer p { color: #64748b; margin-bottom: 25px; }
+        .footer-rights { margin-top: 30px; font-size: 13px; color: #475569; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 15px; }
+        @media (max-width: 768px) { .hero h1 { font-size: 32px; } .about-flex { flex-direction: column-reverse; } }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="container header-content">
-      <div class="logo">MAX Agency</div>
-      <nav>
-        <a href="#calculator">Калькулятор</a>
-        <span style="margin: 0 12px; color: var(--text-secondary);">|</span>
-        <a href="#features">Преимущества</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container">
-    <section>
-      <h1>Увеличьте выручку за счёт роста конверсии</h1>
-      <p class="subtitle">
-        Аудит отдела продаж покажет скрытые потери и точки роста. Узнайте, сколько денег вы недополучаете прямо сейчас.
-      </p>
-
-      <div id="calculator-section" class="calculator-card">
-        <h2 style="margin-bottom: 20px; font-size: 1.5rem;">Рассчитайте упущенную выгоду</h2>
-        <form id="calcForm">
-          <div class="form-group">
-            <label for="leads">Количество лидов в месяц</label>
-            <input type="number" id="leads" placeholder="Например: 500" required />
-          </div>
-          <div class="form-group">
-            <label for="conversion">Текущая конверсия в %</label>
-            <input type="number" id="conversion" placeholder="Например: 15" required />
-          </div>
-          <div class="form-group">
-            <label for="avgCheck">Средний чек, ₽</label>
-            <input type="number" id="avgCheck" placeholder="Например: 10000" required />
-          </div>
-          <button type="submit" class="btn">Рассчитать потери</button>
-        </form>
-
-        <div id="result" class="result-box" style="display: none;">
-          <p class="result-desc">При росте конверсии на 5% (реалистичный эффект от аудита) вы сможете дополнительно получать:</p>
-          <div class="result-value" id="resultValue">0 ₽</div>
-          <p class="result-desc" style="font-size: 0.875rem;">
-            Это и есть ваши скрытые потери — деньги, которые бизнес недополучает из‑за неэффективной воронки.
-          </p>
+    <header>
+        <div class="container nav-flex">
+            <a href="#" class="logo-box">🔍 ТАЙМКОД<span>.</span></a>
         </div>
-      </div>
-
-      <section id="features" class="features">
-        <div class="feature-item">
-          <h3>Аудит воронки</h3>
-          <ul>
-            <li>Анализ этапов сделки и точек утечки лидов</li>
-            <li>Выявление слабых мест в скриптах и CRM</li>
-            <li>Рекомендации по оптимизации процессов</li>
-          </ul>
+    </header>
+    <section class="hero">
+        <div class="container">
+            <h1>Менеджеры работают как <span>автоответчики?</span></h1>
+            <p>Хватит сливать рекламный бюджет. Оцифрую ошибки ваших продавцов по жесткому чек-листу и подниму общую конверсию в оплату.</p>
+            <a href="#leads" class="cta-btn">🔥 Получить экспресс-аудит бесплатно</a>
         </div>
-        <div class="feature-item">
-          <h3>Рост конверсии</h3>
-          <ul>
-            <li>Внедрение новых скриптов продаж</li>
-            <li>Обучение менеджеров и контроль качества</li>
-            <li>Настройка аналитики и KPI</li>
-          </ul>
-        </div>
-        <div class="feature-item">
-          <h3>Гарантия результата</h3>
-          <ul>
-            <li>Фиксируем рост конверсии в договоре</li>
-            <li>Ежемесячный отчёт по ключевым метрикам</li>
-            <li>Поддержка команды на этапе внедрения</li>
-          </ul>
-        </div>
-      </section>
     </section>
-  </main>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2024 MAX Agency. Все права защищены.</p>
-      <p style="margin-top: 8px;">
-        <a href="https://t.me/your_max_profile" target="_blank" style="color: var(--primary); font-weight: 600;">Написать в MAX →</a>
-      </p>
-    </div>
-  </footer>
+    <section class="pain-section">
+        <div class="container">
+            <h2 class="section-title">Каждая упущенная заявка — это подарок конкурентам</h2>
+            <div class="grid-3">
+                <div class="card"><span class="icon">🔍</span><h3>Аудит диалогов</h3><p>Слушаю записи разговоров. Нахожу скрытые причины, почему клиенты уходят со словами "Я подумаю".</p></div>
+                <div class="card"><span class="icon">📜</span><h3>Живые скрипты</h3><p>Разрабатываю сценарии разговора. Only жесткая практика и отработка возражения "Дорого".</p></div>
+                <div class="card"><span class="icon">🛡️</span><h3>Контроль качества</h3><p>Беру отдел продаж под сопровождение. Держу менеджеров в тонусе, еженедельно разбирая ошибки.</p></div>
+            </div>
+        </div>
+    </section>
 
-  <script>
-    document.getElementById('calcForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      const leads = parseFloat(document.getElementById('leads').value);
-      const conversion = parseFloat(document.getElementById('conversion').value);
-      const avgCheck = parseFloat(document.getElementById('avgCheck').value);
-
-      if (!leads || !conversion || !avgCheck) return;
-
-      // Логика: рост конверсии на 5% (0.05)
-      const growthRate = 0.05;
-      const currentSales = leads * (conversion / 100) * avgCheck;
-      const newConversionRate = (conversion + (conversion * growthRate)) / 100;
-      const potentialSales = leads * newConversionRate * avgCheck;
-      const lostRevenue = potentialSales - currentSales;
-
-      const resultBox = document.getElementById('result');
-      const resultValue = document.getElementById('resultValue');
-
-      resultValue.textContent = new Intl.NumberFormat('ru-RU').format(Math.round(lostRevenue)) + ' ₽';
-      resultBox.style.display = 'block';
-      resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    });
-  </script>
-</body>
-</html>
+    <section class="about-section">
+        <div class="container">
+            <div class="about-flex">
+                <img src="photo.png.jfif" alt="Павел Фролов" class="about-img">
+                <div class="about-text">
+                    <h2>Практик с 6-летним опытом</h2>
+                    <p>За моими плечами 6 лет ежедневной работы в сложнейших b2c и b2b нишах с высоким чеком и длинным циклом сделки.</p>
+                    <p>Я сам совершил тысячи звонков и отработал каждое возражение. Моя цель — внедрить в ваш бизнес измеримую систему контроля.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- БЛОК КАЛЬКУЛЯТОРА -->
+    <section class="calc-section" style="padding: 60px 20px; background: #1e1e1e; color: #fff; font-family: sans-serif;">
+      <div class="calc-container" style="max-width: 900px; margin: 0 auto; background: #262626; padding: 40px 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #333;">
+        <h2 style="text-align: center; margin-bottom: 10px; color: #fff; font-size: 32px; font-weight: bold;">Посчитайте свои скрытые потери</h2>
+        <p style="text-align: center; color: #aaa; margin-bottom: 40px; font-size: 16px;">Какую сумму ваш отдел продаж ежемесячно «дарит» конкурентам?</p>
+        <div class="calc-grid" style="display: flex; flex-wrap: wr
