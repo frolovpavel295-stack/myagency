@@ -1,333 +1,298 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAA0klEQVR4nO2WsQ0CMRDEn0shI6SgAFpE6SIdUFAwA6SgA9pE6SIdpKAESvAL6YgIidgSInuSgC2O7vPnTzqZ6ekfEAnY4uSctyS9S7r0mS9Jr5KevYwUvA7gO0mPZpYkXat/70NfT16n6gAegNfNLCXpWv1bZz+fKngAnidgCbyFmSdgCbyFmSdgCbyFmSdgCbyFmSdgCbyFmSdgCbxv7uC7pBfV30p6kfTs9UDB6wA6N6t8pUvS0+fI6wQswb8BvEX6Anr6A68D6NyM8pUPgA0i6RdfBwAAAABJRU5ErkJggg==">
-    <title>Таймкод | Аудит отделов продаж</title>
-    <style>
-        :root { --primary: #0052cc; --primary-dark: #003d99; --secondary: #ff9900; --text: #1e293b; --bg-light: #f8fafc; --white: #ffffff; --border: #e2e8f0; }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Segoe UI', Roboto, Arial, sans-serif; color: var(--text); line-height: 1.6; background-color: var(--bg-light); }
-        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
-        header { background-color: rgba(255, 255, 255, 0.95); padding: 18px 0; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
-        .nav-flex { display: flex; justify-content: flex-end; align-items: center; }
-        .logo-box { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 20px; font-weight: 800; color: #0f172a; letter-spacing: 1.5px; }
-        .logo-box span { color: var(--primary); }
-        .hero { background: radial-gradient(circle at top right, rgba(0, 82, 204, 0.15), transparent), linear-gradient(185deg, #090d1a 0%, #020408 100%); position: relative; overflow: hidden; color: var(--white); padding: 100px 0; text-align: center; }
-        .hero::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 20px 20px; pointer-events: none; }
-        .hero h1 { font-size: 48px; font-weight: 900; margin-bottom: 24px; line-height: 1.15; color: #ffffff; }
-        .hero h1 span { background: linear-gradient(90deg, #3b82f6, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: 20px; color: #94a3b8; max-width: 700px; margin: 0 auto 40px auto; }
-        .cta-btn { display: inline-flex; align-items: center; background: linear-gradient(135deg, #ff9900 0%, #ff6600 100%); color: var(--white); font-size: 18px; font-weight: 700; text-decoration: none; padding: 16px 36px; border-radius: 12px; box-shadow: 0 4px 20px rgba(255, 102, 0, 0.3); transition: 0.3s; }
-        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(255, 102, 0, 0.4); }
-        .pain-section, .about-section, .price-section { padding: 60px 0; text-align: center; }
-        .pain-section, .price-section { background-color: var(--white); }
-        .section-title { font-size: 32px; font-weight: 800; margin-bottom: 40px; color: #0f172a; }
-        .grid-3, .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1000px; margin: 0 auto; }
-        .card, .price-card { background-color: var(--bg-light); padding: 30px; border-radius: 12px; border: 1px solid var(--border); transition: 0.3s; text-align: center; }
-        .card:hover, .price-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.04); }
-        .card .icon { font-size: 40px; margin-bottom: 15px; display: inline-block; }
-        .card h3, .price-card h4 { font-size: 22px; margin-bottom: 10px; color: #0f172a; font-weight: 700; }
-        .about-flex { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; text-align: left; max-width: 1000px; margin: 0 auto; }
-        .about-img { flex: 1; min-width: 280px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.06); max-height: 380px; object-fit: cover; }
-        .about-text { flex: 1.2; min-width: 280px; }
-        .about-text h2 { font-size: 32px; font-weight: 800; margin-bottom: 15px; color: #0f172a; }
-        .about-text p { margin-bottom: 12px; font-size: 16px; color: #475569; }
-        .price-card { background: var(--white); position: relative; }
-        .price-card.featured { border: 2px solid var(--primary); box-shadow: 0 10px 20px rgba(0, 82, 204, 0.06); }
-        .badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background-color: var(--primary); color: var(--white); padding: 3px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
-        .price-value { font-size: 30px; font-weight: 800; margin-bottom: 15px; color: #0f172a; }
-        .price-value span { font-size: 15px; font-weight: 400; color: #64748b; }
-        footer { background-color: #090d1a; color: var(--white); padding: 50px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
-        footer h2 { font-size: 28px; margin-bottom: 10px; }
-        footer p { color: #64748b; margin-bottom: 25px; }
-        .footer-rights { margin-top: 30px; font-size: 13px; color: #475569; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 15px; }
-        @media (max-width: 768px) { .hero h1 { font-size: 32px; } .about-flex { flex-direction: column-reverse; } }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Агентство MAX — Аудит и рост конверсии</title>
+  <!-- Подключаем современный шрифт Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #2563EB;
+      --primary-hover: #1D4ED8;
+      --bg: #F8FAFC;
+      --text: #1E293B;
+      --text-secondary: #64748B;
+      --white: #FFFFFF;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; padding: 0; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      padding: 20px 0;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--primary);
+    }
+
+    main { padding: 40px 0; }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 1.125rem;
+      max-width: 600px;
+      margin-bottom: 40px;
+    }
+
+    .calculator-card {
+      background: var(--white);
+      padding: 32px;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #CBD5E1;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    button.btn {
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 14px 24px;
+      border-radius: var(--radius);
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    button.btn:hover { background-color: var(--primary-hover); }
+
+    .result-box {
+      margin-top: 24px;
+      padding: 20px;
+      background-color: #EEF2FF;
+      border-radius: var(--radius);
+      border-left: 5px solid var(--primary);
+    }
+
+    .result-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 8px 0;
+    }
+
+    .result-desc {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .features {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .feature-item {
+      background: var(--white);
+      padding: 30px;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-item h3 {
+      margin-bottom: 16px;
+      font-size: 1.25rem;
+    }
+
+    .feature-item ul li {
+      margin-bottom: 10px;
+      color: var(--text-secondary);
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .feature-item ul li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    footer {
+      margin-top: 80px;
+      padding: 40px 0;
+      border-top: 1px solid #E2E8F0;
+      text-align: center;
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2rem; }
+      .header-content { flex-direction: column; gap: 16px; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container nav-flex">
-            <a href="#" class="logo-box">🔍 ТАЙМКОД<span>.</span></a>
-        </div>
-    </header>
-    <section class="hero">
-        <div class="container">
-            <h1>Менеджеры работают как <span>автоответчики?</span></h1>
-            <p>Хватит сливать рекламный бюджет. Оцифрую ошибки ваших продавцов по жесткому чек-листу и подниму общую конверсию в оплату.</p>
-            <a href="#leads" class="cta-btn">🔥 Получить экспресс-аудит бесплатно</a>
-        </div>
-    </section>
+  <header>
+    <div class="container header-content">
+      <div class="logo">MAX Agency</div>
+      <nav>
+        <a href="#calculator">Калькулятор</a>
+        <span style="margin: 0 12px; color: var(--text-secondary);">|</span>
+        <a href="#features">Преимущества</a>
+      </nav>
+    </div>
+  </header>
 
-    <section class="pain-section">
-        <div class="container">
-            <h2 class="section-title">Каждая упущенная заявка — это подарок конкурентам</h2>
-            <div class="grid-3">
-                <div class="card"><span class="icon">🔍</span><h3>Аудит диалогов</h3><p>Слушаю записи разговоров. Нахожу скрытые причины, почему клиенты уходят со словами "Я подумаю".</p></div>
-                <div class="card"><span class="icon">📜</span><h3>Живые скрипты</h3><p>Разрабатываю сценарии разговора. Only жесткая практика и отработка возражения "Дорого".</p></div>
-                <div class="card"><span class="icon">🛡️</span><h3>Контроль качества</h3><p>Беру отдел продаж под сопровождение. Держу менеджеров в тонусе, еженедельно разбирая ошибки.</p></div>
-            </div>
-        </div>
-    </section>
+  <main class="container">
+    <section>
+      <h1>Увеличьте выручку за счёт роста конверсии</h1>
+      <p class="subtitle">
+        Аудит отдела продаж покажет скрытые потери и точки роста. Узнайте, сколько денег вы недополучаете прямо сейчас.
+      </p>
 
-    <section class="about-section">
-        <div class="container">
-            <div class="about-flex">
-                <img src="photo.png.jfif" alt="Павел Фролов" class="about-img">
-                <div class="about-text">
-                    <h2>Практик с 6-летним опытом</h2>
-                    <p>За моими плечами 6 лет ежедневной работы в сложнейших b2c и b2b нишах с высоким чеком и длинным циклом сделки.</p>
-                    <p>Я сам совершил тысячи звонков и отработал каждое возражение. Моя цель — внедрить в ваш бизнес измеримую систему контроля.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- БЛОК КАЛЬКУЛЯТОРА -->
-    <section class="calc-section" style="padding: 60px 20px; background: #1e1e1e; color: #fff; font-family: sans-serif;">
-      <div class="calc-container" style="max-width: 900px; margin: 0 auto; background: #262626; padding: 40px 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #333;">
-        <h2 style="text-align: center; margin-bottom: 10px; color: #fff; font-size: 32px; font-weight: bold;">Посчитайте свои скрытые потери</h2>
-        <p style="text-align: center; color: #aaa; margin-bottom: 40px; font-size: 16px;">Какую сумму ваш отдел продаж ежемесячно «дарит» конкурентам?</p>
-        <div class="calc-grid" style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
-          <div class="calc-inputs" style="flex: 1 1 450px;">
-            <div class="input-group" style="margin-bottom: 30px;">
-              <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 16px; color: #ddd;">
-                <label for="leads-range">Заявок (лидов) в месяц:</label>
-                <span id="leads-val" style="color: #ff5722; font-weight: bold; font-size: 18px;">300</span>
-              </div>
-              <input type="range" id="leads-range" min="10" max="3000" step="10" value="300" style="width: 100%; accent-color: #ff5722; cursor: pointer;">
-            </div>
-            <div class="input-group" style="margin-bottom: 30px;">
-              <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 16px; color: #ddd;">
-                <label for="conversion-range">Текущая конверсия в оплату:</label>
-                <span id="conversion-val" style="color: #ff5722; font-weight: bold; font-size: 18px;">5%</span>
-              </div>
-              <input type="range" id="conversion-range" min="1" max="50" step="1" value="5" style="width: 100%; accent-color: #ff5722; cursor: pointer;">
-            </div>
-            <div class="input-group" style="margin-bottom: 15px;">
-              <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 16px; color: #ddd;">
-                <label for="price-range">Средний чек сделки:</label>
-                <span id="price-val" style="color: #ff5722; font-weight: bold; font-size: 18px;">20 000 ₽</span>
-              </div>
-              <input type="range" id="price-range" min="2000" max="300000" step="2000" value="20000" style="width: 100%; accent-color: #ff5722; cursor: pointer;">
-            </div>
+      <div id="calculator-section" class="calculator-card">
+        <h2 style="margin-bottom: 20px; font-size: 1.5rem;">Рассчитайте упущенную выгоду</h2>
+        <form id="calcForm">
+          <div class="form-group">
+            <label for="leads">Количество лидов в месяц</label>
+            <input type="number" id="leads" placeholder="Например: 500" required />
           </div>
-                    <div class="calc-result" style="flex: 1 1 300px; background: #1a1a1a; padding: 35px 25px; border-radius: 8px; border: 2px dashed #ff5722; text-align: center;">
-            <h3 style="margin: 0; font-size: 15px; color: #888; text-transform: uppercase; letter-spacing: 1.5px;">Вы теряете минимум:</h3>
-            <div id="loss-result" style="font-size: 38px; font-weight: bold; color: #ff5722; margin: 20px 0; text-shadow: 0 0 10px rgba(255,87,34,0.2);">300 000 ₽</div>
-            <p style="font-size: 13px; color: #777; line-height: 1.5; margin-bottom: 25px;">*Столько денег уходит сквозь пальцы при потере всего 5% конверсии из-за типичных ошибок менеджеров.</p>
-            <a href="#leads" style="display: block; background: #ff5722; color: #fff; text-decoration: none; padding: 16px; border-radius: 6px; font-weight: bold; text-transform: uppercase; font-size: 13px; letter-spacing: 0.5px; transition: background 0.2s;">Остановить слив бюджета</a>
+          <div class="form-group">
+            <label for="conversion">Текущая конверсия в %</label>
+            <input type="number" id="conversion" placeholder="Например: 15" required />
           </div>
+          <div class="form-group">
+            <label for="avgCheck">Средний чек, ₽</label>
+            <input type="number" id="avgCheck" placeholder="Например: 10000" required />
+          </div>
+          <button type="submit" class="btn">Рассчитать потери</button>
+        </form>
+
+        <div id="result" class="result-box" style="display: none;">
+          <p class="result-desc">При росте конверсии на 5% (реалистичный эффект от аудита) вы сможете дополнительно получать:</p>
+          <div class="result-value" id="resultValue">0 ₽</div>
+          <p class="result-desc" style="font-size: 0.875rem;">
+            Это и есть ваши скрытые потери — деньги, которые бизнес недополучает из‑за неэффективной воронки.
+          </p>
         </div>
       </div>
+
+      <section id="features" class="features">
+        <div class="feature-item">
+          <h3>Аудит воронки</h3>
+          <ul>
+            <li>Анализ этапов сделки и точек утечки лидов</li>
+            <li>Выявление слабых мест в скриптах и CRM</li>
+            <li>Рекомендации по оптимизации процессов</li>
+          </ul>
+        </div>
+        <div class="feature-item">
+          <h3>Рост конверсии</h3>
+          <ul>
+            <li>Внедрение новых скриптов продаж</li>
+            <li>Обучение менеджеров и контроль качества</li>
+            <li>Настройка аналитики и KPI</li>
+          </ul>
+        </div>
+        <div class="feature-item">
+          <h3>Гарантия результата</h3>
+          <ul>
+            <li>Фиксируем рост конверсии в договоре</li>
+            <li>Ежемесячный отчёт по ключевым метрикам</li>
+            <li>Поддержка команды на этапе внедрения</li>
+          </ul>
+        </div>
+      </section>
     </section>
-    <script>
-document.addEventListener("DOMContentLoaded", function() {
-  const leadsInput = document.getElementById("leads-range") || document.getElementById("leads_range");
-  const conversionInput = document.getElementById("conversion-range") || document.getElementById("conversion_range");
-  const priceInput = document.getElementById("price-range") || document.getElementById("price_range");
+  </main>
 
-  const leadsVal = document.getElementById("leads-val") || document.getElementById("leads_val");
-  const conversionVal = document.getElementById("conversion-val") || document.getElementById("conversion_val");
-  const priceVal = document.getElementById("price-val") || document.getElementById("price_val");
-  const lossResult = document.getElementById("loss-result") || document.getElementById("loss_result");
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 MAX Agency. Все права защищены.</p>
+      <p style="margin-top: 8px;">
+        <a href="https://t.me/your_max_profile" target="_blank" style="color: var(--primary); font-weight: 600;">Написать в MAX →</a>
+      </p>
+    </div>
+  </footer>
 
-  function calculateLoss() {
-    if (!leadsInput || !conversionInput || !priceInput) return;
-    
-    const leads = parseInt(leadsInput.value) || 0;
-    const conversion = parseInt(conversionInput.value) || 0;
-    const price = parseInt(priceInput.value) || 0;
+  <script>
+    document.getElementById('calcForm').addEventListener('submit', function (e) {
+      e.preventDefault();
 
-    if (leadsVal) leadsVal.textContent = leads.toLocaleString('ru-RU');
-    if (conversionVal) conversionVal.textContent = conversion + "%";
-    if (priceVal) priceVal.textContent = price.toLocaleString('ru-RU') + " ₽";
+      const leads = parseFloat(document.getElementById('leads').value);
+      const conversion = parseFloat(document.getElementById('conversion').value);
+      const avgCheck = parseFloat(document.getElementById('avgCheck').value);
 
-    const nonConvertedLeads = leads * (1 - conversion / 100); 
-    const lostDeals = nonConvertedLeads * 0.25; 
-    let lostMoney = Math.round(lostDeals * price);
+      if (!leads || !conversion || !avgCheck) return;
 
-    if (lostMoney < price) { lostMoney = price; }
-    if (lossResult) lossResult.textContent = lostMoney.toLocaleString('ru-RU') + " ₽";
-  }
+      // Логика: рост конверсии на 5% (0.05)
+      const growthRate = 0.05;
+      const currentSales = leads * (conversion / 100) * avgCheck;
+      const newConversionRate = (conversion + (conversion * growthRate)) / 100;
+      const potentialSales = leads * newConversionRate * avgCheck;
+      const lostRevenue = potentialSales - currentSales;
 
-  if (leadsInput && conversionInput && priceInput) {
-    leadsInput.addEventListener("input", calculateLoss);
-    conversionInput.addEventListener("input", calculateLoss);
-    priceInput.addEventListener("input", calculateLoss);
-    calculateLoss();
-  }
-});
-</script>
+      const resultBox = document.getElementById('result');
+      const resultValue = document.getElementById('resultValue');
 
-
-    <!-- БЛОК ИНТЕРАКТИВНОГО КВИЗА -->
-    <section class="quiz-section" style="padding: 60px 20px; background: #1a1a1a; color: #fff; font-family: sans-serif;">
-      <div class="quiz-container" style="max-width: 700px; margin: 0 auto; background: #222; padding: 35px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.4); border: 1px solid #2d2d2d;">
-        <h2 style="text-align: center; margin-bottom: 5px; color: #fff; font-size: 28px; font-weight: bold;">Проверьте ваш отдел продаж за 60 секунд</h2>
-        <p style="text-align: center; color: #888; margin-bottom: 30px; font-size: 15px;">Ответьте на 3 вопроса и получите персональный план внедрения скриптов</p>
-        
-        <div style="background: #333; height: 6px; border-radius: 3px; margin-bottom: 30px; overflow: hidden;">
-          <div id="quiz-progress" style="background: #ff5722; height: 100%; width: 25%; transition: 0.3s;"></div>
-        </div>
-
-        <!-- ШАГ 1 -->
-        <div class="quiz-step" id="step-1" style="display: block;">
-          <h3 style="font-size: 18px; margin-bottom: 20px; color: #eee;">1. Есть ли у ваших менеджеров прописанные скрипты продаж?</h3>
-          <div style="display: flex; flex-direction: column; gap: 12px;">
-            <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="quiz_q1" value="Нет скриптов" style="accent-color: #ff5722;"> Нет, общаются своими словами</label>
-            <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="quiz_q1" value="Есть, но не соблюдают" style="accent-color: #ff5722;"> Есть регламенты, но менеджеры их игнорируют</label>
-            <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="quiz_q1" value="Есть и работают" style="accent-color: #ff5722;"> Да, детально прописаны под каждую ситуацию</label>
-          </div>
-        </div>
-
-        <!-- ШАГ 2 -->
-        <div class="quiz-step" id="step-2" style="display: none;">
-          <h3 style="font-size: 18px; margin-bottom: 20px; color: #eee;">2. Как часто вы слушаете записи звонков своих сотрудников?</h3>
-          <div style="display: flex; flex-direction: column; gap: 12px;">
-            <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="quiz_q2" value="Никогда" style="accent-color: #ff5722;"> Никогда, нет на это времени</label>
-            <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="quiz_q2" value="Редко" style="accent-color: #ff5722;"> Изредка, когда возникает спорная ситуация</label>
-            <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="quiz_q2" value="Постоянно" style="accent-color: #ff5722;"> Регулярно, у нас внедрен контроль качества</label>
-          </div>
-        </div>
-
-        <!-- ШАГ 3 -->
-        <div class="quiz-step" id="step-3" style="display: none;">
-          <h3 style="font-size: 18px; margin-bottom: 20px; color: #eee;">3. Какая главная проблема в продажах на ваш взгляд?</h3>
-          <div style="display: flex; flex-direction: column; gap: 12px;">
-            <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="quiz_q3" value="Слив заявок" style="accent-color: #ff5722;"> Менеджеры не дожимают лиды и забывают перезванивать</label>
-            <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="quiz_q3" value="Дорого" style="accent-color: #ff5722;"> Клиенты уходят после озвучивания цены с ответом «Дорого»</label>
-            <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="quiz_q3" value="Мало заявок" style="accent-color: #ff5722;"> Менеджеры работают нормально, просто не хватает трафика</label>
-          </div>
-        </div>
-
-        <!-- ШАГ 4 -->
-        <div class="quiz-step" id="step-4" style="display: none; text-align: center; padding: 20px 0;">
-          <h3 style="font-size: 22px; margin-bottom: 15px; color: #fff;">Тест успешно пройден!</h3>
-          <p style="color: #aaa; font-size: 15px; margin-bottom: 30px; line-height: 1.6;">Мы зафиксировали ваши ответы. Чтобы получить индивидуальный разбор ошибок и забрать чек-лист, нажмите на кнопку перехода ниже.</p>
-          <button id="quiz-finish-btn" style="display: inline-block; background: #ff5722; color: #fff; border: none; padding: 16px 35px; border-radius: 6px; font-weight: bold; text-transform: uppercase; font-size: 14px; letter-spacing: 0.5px; cursor: pointer; transition: background 0.2s;">Перейти к заполнению</button>
-        </div>
-
-        <div id="quiz-nav" style="display: flex; justify-content: space-between; margin-top: 30px;">
-          <button id="quiz-prev" style="background: transparent; color: #888; border: 1px solid #444; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 14px; display: none;">Назад</button>
-          <button id="quiz-next" style="background: #ff5722; color: #fff; border: none; padding: 12px 25px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 14px; margin-left: auto;">Далее →</button>
-        </div>
-      </div>
-    </section>
-    <script>
-    (function() {
-      document.addEventListener("DOMContentLoaded", function() {
-        let currentStep = 1;
-        const totalSteps = 4;
-        
-        const btnNext = document.getElementById("quiz-next");
-        const btnPrev = document.getElementById("quiz-prev");
-        const progress = document.getElementById("quiz-progress");
-        const navBlock = document.getElementById("quiz-nav");
-        const finishBtn = document.getElementById("quiz-finish-btn");
-
-        function updateQuiz() {
-          for (let i = 1; i <= totalSteps; i++) {
-            const step = document.getElementById("step-" + i);
-            if (step) step.style.display = "none";
-          }
-          const activeStep = document.getElementById("step-" + currentStep);
-          if (activeStep) activeStep.style.display = "block";
-
-          if (progress) {
-            progress.style.width = (currentStep / totalSteps) * 100 + "%";
-          }
-          if (btnPrev) {
-            btnPrev.style.display = (currentStep === 1) ? "none" : "block";
-          }
-          if (navBlock) {
-            navBlock.style.display = (currentStep === totalSteps) ? "none" : "flex";
-          }
-          if (currentStep === totalSteps) {
-            prepareYandexFormLink();
-          }
-        }
-
-        if (btnNext) {
-          btnNext.addEventListener("click", function() {
-            if (currentStep < totalSteps) {
-              const currentRadio = document.querySelector('input[name="quiz_q' + currentStep + '"]:checked');
-              if (!currentRadio) {
-                alert("Пожалуйста, выберите один из вариантов ответа!");
-                return;
-              }
-            }
-            if (currentStep < totalSteps) {
-              currentStep++;
-              updateQuiz();
-            }
-          });
-        }
-
-        if (btnPrev) {
-          btnPrev.addEventListener("click", function() {
-            if (currentStep > 1) {
-              currentStep--;
-              updateQuiz();
-            }
-          });
-        }
-
-        function prepareYandexFormLink() {
-          const q1 = encodeURIComponent(document.querySelector('input[name="quiz_q1"]:checked')?.value || '');
-          const q2 = encodeURIComponent(document.querySelector('input[name="quiz_q2"]:checked')?.value || '');
-          const q3 = encodeURIComponent(document.querySelector('input[name="quiz_q3"]:checked')?.value || '');
-
-          const yandexLink = document.getElementById('yandex-form-link');
-          if (yandexLink) {
-            // Безопасная склейка домена в обход системных фильтров
-            const secureDomain = 'https://forms.' + 'yandex.' + 'ru/u/6a88578b9029024683c9d950/';
-            yandexLink.href = secureDomain + "?q1=" + q1 + "&q2=" + q2 + "&q3=" + q3;
-          }
-        }
-
-        if (finishBtn) {
-          finishBtn.addEventListener("click", function(e) {
-            e.preventDefault();
-            const targetElement = document.getElementById("leads");
-            if (targetElement) {
-              targetElement.scrollIntoView({ behavior: "smooth" });
-            }
-          });
-        }
-
-        updateQuiz();
-      });
-    })();
-    </script>
-
-    <section class="price-section">
-        <div class="container">
-            <h2 class="section-title">Стоимость услуг и тарифы</h2>
-            <div class="price-grid">
-                <div class="price-card"><div class="badge" style="background-color: #64748b;">Тест-драйв</div><h4>Экспресс-аудит</h4><div class="price-value">от 2 500 ₽</div><p>Срез качества работы одного сотрудника по ключевым метрикам.</p></div>
-                <div class="price-card featured"><div class="badge">Популярно</div><h4>Скрипты продаж</h4><div class="price-value">15 000 ₽</div><p>Пошаговый сценарий от приветствия до закрытия сделки под вашу нишу.</p></div>
-                <div class="price-card"><div class="badge" style="background-color: #10b981;">Абонемент</div><h4>Контроль качества</h4><div class="price-value">15 000 ₽<span>/мес</span></div><p>Еженедельная прослушка, ведение чек-листов и работа над ошибками.</p></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="leads" style="padding: 60px 20px; background: #1a1a1a; text-align: center;">
-      <div style="max-width: 650px; margin: 0 auto; background: #222; padding: 40px 30px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.4); border: 1px solid #2d2d2d;">
-        <h2 style="color: #fff; margin-bottom: 15px; font-family: sans-serif; font-size: 26px; font-weight: bold;">Оставить заявку на экспресс-аудит</h2>
-        <p style="color: #aaa; margin-bottom: 30px; font-family: sans-serif; font-size: 15px; line-height: 1.5;">Нажмите на кнопку ниже, чтобы заполнить анкету на официальной платформе Яндекс Форм и получить разбор ошибок вашего отдела продаж.</p>
-        <a id="yandex-form-link" href="https://yandex.ru" target="_blank" style="display: inline-block; background: #ff5722; color: #fff; text-decoration: none; padding: 18px 40px; border-radius: 6px; font-weight: bold; text-transform: uppercase; font-size: 15px; letter-spacing: 0.5px; transition: background 0.2s; font-family: sans-serif;">Заполнить анкету в Яндексе</a>
-      </div>
-    </section>
-    
-    <footer>
-        <div class="container">
-            <h2>Перелейте слив заявок в чистую прибыль</h2>
-            <p>Отправьте запись одного звонка менеджера прямо сейчас и получите готовый Excel-разбор бесплатно.</p>
-            <a href="#leads" class="cta-btn">🚀 Начать бесплатный тест-драйв</a>
-            <div class="footer-rights">&copy; 2026 ТАЙМКОД — Консалтинг и аудит отделов продаж.</div>
-        </div>
-    </footer>
-
+      resultValue.textContent = new Intl.NumberFormat('ru-RU').format(Math.round(lostRevenue)) + ' ₽';
+      resultBox.style.display = 'block';
+      resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  </script>
 </body>
 </html>
