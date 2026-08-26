@@ -55,6 +55,39 @@
         .btn-max-purple { display: inline-block; background: #8a2be2; color: #fff; text-decoration: none; padding: 18px 40px; border-radius: 6px; font-weight: bold; font-family: sans-serif; font-size: 16px; margin: 10px; transition: background 0.2s; }
         .btn-max-purple:hover { background: #711fa3; }
         @media (max-width: 768px) { .hero h1 { font-size: 32px; } .about-flex { flex-direction: column-reverse; } }
+        
+        /* Баннер куки */
+        .cookie-notice {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            max-width: 350px;
+            background: #222222;
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            z-index: 10000;
+            font-family: sans-serif;
+            font-size: 13px;
+            line-height: 1.5;
+            border: 1px solid #333;
+            display: none;
+        }
+        .cookie-notice a { color: #ff9900; text-decoration: underline; }
+        .cookie-btn {
+            background: #ff5722;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 12px;
+            width: 100%;
+            text-transform: uppercase;
+            font-size: 11px;
+        }
     </style>
 </head>
 <body>
@@ -75,7 +108,7 @@
     <section id="quiz-anchor" class="quiz-section" style="padding: 60px 20px; background: #1a1a1a; color: #fff; font-family: sans-serif;">
       <div class="quiz-container" style="max-width: 700px; margin: 0 auto; background: #222; padding: 35px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.4); border: 1px solid #2d2d2d;">
         <h2 style="text-align: center; margin-bottom: 5px; color: #fff; font-size: 28px; font-weight: bold;">Инструмент экспресс-самодиагностики отдела продаж</h2>
-        <p style="text-align: center; color: #ff9900; margin-bottom: 30px; font-size: 16px; font-weight: bold;">Ответьте на 3 вопроса и скачайте PDF-гайд «Как удвоить конверсию из звонка за 7 дней»</p>
+        <p style="text-align: center; color: #ff9900; margin-bottom: 30px; font-size: 16px; font-weight: bold;">Ответьте на 3 вопроса и скачайте цифровое руководство (PDF-гайд) «Как удвоить конверсию из звонка за 7 дней»</p>
         
         <div style="background: #333; height: 6px; border-radius: 3px; margin-bottom: 30px; overflow: hidden;">
           <div id="quiz-progress" style="background: #ff5722; height: 100%; width: 25%; transition: 0.3s;"></div>
@@ -83,7 +116,7 @@
 
         <!-- ШАГ 1 -->
         <div class="quiz-step" id="step-1" style="display: block;">
-          <h3 style="font-size: 18px; margin-bottom: 20px; color: #eee;">1. Есть ли у ваших менеджеров прописанные скрипты продаж?</h3>
+          <h3 style="font-size: 18px; margin-bottom: 20px; color: #eee;">1. Есть ли у ваших менеджеров прописанные сценарии (скрипты) продаж?</h3>
           <div style="display: flex; flex-direction: column; gap: 12px;">
             <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="quiz_q1" value="Нет скриптов" style="accent-color: #ff5722;"> Нет, общаются своими словами</label>
             <label style="background: #2b2b2b; padding: 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><input type="radio" name="quiz_q1" value="Есть, но не соблюдают" style="accent-color: #ff5722;"> Есть регламенты, но менеджеры их игнорируют</label>
@@ -113,12 +146,21 @@
 
         <!-- ШАГ 4 -->
         <div class="quiz-step" id="step-4" style="display: none; text-align: center; padding: 20px 0;">
-          <h3 style="font-size: 24px; margin-bottom: 15px; color: #fff;">Диагностика завершена! PDF-гайд готов к отправке</h3>
-          <p style="color: #aaa; font-size: 16px; margin-bottom: 30px; line-height: 1.6;">Ваши ответы успешно обработаны. Выберите удобный способ, чтобы мгновенно передать анкету, забрать PDF-гайд и получить бесплатный экспресс-разбор:</p>
+          <h3 style="font-size: 24px; margin-bottom: 15px; color: #fff;">Диагностика завершена! Руководство готово к отправке</h3>
+          <p style="color: #aaa; font-size: 16px; margin-bottom: 20px; line-height: 1.6;">Ваши ответы успешно обработаны. Выберите удобный способ, чтобы мгновенно передать анкету, забрать руководство и получить бесплатный экспресс-разбор:</p>
           
+          <!-- ЧЕКБОКС СОГЛАСИЯ ДЛЯ КВИЗА -->
+          <div style="margin-bottom: 25px; text-align: left; display: flex; align-items: flex-start; gap: 10px; justify-content: center; max-width: 480px; margin-left: auto; margin-right: auto;">
+              <input type="checkbox" id="quiz_privacy_agree" style="accent-color: #ff5722; margin-top: 4px;">
+              <label for="quiz_privacy_agree" style="color: #aaa; font-family: sans-serif; font-size: 12px; line-height: 1.4; cursor: pointer;">
+                  Я даю согласие на обработку моих персональных данных в соответствии с 
+                  <a href="#" onclick="openPrivacyModal(event)" style="color: #ff9900; text-decoration: underline;">Политикой конфиденциальности</a>
+              </label>
+          </div>
+
           <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-            <a id="yandex-form-link" href="https://yandex.ru" target="_blank" style="display: inline-block; background: #ff5722; color: #fff; text-decoration: none; padding: 18px 40px; border-radius: 6px; font-weight: bold; text-transform: uppercase; font-size: 15px; letter-spacing: 0.5px; transition: background 0.2s; font-family: sans-serif; width: 100%; max-width: 450px;">Передать ответы через Яндекс Форму</a>
-            <a href="https://max.ru/u/f9LHodD0cOLqLEkI-2skPCRJCFUCqzqyf-IhJvizo6T9-qTmF9YaUvrcpBs" class="btn-max-purple" target="_blank" style="width: 100%; max-width: 450px; margin: 0; text-transform: uppercase; font-size: 15px; letter-spacing: 0.5px; padding: 18px 40px;">Получить результаты в MAX</a>
+            <a id="yandex-form-link" href="https://yandex.ru" onclick="return checkQuizConsent(event)" target="_blank" style="display: inline-block; background: #ff5722; color: #fff; text-decoration: none; padding: 18px 40px; border-radius: 6px; font-weight: bold; text-transform: uppercase; font-size: 15px; letter-spacing: 0.5px; transition: background 0.2s; font-family: sans-serif; width: 100%; max-width: 450px;">Передать ответы через Яндекс Форму</a>
+            <a id="max-link-quiz" href="https://max.ru/u/f9LHodD0cOLqLEkI-2skPCRJCFUCqzqyf-IhJvizo6T9-qTmF9YaUvrcpBs" onclick="return checkQuizConsent(event)" class="btn-max-purple" target="_blank" style="width: 100%; max-width: 450px; margin: 0; text-transform: uppercase; font-size: 15px; letter-spacing: 0.5px; padding: 18px 40px;">Получить результаты в системе МАКС (MAX)</a>
           </div>
         </div>
 
@@ -134,7 +176,7 @@
             <h2 class="section-title">Каждая упущенная заявка — это подарок конкурентам</h2>
             <div class="grid-3">
                 <div class="card"><span class="icon">🔍</span><h3>Аудит диалогов</h3><p>Слушаю записи разговоров. Нахожу скрытые причины, почему клиенты уходят со словами "Я подумаю".</p></div>
-                <div class="card"><span class="icon">📜</span><h3>Живые скрипты</h3><p>Разрабатываю сценарии разговора. Only жесткая практика и отработка возражения "Дорого".</p></div>
+                <div class="card"><span class="icon">📜</span><h3>Живые скрипты</h3><p>Разрабатываю сценарии разговора. Только жесткая практика и отработка возражения "Дорого".</p></div>
                 <div class="card"><span class="icon">🛡️</span><h3>Контроль качества</h3><p>Беру отдел продаж под сопровождение. Держу менеджеров в тонусе, еженедельно разбирая ошибки.</p></div>
             </div>
         </div>
@@ -146,7 +188,7 @@
                 <img src="photo.png.jfif" alt="Павел Фролов" class="about-img">
                 <div class="about-text">
                     <h2>Практик с 6-летним опытом</h2>
-                    <p>За моими плечами 6 лет ежедневной работы в сложнейших b2c и b2b нишах с высоким чеком и длинным циклом сделки.</p>
+                    <p>За моими плечами 6 лет ежедневной работы в сложнейших сегментах для бизнеса (b2b) и частных клиентов (b2c) с высоким чеком и длинным циклом сделки.</p>
                     <p>Я сам совершил тысячи звонков и отработал каждое возражение. Моя цель — внедрить в ваш бизнес измеримую систему контроля.</p>
                 </div>
             </div>
@@ -165,7 +207,7 @@
                 </li>
                 <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
                     <span style="position: absolute; left: 0; top: 0; color: #007bff; font-weight: bold;">✔</span>
-                    <strong>Квалификация и боли:</strong> Выявил ли продавец истинную причину обращения (особенно актуально в БФЛ) или сразу перешел к презентации цены.
+                    <strong>Квалификация и боли:</strong> Выявил ли продавец истинную причину обращения (особенно актуально в банкротстве физических лиц — БФЛ) или сразу перешел к презентации цены.
                 </li>
                 <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
                     <span style="position: absolute; left: 0; top: 0; color: #007bff; font-weight: bold;">✔</span>
@@ -178,7 +220,7 @@
             </ul>
         </div>
         <div style="flex: 1; min-width: 300px; background-color: #f8f9fa; padding: 30px; border-radius: 8px; border: 1px solid #eef0f2;">
-            <h3 style="font-size: 20px; color: #111; margin-top: 0; margin-bottom: 15px;">💻 Полная интеграция с вашей CRM</h3>
+            <h3 style="font-size: 20px; color: #111; margin-top: 0; margin-bottom: 15px;">💻 Полная интеграция с вашей системой управления клиентами (CRM)</h3>
             <p style="color: #555; font-size: 14px; line-height: 1.6; margin-bottom: 20px;">
                 Вам не придется скачивать записи вручную или давать мне полные административные права. Я умею работать автономно, конфиденциально и не ломаю выстроенные процессы.
             </p>
@@ -187,7 +229,7 @@
                 <div style="background: #fff; padding: 10px 20px; border-radius: 6px; border: 1px solid #ddd; font-weight: bold; font-size: 14px; color: #ff3f00; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">🚀 amoCRM</div>
                 <div style="background: #fff; padding: 10px 20px; border-radius: 6px; border: 1px solid #ddd; font-weight: bold; font-size: 14px; color: #00aeef; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">🔵 Битрикс24</div>
             </div>
-            <p style="font-size: 12px; color: #888; margin-top: 15px; margin-bottom: 0;">* Если у вас другая CRM или облачная АТС — настрою индивидуальный доступ за 10 минут.</p>
+            <p style="font-size: 12px; color: #888; margin-top: 15px; margin-bottom: 0;">* Если у вас другая система или облачная АТС — настрою индивидуальный доступ за 10 минут.</p>
         </div>
     </div>
 </section>
@@ -279,8 +321,20 @@ document.addEventListener("DOMContentLoaded", function() {
       <div style="max-width: 650px; margin: 0 auto; background: #222; padding: 40px 30px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.4); border: 1px solid #2d2d2d;">
         <h2 style="color: #fff; margin-bottom: 15px; font-family: sans-serif; font-size: 26px; font-weight: bold;">Оставить заявку на экспресс-аудит</h2>
         <p style="color: #aaa; margin-bottom: 30px; font-family: sans-serif; font-size: 15px; line-height: 1.5;">Нажмите на кнопку ниже, чтобы заполнить анкету на официальной платформе Яндекс Форм и получить разбор ошибок вашего отдела продаж.</p>
-        <a href="https://forms.yandex.ru/u/6a88578b9029024683c9d950/" target="_blank" style="display: inline-block; background: #ff5722; color: #fff; text-decoration: none; padding: 18px 40px; border-radius: 6px; font-weight: bold; text-transform: uppercase; font-size: 15px; letter-spacing: 0.5px; transition: background 0.2s; font-family: sans-serif;">Заполнить анкету в Яндексе</a>
-        <a href="https://max.ru/u/f9LHodD0cOLqLEkI-2skPCRJCFUCqzqyf-IhJvizo6T9-qTmF9YaUvrcpBs" class="btn-max-purple" target="_blank">НАПИСАТЬ В MAX</a>
+        
+        <!-- ОБЯЗАТЕЛЬНЫЙ ЧЕКБОКС ДЛЯ ФОРМЫ СВЯЗИ -->
+        <div style="margin-bottom: 20px; text-align: left; display: flex; align-items: flex-start; gap: 10px; justify-content: center; max-width: 450px; margin-left: auto; margin-right: auto;">
+            <input type="checkbox" id="privacy_agree" style="accent-color: #ff5722; margin-top: 4px;">
+            <label for="privacy_agree" style="color: #aaa; font-family: sans-serif; font-size: 12px; line-height: 1.4; cursor: pointer;">
+                Я даю согласие на обработку моих персональных данных в соответствии с 
+                <a href="#" onclick="openPrivacyModal(event)" style="color: #ff9900; text-decoration: underline;">Политикой конфиденциальности</a>
+            </label>
+        </div>
+
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+            <a href="https://forms.yandex.ru/u/6a88578b9029024683c9d950/" onclick="return checkFormConsent(event, 'privacy_agree')" target="_blank" style="display: inline-block; background: #ff5722; color: #fff; text-decoration: none; padding: 18px 40px; border-radius: 6px; font-weight: bold; text-transform: uppercase; font-size: 15px; letter-spacing: 0.5px; transition: background 0.2s; font-family: sans-serif; width: 100%; max-width: 450px;">Заполнить анкету в Яндексе</a>
+            <a href="https://max.ru/u/f9LHodD0cOLqLEkI-2skPCRJCFUCqzqyf-IhJvizo6T9-qTmF9YaUvrcpBs" onclick="return checkFormConsent(event, 'privacy_agree')" class="btn-max-purple" target="_blank" style="width: 100%; max-width: 450px; margin: 0; text-transform: uppercase; font-size: 15px; letter-spacing: 0.5px; padding: 18px 40px;">НАПИСАТЬ В МАКС (MAX)</a>
+        </div>
       </div>
     </section>
     
@@ -289,22 +343,22 @@ document.addEventListener("DOMContentLoaded", function() {
         <h2 style="text-align: center; font-size: 28px; margin-bottom: 40px; color: #111;">🔥 Реальные кейсы и опыт в цифрах</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
             <div style="background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid #007bff;">
-                <h3 style="margin-top: 0; font-size: 18px; color: #007bff;">Ниша: Банкротство физ. лиц (БФЛ)</h3>
-                <p style="font-size: 14px; margin-bottom: 10px;"><strong>Проблема:</strong> Менеджеры КЦ сливали лиды на этапе первичного звонка. Статус "Дорого" ставился на 35% заявок без выявления потребности.</p>
-                <p style="font-size: 14px; margin-bottom: 10px;"><strong>Что сделано:</strong> Переписал скрипт квалификации. Внедрил обязательный шаг перевода возражения "Нет денег на юристов" в ценность рассрочки и сохранения имущества.</p>
-                <p style="font-size: 14px; color: #28a745; font-weight: bold; margin-bottom: 0;">Результат: Конверсия в доезд на встречу выросла с 12% до 22% за 1.5 месяца.</p>
+                <h3 style="margin-top: 0; font-size: 18px; color: #007bff;">Ниша: Банкротство физических лиц (БФЛ)</h3>
+                <p style="font-size: 14px; margin-bottom: 10px;"><strong>Проблема:</strong> Менеджеры контактного центра сливали лиды на этапе первичного звонка. Статус "Дорого" ставился на 35% заявок без выявления потребности.</p>
+                <p style="font-size: 14px; margin-bottom: 10px;"><strong>Что сделано:</strong> Переписал сценарий (скрипт) квалификации. Внедрил обязательный шаг перевода возражения "Нет денег на юристов" в ценность рассрочки и сохранения имущества.</p>
+                <p style="font-size: 14px; color: #28a745; font-weight: bold; margin-bottom: 0;">Результат: Конверсия в приезд на встречу выросла с 12% до 22% за 1.5 месяца.</p>
             </div>
             <div style="background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid #28a745;">
                 <h3 style="margin-top: 0; font-size: 18px; color: #28a745;">Опыт: Экс-Руководитель офиса продаж</h3>
-                <p style="font-size: 14px; margin-bottom: 10px;"><strong>Проблема:</strong> Длинный цикл сделки (клиенты "думали" по 3-4 месяца). Отсутствие системного контроля за повторными касаниями в CRM.</p>
-                <p style="font-size: 14px; margin-bottom: 10px;"><strong>Что сделано:</strong> Внедрил жесткий регламент "следующего шага" и систему авто-напоминаний. Ввел ежедневные утренние разборы зависших сделок с менеджерами.</p>
+                <p style="font-size: 14px; margin-bottom: 10px;"><strong>Проблема:</strong> Длинный цикл сделки (клиенты "думали" по 3-4 месяца). Отсутствие системного контроля за повторными касаниями в системе автоматизации (CRM).</p>
+                <p style="font-size: 14px; margin-bottom: 10px;"><strong>Что сделано:</strong> Внедрил жесткий регламент "следующего шага" и систему автоматических напоминаний. Ввел ежедневные утренние разборы зависших сделок с менеджерами.</p>
                 <p style="font-size: 14px; color: #28a745; font-weight: bold; margin-bottom: 0;">Результат: Сократил средний цикл заключения договора с 45 до 18 дней.</p>
             </div>
             <div style="background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid #ffc107;">
-                <h3 style="margin-top: 0; font-size: 18px; color: #cc9600;">Ниша: Юридические услуги ( b2c сложный чек )</h3>
+                <h3 style="margin-top: 0; font-size: 18px; color: #cc9600;">Ниша: Юридические услуги (сложный чек для частных клиентов)</h3>
                 <p style="font-size: 14px; margin-bottom: 10px;"><strong>Проблема:</strong> Менеджеры работали как "консультанты" — вежливо отвечали на вопросы, но не закрывали клиента на договор. Конверсия из встречи в оплату — всего 8%.</p>
-                <p style="font-size: 14px; margin-bottom: 10px;"><strong>Что сделано:</strong> Разработал живую матрицу аргументации. Убрал заумные юридические термины, добавил блоки фиксации гарантий по чек-листу.</p>
-                <p style="font-size: 14px; color: #28a745; font-weight: bold; margin-bottom: 0;">Результат: Конверсия из очной/онлайн встречи в продажу поднялась до 19%.</p>
+                <p style="font-size: 14px; margin-bottom: 10px;"><strong>Что сделано:</strong> Разработал живую матрицу аргументации. Убрал сложные юридические термины, добавил блоки фиксации гарантий по проверочному списку (чек-листу).</p>
+                <p style="font-size: 14px; color: #28a745; font-weight: bold; margin-bottom: 0;">Результат: Конверсия из очной или дистанционной встречи в продажу поднялась до 19%.</p>
             </div>
         </div>
     </div>
@@ -314,8 +368,9 @@ document.addEventListener("DOMContentLoaded", function() {
     <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px;">
         <div>
             <p style="margin: 0 0 8px 0; color: #fff; font-weight: bold; font-size: 16px;">© 2026 ТАЙМКОД — Консалтинг и аудит отделов продаж</p>
-            <p style="margin: 0 0 5px 0;">Самозанятый Фролов Павел Александрович</p>
-            <p style="margin: 0;">ИНН: 541004397781</p>
+            <p style="margin: 0 0 5px 0;">Самозанятый Фролов Павел Анатольевич</p>
+            <p style="margin: 0 0 5px 0;">ИНН: 541004397781</p>
+            <p style="margin: 0;">Email: <a href="mailto:frolovpavel295@gmail.com" style="color: #ff9900; text-decoration: none;">frolovpavel295@gmail.com</a></p>
         </div>
         <div style="display: flex; gap: 15px;">
             <a href="https://vk.ru/id40180657" target="_blank" rel="noopener" style="color: #fff; text-decoration: none; background: #007bff; padding: 8px 16px; border-radius: 4px; display: inline-flex; align-items: center; font-weight: bold; transition: 0.3s;"><span style="margin-right: 6px;">🔷</span> ВКонтакте</a>
@@ -331,13 +386,22 @@ document.addEventListener("DOMContentLoaded", function() {
     <div style="background: #fff; color: #333; padding: 30px; border-radius: 8px; max-width: 600px; max-height: 80vh; overflow-y: auto; position: relative;">
         <span onclick="closePrivacyModal()" style="position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: #666; font-weight: bold;">&times;</span>
         <h3 style="margin-top: 0; margin-bottom: 20px; color: #111;">Политика конфиденциальности и обработки персональных данных</h3>
-        <p style="font-size: 13px; line-height: 1.6;">Настоящая Политика действует в отношении всей информации, которую сайт «ТАЙМКОД» (Фролов П.А., ИНН 541004397781) может получить о Пользователе во время использования сайта.</p>
-        <p style="font-size: 13px; line-height: 1.6;"><strong>1. Сбор персональных данных:</strong> Мы собираем только те данные, которые вы добровольно отправляете через формы на сайте (имя, контакты, аудиозаписи звонков для проведения экспресс-аудита).</p>
-        <p style="font-size: 13px; line-height: 1.6;"><strong>2. Цель сбора:</strong> Данные используются исключительно для оказания консалтинговых услуг, связи с вами и предоставления бесплатного Excel-разбора.</p>
-        <p style="font-size: 13px; line-height: 1.6;"><strong>3. Конфиденциальность записей:</strong> Переданные аудиозаписи ваших отделов продаж являются коммерческой тайной. Мы обязуемся не передавать их третьим лицам и использовать только для проведения аудита.</p>
-        <p style="font-size: 13px; line-height: 1.6;">Нажимая кнопки отправки форм на сайте, вы соглашаетесь с данной Политикой.</p>
+        <p style="font-size: 13px; line-height: 1.6; margin-bottom: 10px;">Настоящая Политика действует в отношении всей информации, которую сайт «ТАЙМКОД» (Самозанятый Фролов Павел Анатольевич, ИНН 541004397781, email: frolovpavel295@gmail.com) может получить о Пользователе во время использования сайта.</p>
+        <p style="font-size: 13px; line-height: 1.6; margin-bottom: 10px;"><strong>1. Сбор персональных данных:</strong> Мы собираем только те данные, которые вы добровольно отправляете через формы на сайте или внешние сервисы при переходе с сайта (имя, контакты, ответы на вопросы анкета-квиза для проведения экспресс-аудита).</p>
+        <p style="font-size: 13px; line-height: 1.6; margin-bottom: 10px;"><strong>2. Цель сбора:</strong> Данные используются исключительно для оказания консалтинговых услуг, обратной связи с вами, предоставления цифровых руководств и разборов.</p>
+        <p style="font-size: 13px; line-height: 1.6; margin-bottom: 10px;"><strong>3. Использование файлов Cookie:</strong> На сайте используются счетчики веб-аналитики (Яндекс.Метрика) для анализа пользовательской активности и улучшения интерфейса. Файлы cookie могут быть отключены пользователем в настройках браузера.</p>
+        <p style="font-size: 13px; line-height: 1.6; margin-bottom: 10px;"><strong>4. Конфиденциальность записей:</strong> Все переданные сведения и аудиозаписи ваших отделов продаж являются коммерческой тайной. Мы обязуемся не передавать их третьим лицам и использовать только для проведения аудита.</p>
+        <p style="font-size: 13px; line-height: 1.6; margin-bottom: 15px;">Проставляя галочку согласия в формах сайта, вы подтверждаете свое ознакомление и полное согласие с данной Политикой.</p>
         <button onclick="closePrivacyModal()" style="margin-top: 20px; background: #333; color: #fff; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; width: 100%; font-weight: bold;">Понятно</button>
     </div>
+</div>
+
+<!-- Элемент баннера куки -->
+<div id="cookieNotice" class="cookie-notice">
+    Данный сайт использует файлы cookie и системы аналитики для улучшения работы. 
+    Оставаясь на сайте, вы соглашаетесь с условиями нашей 
+    <a href="#" onclick="openPrivacyModal(event)">Политики конфиденциальности</a>.
+    <button class="cookie-btn" onclick="acceptCookies()">Принять</button>
 </div>
 
 <script>
@@ -400,6 +464,41 @@ document.addEventListener("DOMContentLoaded", function() {
     updateQuiz();
   });
 })();
+
+// Проверка согласия в квизе
+function checkQuizConsent(e) {
+    const cb = document.getElementById('quiz_privacy_agree');
+    if (!cb || !cb.checked) {
+        alert('Для продолжения необходимо дать согласие на обработку персональных данных!');
+        e.preventDefault();
+        return false;
+    }
+    return true;
+}
+
+// Проверка согласия в обычных формах
+function checkFormConsent(e, checkboxId) {
+    const cb = document.getElementById(checkboxId);
+    if (!cb || !cb.checked) {
+        alert('Для отправки формы необходимо дать согласие на обработку персональных данных!');
+        e.preventDefault();
+        return false;
+    }
+    return true;
+}
+
+// Логика показа баннера куки
+function checkCookieConsent() {
+    if (!localStorage.getItem('cookie_accepted')) {
+        document.getElementById('cookieNotice').style.display = 'block';
+    }
+}
+function acceptCookies() {
+    localStorage.setItem('cookie_accepted', 'true');
+    document.getElementById('cookieNotice').style.display = 'none';
+}
+
+document.addEventListener("DOMContentLoaded", checkCookieConsent);
 
 function openPrivacyModal(e) { e.preventDefault(); document.getElementById('privacyModal').style.display = 'flex'; }
 function closePrivacyModal() { document.getElementById('privacyModal').style.display = 'none'; }
