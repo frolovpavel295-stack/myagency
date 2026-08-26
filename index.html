@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <script type="text/javascript">
+        // Блокировка переходов с Толоки и фреймов заданий
+        if (document.referrer.includes('iframe-toloka.com') || 
+            document.referrer.includes('toloka') || 
+            window.location.href.includes('toloka')) {
+            window.location.replace('about:blank');
+        }
+    </script>
+    <!-- Yandex.Metrika counter -->
+
     <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
