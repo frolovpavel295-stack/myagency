@@ -7,7 +7,6 @@
     <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAA0klEQVR4nO2WsQ0CMRDEn0shI6SgAFpE6SIdUFAwA6SgA9pE6SIdpKAESvAL6YgIidgSInuSgC2O7vPnTzqZ6ekfEAnY4uSctyS9S7r0mS9Jr5KevYwUvA7gO0mPZpYkXat/70NfT16n6gAegNfNLCXpWv1bZz+fKngAnidgCbyFmSdgCbyFmSdgCbyFmSdgCbyFmSdgCbyFmSdgCbxv7uC7pBfV30p6kfTs9UDB6wA6N6t8pUvS0+fI6wQswb8BvEX6Anr6A68D6NyM8pUPgA0i6RdfBwAAAABJRU5ErkJggg==">
     
     <script type="text/javascript">
-        // Блокировка переходов с Толоки и фреймов заданий
         if (document.referrer.includes('iframe-toloka.com') || 
             document.referrer.includes('toloka') || 
             window.location.href.includes('toloka')) {
@@ -40,15 +39,15 @@
         .logo-box span { color: var(--primary); }
         .hero { background: radial-gradient(circle at top right, rgba(0, 82, 204, 0.15), transparent), linear-gradient(185deg, #090d1a 0%, #020408 100%); position: relative; overflow: hidden; color: var(--white); padding: 100px 0; text-align: center; }
         .hero::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 20px 20px; pointer-events: none; }
-        .hero h1 { font-size: 48px; font-weight: 900; margin-bottom: 24px; line-height: 1.15; color: #ffffff; }
+        .hero h1 { font-size: 44px; font-weight: 900; margin-bottom: 24px; line-height: 1.2; color: #ffffff; }
         .hero h1 span { background: linear-gradient(90deg, #3b82f6, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: 20px; color: #94a3b8; max-width: 700px; margin: 0 auto 40px auto; }
+        .hero p { font-size: 20px; color: #94a3b8; max-width: 800px; margin: 0 auto 40px auto; }
         .cta-btn { display: inline-flex; align-items: center; background: linear-gradient(135deg, #ff9900 0%, #ff6600 100%); color: var(--white); font-size: 18px; font-weight: 700; text-decoration: none; padding: 16px 36px; border-radius: 12px; box-shadow: 0 4px 20px rgba(255, 102, 0, 0.3); transition: 0.3s; }
         .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(255, 102, 0, 0.4); }
         .pain-section, .about-section, .price-section { padding: 60px 0; text-align: center; }
         .pain-section, .price-section { background-color: var(--white); }
         .section-title { font-size: 32px; font-weight: 800; margin-bottom: 40px; color: #0f172a; }
-        .grid-3, .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; max-width: 1100px; margin: 0 auto; }
+        .grid-3, .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; max-width: 1100px; margin: 0 auto; }
         .card, .price-card { background-color: var(--bg-light); padding: 30px; border-radius: 12px; border: 1px solid var(--border); transition: 0.3s; text-align: center; display: flex; flex-direction: column; justify-content: space-between; }
         .card:hover, .price-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.04); }
         .card .icon { font-size: 40px; margin-bottom: 15px; display: inline-block; }
@@ -61,44 +60,15 @@
         .price-card { background: var(--white); position: relative; padding-top: 40px; }
         .price-card.featured { border: 2px solid var(--primary); box-shadow: 0 10px 20px rgba(0, 82, 204, 0.06); }
         .badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background-color: var(--primary); color: var(--white); padding: 3px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
-        .price-value { font-size: 26px; font-weight: 800; margin-bottom: 15px; color: #0f172a; }
+        .price-value { font-size: 28px; font-weight: 800; margin-bottom: 15px; color: #0f172a; }
         .price-value span { font-size: 15px; font-weight: 400; color: #64748b; }
-        .btn-max-purple { display: inline-block; background: #8a2be2; color: #fff; text-decoration: none; padding: 18px 40px; border-radius: 6px; font-weight: bold; font-family: sans-serif; font-size: 16px; transition: background 0.2s; text-align: center; }
+        .btn-max-purple { display: inline-block; background: #8a2be2; color: #fff; text-decoration: none; padding: 15px 30px; border-radius: 6px; font-weight: bold; font-family: sans-serif; font-size: 15px; transition: background 0.2s; text-align: center; }
         .btn-max-purple:hover { background: #711fa3; }
         @media (max-width: 768px) { .hero h1 { font-size: 32px; } .about-flex { flex-direction: column-reverse; } }
         
-        /* Баннер куки */
-        .cookie-notice {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            max-width: 350px;
-            background: #222222;
-            color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            z-index: 10000;
-            font-family: sans-serif;
-            font-size: 13px;
-            line-height: 1.5;
-            border: 1px solid #333;
-            display: none;
-        }
+        .cookie-notice { position: fixed; bottom: 20px; left: 20px; max-width: 350px; background: #222222; color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); z-index: 10000; font-family: sans-serif; font-size: 13px; line-height: 1.5; border: 1px solid #333; display: none; }
         .cookie-notice a { color: #ff9900; text-decoration: underline; }
-        .cookie-btn {
-            background: #ff5722;
-            color: #fff;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 12px;
-            width: 100%;
-            text-transform: uppercase;
-            font-size: 11px;
-        }
+        .cookie-btn { background: #ff5722; color: #fff; border: none; padding: 8px 15px; border-radius: 4px; font-weight: bold; cursor: pointer; margin-top: 12px; width: 100%; text-transform: uppercase; font-size: 11px; }
     </style>
 </head>
 <body>
@@ -110,9 +80,12 @@
 
     <section class="hero">
         <div class="container">
-            <h1>Менеджеры работают как <span>автоответчики?</span></h1>
-            <p>Хватит сливать рекламный бюджет. Оцифрую ошибки ваших продавцов по жесткому чек-листу и подниму общую конверсию в оплату.</p>
-            <a href="#quiz-anchor" class="cta-btn">🔥 Пройти экспресс-диагностику</a>
+            <h1>Найду скрытые точки роста и <span>подниму конверсию отдела продаж на 15–30%</span></h1>
+            <p>Профессиональный аудит и оцифровка звонков по жесткому чек-листу. Масштабируйте прибыль и контролируйте качество работы менеджеров без лишней рутины.</p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="https://max.ru/u/f9LHodD0cOLqLEkI-2skPCRJCFUCqzqyf-IhJvizo6T9-qTmF9YaUvrcpBs" target="_blank" class="cta-btn" style="background: linear-gradient(135deg, #8a2be2 0%, #6a0dad 100%); box-shadow: 0 4px 20px rgba(138, 43, 226, 0.4);">🚀 Написать в МАКС (MAX) для экспресс-разбора</a>
+                <a href="#quiz-anchor" class="cta-btn" style="background: linear-gradient(135deg, #475569 0%, #1e293b 100%); box-shadow: 0 4px 20px rgba(30, 41, 59, 0.3);">📊 Пройти b2b-диагностику</a>
+            </div>
         </div>
     </section>
 
@@ -158,25 +131,11 @@
 
         <!-- ШАГ 4 -->
         <div class="quiz-step" id="step-4" style="display: none; text-align: center; padding: 20px 0;">
-          <h3 style="font-size: 24px; margin-bottom: 15px; color: #fff;">Диагностика завершена! Руководство готово к отправке</h3>
-          <p style="color: #aaa; font-size: 16px; margin-bottom: 20px; line-height: 1.6;">Ваши ответы успешно обработаны. Выберите удобный способ, чтобы мгновенно передать анкету, забрать руководство и получить бесплатный экспресс-разбор:</p>
+          <h3 style="font-size: 24px; margin-bottom: 15px; color: #fff;">Диагностика завершена! Руководство готово</h3>
+          <p style="color: #aaa; font-size: 16px; margin-bottom: 25px; line-height: 1.6;">Ваши ответы сохранены. Нажмите на кнопку ниже, чтобы перейти в систему МАКС, мгновенно скачать PDF-руководство и зафиксировать бесплатный экспресс-разбор:</p>
           
-          <div style="margin-bottom: 25px; text-align: left; display: flex; align-items: flex-start; gap: 10px; justify-content: center; max-width: 480px; margin-left: auto; margin-right: auto;">
-              <input type="checkbox" id="quiz_privacy_agree" style="accent-color: #ff5722; margin-top: 4px;">
-              <label for="quiz_privacy_agree" style="color: #aaa; font-family: sans-serif; font-size: 12px; line-height: 1.4; cursor: pointer;">
-                  Я даю согласие на обработку моих персональных данных в соответствии с 
-                  <a href="javascript:void(0)" onclick="openPrivacyModal(event)" style="color: #ff9900; text-decoration: underline;">Политикой конфиденциальности</a>
-              </label>
-          </div>
-
-          <div style="display: flex; flex-direction: column; align-items: center; gap: 15px; margin-bottom: 20px;">
-            <button type="button" onclick="showInlineYandexForm(event)" style="display: inline-block; background: #ff5722; color: #fff; border: none; padding: 18px 40px; border-radius: 6px; font-weight: bold; text-transform: uppercase; font-size: 15px; letter-spacing: 0.5px; transition: background 0.2s; font-family: sans-serif; width: 100%; max-width: 450px; cursor: pointer;">Передать ответы через Яндекс Форму</button>
-            <a id="max-link-quiz" href="https://max.ru/u/f9LHodD0cOLqLEkI-2skPCRJCFUCqzqyf-IhJvizo6T9-qTmF9YaUvrcpBs" onclick="return checkQuizConsent(event)" class="btn-max-purple" target="_blank" style="width: 100%; max-width: 450px; margin: 0; text-transform: uppercase; font-size: 15px; letter-spacing: 0.5px; padding: 18px 40px;">Получить результаты в системе МАКС (MAX)</a>
-          </div>
-
-          <!-- Контейнер для встроенной формы квиза -->
-          <div id="quiz-iframe-container" style="display: none; width: 100%; max-width: 500px; margin: 20px auto 0 auto; background: #fff; border-radius: 8px; padding: 10px; overflow: hidden;">
-            <iframe id="quiz-yandex-iframe" src="" name="ya-form-quiz" style="width: 100%; height: 550px; border: none;"></iframe>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+            <a id="max-link-quiz" href="https://max.ru/u/f9LHodD0cOLqLEkI-2skPCRJCFUCqzqyf-IhJvizo6T9-qTmF9YaUvrcpBs" class="btn-max-purple" target="_blank" style="width: 100%; max-width: 450px; text-transform: uppercase; font-size: 15px; letter-spacing: 0.5px; padding: 18px 40px; background: #ff5722;">Получить гайд и результаты в МАКС</a>
           </div>
         </div>
 
@@ -189,7 +148,7 @@
 
     <section class="pain-section">
         <div class="container">
-            <h2 class="section-title">Каждая упущенная заявка — это подарок конкурентам</h2>
+            <h2 class="section-title">Системный контроль — основа стабильного роста прибыли</h2>
             <div class="grid-3">
                 <div class="card"><span class="icon">🔍</span><h3>Аудит диалогов</h3><p>Слушаю записи разговоров. Нахожу скрытые причины, почему клиенты уходят со словами "Я подумаю".</p></div>
                 <div class="card"><span class="icon">📜</span><h3>Живые скрипты</h3><p>Разрабатываю сценарии разговора. Только жесткая практика и отработка возражения "Дорого".</p></div>
@@ -283,47 +242,61 @@
             <h3 style="margin: 0; font-size: 15px; color: #888; text-transform: uppercase; letter-spacing: 1.5px;">Вы теряете минимум:</h3>
             <div id="loss-result" style="font-size: 38px; font-weight: bold; color: #ff5722; margin: 20px 0; text-shadow: 0 0 10px rgba(255,87,34,0.2);">300 000 ₽</div>
             <p style="font-size: 13px; color: #777; line-height: 1.5; margin-bottom: 25px;">*Столько денег уходит сквозь пальцы при потере всего 5% конверсии из-за типичных ошибок менеджеров.</p>
-            <a href="#quiz-anchor" style="display: block; background: #ff5722; color: #fff; text-decoration: none; padding: 16px; border-radius: 6px; font-weight: bold; text-transform: uppercase; font-size: 13px; letter-spacing: 0.5px; transition: background 0.2s;">Остановить слив бюджета</a>
+            <a href="https://max.ru/u/f9LHodD0cOLqLEkI-2skPCRJCFUCqzqyf-IhJvizo6T9-qTmF9YaUvrcpBs" target="_blank" style="display: block; background: #ff5722; color: #fff; text-decoration: none; padding: 16px; border-radius: 6px; font-weight: bold; text-transform: uppercase; font-size: 13px; letter-spacing: 0.5px; transition: background 0.2s;">Остановить слив бюджета</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Раздел с тарифами -->
+    <!-- Стоимость услуг -->
     <section class="price-section">
         <div class="container">
             <h2 class="section-title">Стоимость услуг и тарифы</h2>
             <div class="price-grid">
                 <div class="price-card">
-                    <div class="badge" style="background-color: #64748b;">Тест-драйв</div>
-                    <h4>Экспресс-аудит</h4>
-                    <div class="price-value">от 2 500 ₽</div>
-                    <p>Срез качества работы одного сотрудника по ключевым метрикам.</p>
+                    <div>
+                        <div class="badge" style="background-color: #64748b;">Тест-драйв</div>
+                        <h4>Экспресс-аудит</h4>
+                        <div class="price-value">от 2 500 ₽</div>
+                        <p style="font-size: 14px; color: #475569; margin-bottom: 20px;">Срез качества работы одного сотрудника по ключевым метрикам.</p>
+                    </div>
+                    <a href="https://max.ru/u/f9LHodD0cOLqLEkI-2skPCRJCFUCqzqyf-IhJvizo6T9-qTmF9YaUvrcpBs" target="_blank" class="btn-max-purple">Заказать аудит</a>
                 </div>
                 <div class="price-card featured">
-                    <div class="badge">Популярно</div>
-                    <h4>Скрипты продаж</h4>
-                    <div class="price-value">15 000 ₽</div>
-                    <p>Пошаговый сценарий от приветствия до закрытия сделки под вашу нишу.</p>
+                    <div>
+                        <div class="badge">Популярно</div>
+                        <h4>Скрипты продаж</h4>
+                        <div class="price-value">15 000 ₽</div>
+                        <p style="font-size: 14px; color: #475569; margin-bottom: 20px;">Пошаговый сценарий от приветствия до закрытия сделки под вашу нишу.</p>
+                    </div>
+                    <a href="https://max.ru/u/f9LHodD0cOLqLEkI-2skPCRJCFUCqzqyf-IhJvizo6T9-qTmF9YaUvrcpBs" target="_blank" class="btn-max-purple" style="background: var(--primary);">Заказать скрипт</a>
                 </div>
                 <div class="price-card">
-                    <div class="badge" style="background-color: #10b981;">Абонемент</div>
-                    <h4>Контроль качества</h4>
-                    <div class="price-value">15 000 ₽<span>/мес</span></div>
-                    <p>Еженедельная прослушка, ведение чек-листов и работа над ошибками.</p>
-                </div>
-                <!-- Новые карточки тарифов -->
-                <div class="price-card">
-                    <div class="badge" style="background-color: #0052cc;">VIP Решение</div>
-                    <h4>Построение ОП</h4>
-                    <div class="price-value" style="font-size: 20px; padding: 5px 0;">обсуждается индивидуально</div>
-                    <p>Полное построение эффективного отдела продаж с нуля под ключ.</p>
+                    <div>
+                        <div class="badge" style="background-color: #10b981;">Абонемент</div>
+                        <h4>Контроль качества</h4>
+                        <div class="price-value">15 000 ₽<span>/мес</span></div>
+                        <p style="font-size: 14px; color: #475569; margin-bottom: 20px;">Еженедельная прослушка, ведение чек-листов и работа над ошибками.</p>
+                    </div>
+                    <a href="https://max.ru/u/f9LHodD0cOLqLEkI-2skPCRJCFUCqzqyf-IhJvizo6T9-qTmF9YaUvrcpBs" target="_blank" class="btn-max-purple">Подключить</a>
                 </div>
                 <div class="price-card">
-                    <div class="badge" style="background-color: #8a2be2;">Масштаб</div>
-                    <h4>Построение КЦ</h4>
-                    <div class="price-value" style="font-size: 20px; padding: 5px 0;">обсуждается индивидуально</div>
-                    <p>Полное построение колл-центра, аналогичное по глубине проработки отделу продаж.</p>
+                    <div>
+                        <div class="badge" style="background-color: #cc9600;">Консалтинг</div>
+                        <h4>Построение ОП</h4>
+                        <div class="price-value" style="font-size: 20px; padding: 10px 0;">Стоимость обсуждается</div>
+                        <p style="font-size: 14px; color: #475569; margin-bottom: 20px;">Полное построение эффективного отдела продаж «под ключ» с нуля до результата.</p>
+                    </div>
+                    <a href="https://max.ru/u/f9LHodD0cOLqLEkI-2skPCRJCFUCqzqyf-IhJvizo6T9-qTmF9YaUvrcpBs" target="_blank" class="btn-max-purple">Обсудить проект</a>
+                </div>
+                <div class="price-card">
+                    <div>
+                        <div class="badge" style="background-color: #711fa3;">Колл-центр</div>
+                        <h4>Построение КЦ</h4>
+                        <div class="price-value" style="font-size: 20px; padding: 10px 0;">Стоимость обсуждается</div>
+                        <p style="font-size: 14px; color: #475569; margin-bottom: 20px;">Полное проектирование и запуск колл-центра высокой конверсии под ваши задачи.</p>
+                    </div>
+                    <a href="https://max.ru/u/f9LHodD0cOLqLEkI-2skPCRJCFUCqzqyf-IhJvizo6T9-qTmF9YaUvrcpBs" target="_blank" class="btn-max-purple">Обсудить проект</a>
                 </div>
             </div>
         </div>
@@ -331,15 +304,11 @@
 
     <section id="leads" style="padding: 60px 20px; background: #1a1a1a; text-align: center;">
       <div style="max-width: 650px; margin: 0 auto; background: #222; padding: 40px 30px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.4); border: 1px solid #2d2d2d;">
-        <h2 style="color: #fff; margin-bottom: 15px; font-family: sans-serif; font-size: 26px; font-weight: bold;">Оставить заявку на экспресс-аудит</h2>
-        <p style="color: #aaa; margin-bottom: 30px; font-family: sans-serif; font-size: 15px; line-height: 1.5;">Заполните анкету ниже прямо на сайте, чтобы получить разбор ошибок вашего отдела продаж.</p>
+        <h2 style="color: #fff; margin-bottom: 15px; font-family: sans-serif; font-size: 26px; font-weight: bold;">Связаться напрямую для аудита</h2>
+        <p style="color: #aaa; margin-bottom: 30px; font-family: sans-serif; font-size: 15px; line-height: 1.5;">Нажмите на кнопку ниже, чтобы перейти в систему МАКС (MAX) и обсудить аудит вашего отдела продаж лично со мной в чате.</p>
         
-        <div style="width: 100%; max-width: 550px; margin: 0 auto; background: #fff; border-radius: 8px; padding: 10px; overflow: hidden;">
-            <iframe src="https://forms.yandex.ru/u/6a88578b9029024683c9d950/?script=no" name="ya-form-bottom" style="width: 100%; height: 500px; border: none;"></iframe>
-        </div>
-        
-        <div style="margin-top: 25px;">
-            <a href="https://max.ru/u/f9LHodD0cOLqLEkI-2skPCRJCFUCqzqyf-IhJvizo6T9-qTmF9YaUvrcpBs" class="btn-max-purple" target="_blank" style="width: 100%; max-width: 550px; margin: 0; text-transform: uppercase; font-size: 15px; letter-spacing: 0.5px; padding: 18px 40px;">или НАПИСАТЬ В МАКС (MAX)</a>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+            <a href="https://max.ru/u/f9LHodD0cOLqLEkI-2skPCRJCFUCqzqyf-IhJvizo6T9-qTmF9YaUvrcpBs" class="btn-max-purple" target="_blank" style="width: 100%; max-width: 550px; margin: 0; text-transform: uppercase; font-size: 16px; letter-spacing: 0.5px; padding: 18px 40px; background: #ff5722;">💬 НАПИСАТЬ В МАКС (MAX)</a>
         </div>
       </div>
     </section>
@@ -402,7 +371,6 @@
         </div>
     </div>
 
-    <!-- Элемент баннера куки -->
     <div id="cookieNotice" class="cookie-notice">
         Данный сайт использует файлы cookie и системы аналитики для улучшения работы. 
         Оставаясь на сайте, вы соглашаетесь с условиями нашей 
@@ -430,13 +398,12 @@
           if (progress) progress.style.width = (currentStep / totalSteps) * 100 + "%";
           if (btnPrev) btnPrev.style.display = (currentStep === 1) ? "none" : "block";
           if (navBlock) navBlock.style.display = (currentStep === totalSteps) ? "none" : "flex";
-          if (currentStep === totalSteps) prepareYandexFormLink();
         }
 
         if (btnNext) {
           btnNext.addEventListener("click", function() {
             if (currentStep < totalSteps) {
-              const currentRadio = document.querySelector('input[name="quiz_q1"]:checked');
+              const currentRadio = document.querySelector('input[name="quiz_q' + currentStep + '"]:checked');
               if (!currentRadio) {
                 alert("Пожалуйста, выберите один из вариантов ответа!");
                 return;
@@ -456,40 +423,9 @@
           });
         }
 
-        function prepareYandexFormLink() {
-          const q1 = encodeURIComponent(document.querySelector('input[name="quiz_q1"]:checked')?.value || '');
-          const q2 = encodeURIComponent(document.querySelector('input[name="quiz_q2"]:checked')?.value || '');
-          const q3 = encodeURIComponent(document.querySelector('input[name="quiz_q3"]:checked')?.value || '');
-          const yandexLink = document.getElementById('yandex-form-link');
-          if (yandexLink) {
-            const secureDomain = 'https://forms.' + 'yandex.' + 'ru/u/6a88578b9029024683c9d950/';
-            yandexLink.href = secureDomain + "?q1=" + q1 + "&q2=" + q2 + "&q3=" + q3;
-          }
-        }
-
         updateQuiz();
       });
     })();
-
-    function checkQuizConsent(e) {
-        const cb = document.getElementById('quiz_privacy_agree');
-        if (!cb || !cb.checked) {
-            alert('Для продолжения необходимо дать согласие на обработку персональных данных!');
-            e.preventDefault();
-            return false;
-        }
-        return true;
-    }
-
-    function checkFormConsent(e, checkboxId) {
-        const cb = document.getElementById(checkboxId);
-        if (!cb || !cb.checked) {
-            alert('Для отправки формы необходимо дать согласие на обработку персональных данных!');
-            e.preventDefault();
-            return false;
-        }
-        return true;
-    }
 
     function checkCookieConsent() {
         if (!localStorage.getItem('cookie_accepted')) {
@@ -508,29 +444,6 @@
     window.onclick = function(event) {
         let modal = document.getElementById('privacyModal');
         if (event.target == modal) modal.style.display = 'none';
-    }
-
-    function showInlineYandexForm(e) {
-        const cb = document.getElementById('quiz_privacy_agree');
-        if (!cb || !cb.checked) {
-            alert('Для продолжения необходимо дать согласие на обработку персональных данных!');
-            if(e) e.preventDefault();
-            return false;
-        }
-        
-        const q1 = encodeURIComponent(document.querySelector('input[name="quiz_q1"]:checked')?.value || '');
-        const q2 = encodeURIComponent(document.querySelector('input[name="quiz_q2"]:checked')?.value || '');
-        const q3 = encodeURIComponent(document.querySelector('input[name="quiz_q3"]:checked')?.value || '');
-        
-        const iframe = document.getElementById('quiz-yandex-iframe');
-        const container = document.getElementById('quiz-iframe-container');
-        
-        if (iframe && container) {
-            const baseUrl = 'https://forms.yandex.ru/u/6a88578b9029024683c9d950/';
-            iframe.src = baseUrl + "?script=no&q1=" + q1 + "&q2=" + q2 + "&q3=" + q3;
-            container.style.display = "block";
-            container.scrollIntoView({ behavior: 'smooth' });
-        }
     }
 
     document.addEventListener("DOMContentLoaded", function() {
